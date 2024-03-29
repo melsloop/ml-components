@@ -1,0 +1,15 @@
+@use "./Text.config" as config;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: config.$stylesheet-id
+);
+
+// $variant: #{attr(data-variant)};
+
+.root {
+  @include use-font-size(text);
+  @include use-text-color(text);
+  @include use-line-height(text);
+  @include use-text-transform(text);
+  @include use-letter-spacing(text);
+  @include use-font-style(text);
+}
