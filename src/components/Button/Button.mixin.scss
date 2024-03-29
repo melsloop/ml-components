@@ -1,0 +1,54 @@
+@use "./Button.config" as config;
+@use "../variant-utils" as variant;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as *;
+
+// $id: config.$stylesheet-id;
+
+@mixin style(
+  $text-color: #fff,
+  $bg-color: #000,
+  $text-color-hover: #fff,
+  $bg-color-hover: #444,
+  $bg-color-selected: #4fa,
+  $text-color-selected: #000,
+  $bg-color-disabled: #e0e0e0,
+  $text-color-disabled: #808080,
+  $radius: 0,
+  $minWidth: auto,
+  $padding-top: 0,
+  $padding-bottom: 0,
+  $padding-right: 0,
+  $padding-left: 0
+) {
+  #{use(button-text-color)}: $text-color;
+  #{use(button-background-color)}: $bg-color;
+  #{use(button-text-color__hover)}: $text-color-hover;
+  #{use(button-background-color__hover)}: $bg-color-hover;
+  #{use(button-text-color__selected)}: $text-color-selected;
+  #{use(button-background-color__selected)}: $bg-color-selected;
+  #{use(button-text-color__disabled)}: $text-color-disabled;
+  #{use(button-background-color__disabled)}: $bg-color-disabled;
+  #{use(button-radius)}: $radius;
+  #{use(button-min-width)}: $minWidth;
+  #{use(button-padding-top)}: $padding-top;
+  #{use(button-padding-bottom)}: $padding-bottom;
+  #{use(button-padding-right)}: $padding-right;
+  #{use(button-padding-left)}: $padding-left;
+}
+
+@mixin variant($id, $meta, $mode) {
+  @include style(
+    $text-color: variant.val($meta, $id, $mode, text-color),
+    $bg-color: variant.val($meta, $id, $mode, background-color),
+    $text-color-hover: variant.val($meta, $id, $mode, text-color, __hover),
+    $bg-color-hover: variant.val($meta, $id, $mode, background-color, __hover),
+    $text-color-selected: variant.val($meta, $id, $mode, text-color, __selected),
+    $bg-color-selected: variant.val($meta, $id, $mode, background-color, __selected),
+    $radius: variant.val($meta, $id, $mode, radius),
+    $minWidth: variant.val($meta, $id, $mode, min-width),
+    $padding-top: variant.val($meta, $id, $mode, padding-top),
+    $padding-bottom: variant.val($meta, $id, $mode, padding-bottom),
+    $padding-right: variant.val($meta, $id, $mode, padding-right),
+    $padding-left: variant.val($meta, $id, $mode, padding-left)
+  );
+}

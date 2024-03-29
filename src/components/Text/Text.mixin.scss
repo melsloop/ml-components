@@ -1,0 +1,12 @@
+@use "./Text.config" as config;
+@use "../variant-utils" as variant;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as *;
+
+@mixin variant($var: default) {
+  @include hooks.use-font-size($var);
+  @include hooks.use-text-color($var);
+  @include hooks.use-line-height($var);
+  @include hooks.use-text-transform($var);
+  @include hooks.use-letter-spacing($var);
+  @include hooks.use-font-style($var);
+}

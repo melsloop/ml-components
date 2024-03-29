@@ -1,0 +1,70 @@
+// @use "./Button.meta" as *;
+@use "./Button.config" as config;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: config.$stylesheet-id,
+  $customStates: config.$customStates
+);
+
+// parts
+$root: id();
+
+// states
+$hovered: state(hovered);
+$disabled: state(disabled);
+$selected: state(selected);
+
+.root {
+  // theme defaults
+  --min-width: 2em;
+  --padding-top: 1em;
+  --padding-bottom: 1em;
+  --padding-right: 1em;
+  --padding-left: 1em;
+  --radius: 0;
+
+  --text-color: black;
+  --text-color__hover: #080;
+  --text-color__disabled: #808080;
+  --text-color__selected: #00f;
+
+  --background-color: #f0f0f0;
+  --background-color__hover: #0c0;
+  --background-color__disabled: #c0c0c0;
+  --background-color__selected: #004;
+
+  // module layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+
+  // theme hooks
+  @include use-min-width;
+  @include use-text-color;
+  @include use-background-color;
+  @include use-padding-top;
+  @include use-padding-bottom;
+  @include use-padding-right;
+  @include use-padding-left;
+  @include use-radius;
+
+  &:hover,
+  &[data-state="open"] {
+    @include use-text-color($root, $hovered);
+    @include use-background-color($root, $hovered);
+  }
+
+  &[disabled] {
+    cursor: default;
+    @include use-text-color($root, $disabled);
+    @include use-background-color($root, $disabled);
+  }
+
+  &[data-state="on"] {
+    @include use-text-color($root, $selected);
+    @include use-background-color($root, $selected);
+  }
+}
