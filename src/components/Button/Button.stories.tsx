@@ -1,23 +1,31 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { within, userEvent } from "@storybook/test";
+
 import Button from "./Button";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta = {
   title: "Button",
   component: Button,
-} as ComponentMeta<typeof Button>;
+  parameters: {
+    layout: "fullscreen",
+  },
+  args: {
+    children: 'Click',
+    onClick: () => {console.log('clicked')}
+  }
+} satisfies Meta<typeof Button>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const HelloWorld = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-HelloWorld.args = {
-  label: "Save",
-};
+export const Default: Story = {};
 
-export const ClickMe = Template.bind({});
-ClickMe.args = {
-  label: "Click me!",
+export const Click: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const loginButton = await canvas.getByRole("button", {
+      name: /Click/i,
+    });
+    await userEvent.click(loginButton);
+  },
 };
