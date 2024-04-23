@@ -1,0 +1,23 @@
+.root {
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--ml-list-item-surface-radius, var(--radius));
+  background-color: var(--ml-list-item-surface-background-color, var(--background-color));
+  color: var(--ml-list-item-content-text-color, var(--text-color));
+}
+.root .marker {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0.5em;
+  background-color: var(--ml-list-item-marker-background-color, var(--background-color));
+}
+.root[data-selected=true] {
+  background-color: var(--ml-list-item-surface-background-color__selected, var(--background-color__selected));
+}
+.root:not([data-selected=true]):hover {
+  background-color: var(--ml-list-item-surface-background-color__hover, var(--background-color__hover));
+}
+
+/*# sourceMappingURL=ListItem.module.css.map */

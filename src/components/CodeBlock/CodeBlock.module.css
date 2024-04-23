@@ -1,0 +1,20 @@
+.root {
+  --background-color: #f0f0f0;
+  --text-color: #808080;
+  --gutter: 2rem;
+  --radius: 6px;
+}
+.root .pre {
+  background-color: var(--ml-code-block-background-color, var(--background-color));
+  border-radius: var(--ml-code-block-radius, var(--radius));
+  padding: var(--ml-code-block-gutter, var(--gutter));
+  border-color: var(--ml-code-block-border-color, var(--border-color));
+  text-align: left;
+}
+.root .pre .code {
+  color: var(--ml-code-block-text-color, var(--text-color));
+  font-weight: var(--ml-code-block-font-weight, var(--font-weight));
+  font-family: var(--ml-code-block-font-family, var(--font-family));
+}
+
+/*# sourceMappingURL=CodeBlock.module.css.map */

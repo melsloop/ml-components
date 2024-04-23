@@ -1,0 +1,92 @@
+@use "./MenuBar.meta" as meta;
+@use "../../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id,
+  $customStates: meta.$customStates
+);
+@use "./menuBarMixins" as mixins;
+
+.root {
+  --animation-duration: 200ms;
+  --animation-easing: ease;
+  --transform: rotate(-180deg);
+  @include mixins.caret-mixin(id(trigger-caret));
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+
+  .menuSectionTriggers {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    @include use-direction(locale);
+
+    .menuSectionTriggerItem {
+      list-style: none;
+      // position: static; // override `position: relative` of list item component
+      // @include list-item-mixin.list-item(id(), trigger);
+    }
+  }
+
+  .sectionItemsList {
+    @include use-inner-gutter(id(list));
+    @include use-direction(locale);
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      // padding: 0;
+      // margin: 0;
+    }
+
+    .menuListItem {
+      // @include list-item-mixin.variant(id(), entry);
+
+      .navItem {
+        // @include nav-item-mixin.variant(id(), content);
+      }
+    }
+  }
+
+  .content {
+    @include mixins.content-mixin(id(viewport));
+  }
+
+  .indicator {
+    @include mixins.indicator-mixin(id(indicator));
+  }
+
+  .arrow {
+    @include mixins.arrow-mixin(id(arrow-indicator));
+  }
+
+  .viewport {
+    @include mixins.viewport-mixin(id(viewport));
+    min-width: 400px;
+    width: auto;
+  }
+
+  .viewportPosition {
+    @include mixins.viewport-position-mixin(id(viewport));
+  }
+
+  // stylelint-disable-next-line selector-class-pattern
+  // .viewportPosition {
+  //   @include mixins.viewport-mixin(id(viewport-position));
+  // }
+
+  // &[data-direction="ltr"] {
+  //   .viewportPosition {
+  //     right: 0;
+  //   }
+  // }
+
+  // &[data-direction="rtl"] {
+  //   .viewportPosition {
+  //     left: 0;
+  //   }
+  // }
+}

@@ -1,0 +1,12 @@
+@use "./Strip.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id
+);
+
+.root {
+  --background-color: #808080;
+  --height: 6px;
+
+  @include use-gradient;
+  @include use-height;
+}

@@ -1,0 +1,42 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.root {
+  --size: 24px;
+  --height: 20em;
+  --label-margin: 1em;
+  --animation-duration: 2s;
+  --animation-easing: linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: var(--ml-loading-indicator-height, var(--height));
+}
+.root .image {
+  animation: rotation;
+  animation-duration: var(--ml-loading-indicator-rotation-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-loading-indicator-rotation-animation-easing, var(--animation-easing));
+  height: var(--ml-loading-indicator-size, var(--size));
+  width: var(--ml-loading-indicator-size, var(--size));
+  border-width: var(--ml-loading-indicator-border-size, var(--border-size));
+  border-style: var(--ml-loading-indicator-border-style, var(--border-style));
+  border-color: var(--ml-loading-indicator-border-color, var(--border-color));
+  background-color: var(--ml-loading-indicator-background-color, var(--background-color));
+  content: var(--ml-loading-indicator-url, var(--url));
+  border-radius: 50%;
+  animation-iteration-count: infinite;
+}
+.root .label {
+  --margin-top: var(--label-margin);
+  display: block;
+  margin-top: var(--ml-loading-indicator-margin-top, var(--margin-top));
+  margin-bottom: var(--ml-loading-indicator-margin-bottom, var(--margin-bottom));
+}
+
+/*# sourceMappingURL=LoadingIndicator.module.css.map */

@@ -1,0 +1,14 @@
+.root {
+  --background-color: black;
+  background-color: var(--ml-separator-background-color, var(--background-color));
+}
+.root[data-orientation=vertical] {
+  width: 1px;
+  height: 16px;
+}
+.root[data-orientation=horizontal] {
+  width: 16px;
+  height: 1px;
+}
+
+/*# sourceMappingURL=Separator.module.css.map */

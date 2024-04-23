@@ -1,0 +1,207 @@
+.root {
+  --animation-duration: 200ms;
+  --animation-easing: ease;
+  --transform: rotate(-180deg);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+.root .caret {
+  transition: transform 250ms ease;
+  color: var(--ml-menu-bar-trigger-caret-text-color, var(--text-color));
+}
+.root [data-state=open] > .caret {
+  transform: var(--ml-menu-bar-trigger-caret-transform, var(--transform));
+}
+.root .menuSectionTriggers {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  direction: var(--ml-locale-direction, var(--direction));
+}
+.root .menuSectionTriggers .menuSectionTriggerItem {
+  list-style: none;
+}
+.root .sectionItemsList {
+  padding: var(--ml-menu-bar-list-gutter, var(--gutter));
+  direction: var(--ml-locale-direction, var(--direction));
+}
+.root .sectionItemsList ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.root .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+.root .content[data-motion=from-start] {
+  animation: enter-from-left;
+  animation-duration: var(--ml-menu-bar-viewport-enter-from-left-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-viewport-enter-from-left-animation-easing, var(--animation-easing));
+}
+@keyframes enter-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.root .content[data-motion=to-start] {
+  animation: exit-to-left;
+  animation-duration: var(--ml-menu-bar-viewport-exit-to-left-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-viewport-exit-to-left-animation-easing, var(--animation-easing));
+}
+@keyframes exit-to-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
+.root .content[data-motion=to-end] {
+  animation: exit-to-right;
+  animation-duration: var(--ml-menu-bar-viewport-exit-to-right-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-viewport-exit-to-right-animation-easing, var(--animation-easing));
+}
+@keyframes exit-to-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+}
+.root .content[data-motion=from-end] {
+  animation: enter-from-right;
+  animation-duration: var(--ml-menu-bar-viewport-enter-from-right-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-viewport-enter-from-right-animation-easing, var(--animation-easing));
+}
+@keyframes enter-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.root .indicator {
+  --indicator-height: 10px;
+  --bar-height: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: var(--indicator-height);
+  top: 100%;
+  overflow: hidden;
+  z-index: 2;
+  transition: width, transform 250ms ease;
+}
+.root .indicator[data-state=visible] {
+  animation: fade-in;
+  animation-duration: var(--ml-menu-bar-indicator-fade-in-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-indicator-fade-in-animation-easing, var(--animation-easing));
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.root .indicator[data-state=hidden] {
+  animation: fade-out;
+  animation-duration: var(--ml-menu-bar-indicator-fade-out-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-indicator-fade-out-animation-easing, var(--animation-easing));
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.root .arrow {
+  --background-color: #fff;
+  --transform: rotate(45deg);
+  position: relative;
+  top: 70%;
+  width: 12px;
+  height: 12px;
+  border-top-left-radius: 2px;
+  transform: var(--ml-menu-bar-arrow-indicator-transform, var(--transform));
+  background-color: var(--ml-menu-bar-arrow-indicator-background-color, var(--background-color));
+}
+.root .viewport {
+  --shadow: 0 0 1em rgba(0, 0, 0, 0.25);
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  transform-origin: top center;
+  overflow: hidden;
+  height: var(--radix-navigation-menu-viewport-height);
+  transition: width, height, 300ms ease;
+  background-color: var(--ml-menu-bar-viewport-background-color, var(--background-color));
+  border-radius: var(--ml-menu-bar-viewport-radius, var(--radius));
+  box-shadow: var(--ml-menu-bar-viewport-shadow, var(--shadow));
+  min-width: 400px;
+  width: auto;
+}
+.root .viewport[data-state=open] {
+  animation: scale-in;
+  animation-duration: var(--ml-menu-bar-viewport-scale-in-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-viewport-scale-in-animation-easing, var(--animation-easing));
+}
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: rotateX(-30deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+}
+.root .viewport[data-state=closed] {
+  animation: scale-out;
+  animation-duration: var(--ml-menu-bar-viewport-scale-out-animation-duration, var(--animation-duration));
+  animation-timing-function: var(--ml-menu-bar-viewport-scale-out-animation-easing, var(--animation-easing));
+}
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotateX(-10deg) scale(0.95);
+  }
+}
+.root .viewportPosition {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  perspective: 2000px;
+}
+
+/*# sourceMappingURL=MenuBar.module.css.map */

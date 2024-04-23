@@ -1,0 +1,24 @@
+@use '../../styles/lib/refs';
+@use './ListItem.meta' as host;
+
+@mixin list-item-refs($radius, $bgColor, $bgColorHover, $bgColorSelected, $markerColor) {
+	#{refs.use(host.name(surface-radius))}: $radius;
+	#{refs.use(host.name(surface-background-color))}: $bgColor;
+	#{refs.use(host.name(surface-background-color, host.state(hovered)))}: $bgColorHover;
+	#{refs.use(host.name(surface-background-color, host.state(selected)))}: $bgColorSelected;
+	#{refs.use(host.name(marker-background-color))}: $markerColor;
+}
+
+@function val($meta, $mode, $prop, $state: '') {
+	@return refs.ref(#{$meta}-#{host.name()}-#{$mode}-#{$prop}#{$state});
+}
+
+@mixin variant($meta, $variant) {
+	@include list-item-refs(
+		$bgColor: val($meta, $variant, item-background-color),
+		$bgColorHover: val($meta, $variant, item-background-color, host.state(hovered)),
+		$bgColorSelected: val($meta, $variant, item-background-color, host.state(selected)),
+		$radius: val($meta, $variant, item-radius),
+		$markerColor: val($meta, $variant, item-marker-color)
+	);
+}

@@ -1,0 +1,22 @@
+.root {
+  --animation-type: fade-in;
+  --animation-duration: 250ms;
+  --animation-easing: ease-out forwards;
+  --width: 20em;
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: #808080;
+  --radius: 4px;
+  --shadow: none;
+  --background-color: #e0e0e0;
+  overflow: hidden;
+  width: var(--ml--width, var(--width));
+  background-color: var(--ml-popover-dialog-background-color, var(--background-color));
+  box-shadow: var(--ml-popover-dialog-shadow, var(--shadow));
+  border-width: var(--ml-popover-dialog-border-size, var(--border-size));
+  border-style: var(--ml-popover-dialog-border-style, var(--border-style));
+  border-color: var(--ml-popover-dialog-border-color, var(--border-color));
+  border-radius: var(--ml-popover-dialog-radius, var(--radius));
+}
+
+/*# sourceMappingURL=PopoverDialog.module.css.map */

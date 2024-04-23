@@ -1,0 +1,14 @@
+// @use '../../styles/lib/refs';
+// @use './Separator.meta' as host;
+
+// @mixin separator-refs($color: #888) {
+// 	#{refs.use(host.name(background-color))}: $color;
+// }
+
+// @function val($meta, $mode, $prop, $state: '') {
+// 	@return refs.ref(#{$meta}-#{host.name()}-#{$mode}-#{$prop}#{host.state($state)});
+// }
+
+// @mixin variant($meta, $mode) {
+// 	@include separator-refs($color: val($meta, $mode, background-color));
+// }

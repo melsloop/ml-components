@@ -1,0 +1,9 @@
+$stylesheet-id: toggle-group;
+
+$customStates: (
+  hovered: hover,
+  clicked: active,
+  focused: focused,
+  selected: selected,
+  disabled: disabled,
+);

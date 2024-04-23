@@ -1,0 +1,121 @@
+.root {
+  display: inline-block;
+  --ml-custom-field-background-color: #fff;
+  --ml-custom-field-label-text-color: #da0;
+  --ml-custom-field-validation-text-color: #f00;
+  --ml-custom-field-input-placeholder-text-color: #c0c0c0;
+  --ml-custom-field-input-border-size: 0;
+  --ml-custom-field-input-shadow: 0 0 1em lightgray;
+  --ml-custom-field-input-padding-top: 1em;
+  --ml-custom-field-input-padding-bottom: 1em;
+  --ml-custom-field-input-padding-right: 1em;
+  --ml-custom-field-input-padding-left: 1em;
+  --ml-custom-field-input-radius: 6px;
+  --ml-custom-field-input-outline: 2px solid #b0b0b0;
+  --ml-custom-field-input-outline__hover: 2px solid #b0b0b0;
+  --ml-custom-field-input-outline__focused: 2px solid #d0d0d0;
+  --ml-custom-field-input-outline__invalid: 1px solid #c00;
+  --ml-custom-field-input-outline__invalid__focused: 2px solid red;
+  --ml-custom-field-input-outline__invalid__hovered: 2px solid #f00;
+  --ml-custom-field-input-outline__invalid__focused__hovered: 2px solid #a00;
+}
+.root .layout {
+  display: flex;
+  width: 100%;
+}
+.root .container {
+  width: 100%;
+}
+.root .label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  gap: 0.5em;
+  user-select: none;
+  padding: 0 0 0.5em;
+  cursor: pointer;
+  color: var(--ml-custom-field-label-text-color, var(--text-color));
+}
+.root .label .text {
+  display: flex;
+  align-items: center;
+  gap: 0.15em;
+}
+.root .label .text .requiredIndicator::after {
+  content: "*";
+  opacity: 0.5;
+}
+.root .label .text .icon {
+  display: flex;
+  color: var(--ml-custom-field-icon-text-color, var(--text-color));
+}
+.root .label .inputField {
+  display: flex;
+}
+.root .label .inputField .inputFieldContainer {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+.root .input {
+  width: 100%;
+  background-color: var(--ml-custom-field-input-background-color, var(--background-color));
+  border-width: var(--ml-custom-field-input-border-size, var(--border-size));
+  box-shadow: var(--ml-custom-field-input-shadow, var(--shadow));
+  padding-top: var(--ml-custom-field-input-padding-top, var(--padding-top));
+  padding-bottom: var(--ml-custom-field-input-padding-bottom, var(--padding-bottom));
+  padding-right: var(--ml-custom-field-input-padding-right, var(--padding-right));
+  padding-left: var(--ml-custom-field-input-padding-left, var(--padding-left));
+  border-radius: var(--ml-custom-field-input-radius, var(--radius));
+  box-sizing: border-box;
+  transition: outline 75ms ease-in-out;
+  outline: var(--ml-custom-field-input-outline, var(--outline));
+}
+.root .input::placeholder {
+  color: var(--ml-custom-field-input-placeholder-text-color, var(--text-color));
+}
+.root .input:hover {
+  outline: var(--ml-custom-field-custom-field-input-input-outline__hovered, var(--outline__hovered));
+}
+.root .input:focus {
+  outline: var(--ml-custom-field-custom-field-input-input-outline__focused, var(--outline__focused));
+  background-color: var(--ml-custom-field-custom-field-input-input-background-color__focused, var(--background-color__focused));
+}
+.root .input[data-is-invalid=true] {
+  outline: var(--ml-custom-field-custom-field-input-input-outline__invalid, var(--outline__invalid));
+}
+.root .input[data-is-invalid=true]:hover {
+  outline: var(--ml-custom-field-custom-field-input-input-outline__invalid__hovered, var(--outline__invalid__hovered));
+}
+.root .input[data-is-invalid=true]:focus {
+  outline: var(--ml-custom-field-custom-field-input-input-outline__invalid__focused, var(--outline__invalid__focused));
+}
+.root .input[data-is-invalid=true]:focus:hover {
+  outline: var(--ml-custom-field-custom-field-input-input-outline__invalid__focused__hovered, var(--outline__invalid__focused__hovered));
+}
+.root .validation {
+  font-size: 0.75em;
+  padding: 0.5em 0;
+  opacity: 1;
+  transition: opacity 275ms ease-in;
+  color: var(--ml-custom-field-validation-text-color, var(--text-color));
+}
+.root .validation.showValidation {
+  visibility: visible;
+  opacity: 1;
+}
+.root[data-is-invalid=true] .label {
+  color: var(--ml-custom-field-label-text-color__invalid, var(--text-color__invalid));
+}
+.root[data-is-invalid=true] .input {
+  outline: var(--ml-custom-field-input-outline__invalid, var(--outline__invalid));
+}
+.root[data-is-valid=true] .label {
+  color: var(--ml-custom-field-label-text-color__invalid, var(--text-color__invalid));
+}
+.root[data-is-valid=true] .label .text .requiredIndicator::after {
+  display: none;
+}
+
+/*# sourceMappingURL=CustomField.module.css.map */

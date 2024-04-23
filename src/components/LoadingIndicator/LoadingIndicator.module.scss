@@ -1,0 +1,52 @@
+@use "./LoadingIndicator.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id
+);
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.root {
+  --size: 24px;
+  --height: 20em;
+  --label-margin: 1em;
+  --animation-duration: 2s;
+  --animation-easing: linear;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include use-height;
+
+  .image {
+    @include use-keyframe(rotation, id());
+    @include use-size;
+    @include use-border-size;
+    @include use-border-style;
+    @include use-border-color;
+    @include use-background-color;
+    @include use-content-url;
+
+    border-radius: 50%;
+
+    // last for cascading override
+    animation-iteration-count: infinite;
+  }
+
+  .label {
+    --margin-top: var(--label-margin);
+
+    display: block;
+
+    @include use-vertical-margin(name(label));
+  }
+}

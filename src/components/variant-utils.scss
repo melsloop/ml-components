@@ -1,0 +1,4 @@
+@import "../../node_modules/@melsloop/ml-sass-lib/lib/refs";
+@function val($meta, $id, $mode, $prop, $state: "") {
+  @return ref(#{$meta}-#{$id}-#{$mode}-#{$prop}#{$state});
+}
