@@ -1,6 +1,6 @@
 import React from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import styles from './Separator.module.css';
 
 export interface SeparatorProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -20,7 +20,7 @@ const Separator = ({
 		asChild={asChild}
 		decorative={decorative}
 		orientation={orientation}
-		className={classNames(styles.root, className)}
+		className={classnames(styles.root, className)}
 	/>
 );
 

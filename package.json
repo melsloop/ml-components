@@ -13,6 +13,7 @@
     "dev": "rollup -c -w",
     "test": "jest",
     "lint": "eslint src",
+    "sass:debug": "sass --load-path=. -wc src",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "predeploy-storybook": "npm run build-storybook",

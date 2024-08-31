@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 import * as ToggleGroupPrimitives from '@radix-ui/react-toggle-group';
 import Button from '../Button';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import styles from './ToggleGroup.module.css';
 
 type ToggleGroupProps = {
@@ -55,7 +55,7 @@ const ToggleGroup = ({
 				console.log(defaultValue);
 				val && onSelect?.(val);
 			}}
-			className={classNames(styles.root, className)}
+			className={classnames(styles.root, className)}
 		>
 			{childrenWithProps}
 		</ToggleGroupPrimitives.Root>

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import c from 'classnames';
+import classnames from 'classnames';
 import styles from './Text.module.css';
 
 // type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -22,7 +22,7 @@ const Text = ({ asChild, variant, children, className }: PropsWithChildren<TextP
 	return (
 		<Comp
 			data-variant={variant}
-			className={c(styles.root, className)}
+			className={classnames(styles.root, className)}
 		>
 			{children}
 		</Comp>

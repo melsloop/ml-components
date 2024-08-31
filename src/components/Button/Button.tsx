@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, SyntheticEvent } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import c from 'classnames';
+import classnames from 'classnames';
 // import styles from './Button.module.css';
 import styles from './Button.module.css';
 
@@ -31,7 +31,7 @@ const Button = ({
 	return (
 		<Comp
       ref={ref}
-			className={c(styles.root, className)}
+			className={classnames(styles.root, className)}
 			onClick={(e: SyntheticEvent) => onClick?.(e)}
 			disabled={disabled}
 			title={title}

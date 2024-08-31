@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import * as ToggleRoot from '@radix-ui/react-toggle';
 import Button from '../Button';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import styles from './ToggleButton.module.css';
 
 type ToggleButtonProps = {
@@ -24,7 +24,7 @@ const ToggleButton = ({
 			onPressedChange={onClick}
 			defaultPressed={isToggled}
 			title={title}
-			className={classNames(styles.root, className)}
+			className={classnames(styles.root, className)}
 			asChild
 			{...rest}
 		>

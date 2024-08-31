@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import styles from './Strip.module.css';
 
 export interface StripProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -7,7 +7,7 @@ export interface StripProps extends React.DetailedHTMLProps<React.HTMLAttributes
 }
 
 const Strip = ({ className }: StripProps) => (
-	<div className={classNames(styles.root, className)} />
+	<div className={classnames(styles.root, className)} />
 );
 
 export default Strip;

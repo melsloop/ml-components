@@ -1,8 +1,8 @@
 import React from 'react';
 import { getIcon } from '../../icons';
-import classNames from 'classnames';
 import Link from '../../Link';
 import Text from '../../Text';
+import classnames from 'classnames';
 import styles from './NavItem.module.css';
 
 type NavItemContentProps = {
@@ -30,7 +30,7 @@ const NavItemContent = ({
 	<Link
 		href={url}
 		target={target}
-		className={classNames(styles.root, className)}
+		className={classnames(styles.root, className)}
 		asChild
 		onClick={onClick}
 	>
