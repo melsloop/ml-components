@@ -1,0 +1,28 @@
+@use "./Term.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id,
+  $customStates: meta.$customStates
+);
+@use "../Annotation/Annotation.mixins" as annotation;
+// @use '../popover/Popover.mixin' as popover;
+// @use '../popover/PopoverTrigger.meta' as trigger;
+
+.root {
+  --content: "*";
+  --offset-y: -0.3em;
+  --decoration-color: #000;
+
+  .label {
+    @include use-font-style;
+    // @include popover.trigger(trigger.name());
+  }
+
+  &::after {
+    position: relative;
+    cursor: pointer;
+
+    // @include popover.trigger(trigger.id());
+    @include annotation.suffix(id());
+    @include use-offset-y(id(suffix));
+  }
+}

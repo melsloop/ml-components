@@ -1,0 +1,32 @@
+.root {
+  --font-size: 0.75em;
+  --font-weight: normal;
+  --line-height: 1em;
+  --offset-y: -0.5em;
+  --padding-left: 0.15em;
+  --padding-right: 0.15em;
+  --data-content: attr(data-prefix-content) attr(data-seq);
+  position: relative;
+  font-size: var(--ml-button-font-size, var(--font-size));
+  line-height: var(--ml-button-line-height, var(--line-height));
+  top: var(--ml-button-offset-y, var(--offset-y));
+}
+.root .content {
+  --content: var(--data-content);
+}
+.root .content::after {
+  content: var(--ml-button-content, var(--content));
+  font-weight: var(--ml-button-font-weight, var(--font-weight));
+  padding-right: var(--ml-button-padding-right, var(--padding-right));
+  padding-left: var(--ml-button-padding-left, var(--padding-left));
+}
+.root::before {
+  content: var(--ml-button-prefix-content, var(--content));
+  opacity: var(--ml-button-prefix-opacity, var(--opacity));
+}
+.root::after {
+  content: var(--ml-button-suffix-content, var(--content));
+  opacity: var(--ml-button-suffix-opacity, var(--opacity));
+}
+
+/*# sourceMappingURL=Annotation.module.css.map */

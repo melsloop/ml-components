@@ -1,0 +1,32 @@
+@use "./List.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id
+);
+
+.root {
+  --margin-top: 0;
+  --margin-bottom: 0;
+  --margin-right: 0;
+  --margin-left: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-right: 0;
+  --padding-left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  @include use-margin-top;
+  @include use-margin-bottom;
+  @include use-margin-left;
+  @include use-margin-right;
+
+  @include use-padding-top;
+  @include use-padding-bottom;
+  @include use-padding-left;
+  @include use-padding-right;
+
+  .items {
+    @include use-background-color(id(items));
+  }
+}

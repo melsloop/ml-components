@@ -1,0 +1,41 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.root .fieldset {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.root .panel {
+  display: flex;
+  padding: 2em;
+}
+.root .submitButton {
+  flex: 1;
+  display: flex;
+  --ml-button-text-color: #fff;
+  --ml-button-background-color: #000;
+  --ml-button-text-color__hover: #fff;
+  --ml-button-background-color__hover: #444;
+  --ml-button-text-color__selected: #000;
+  --ml-button-background-color__selected: #4fa;
+  --ml-button-text-color__disabled: #808080;
+  --ml-button-background-color__disabled: #e0e0e0;
+  --ml-button-radius: 6px;
+  --ml-button-min-width: auto;
+  --ml-button-padding-top: 1em;
+  --ml-button-padding-bottom: 1em;
+  --ml-button-padding-right: 0;
+  --ml-button-padding-left: 0;
+}
+.root .error {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: red;
+}
+
+/*# sourceMappingURL=Form.module.css.map */

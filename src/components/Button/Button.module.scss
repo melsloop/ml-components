@@ -1,8 +1,7 @@
-// @use "./Button.meta" as *;
-@use "./Button.config" as config;
+@use "./Button.meta" as meta;
 @use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
-  $stylesheet-id: config.$stylesheet-id,
-  $customStates: config.$customStates
+  $stylesheet-id: meta.$stylesheet-id,
+  $customStates: meta.$customStates
 );
 
 // parts

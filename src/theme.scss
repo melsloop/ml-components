@@ -1,0 +1,19 @@
+@use "../node_modules/@melsloop/ml-sass-lib/lib/states" as state;
+@use "../node_modules/@melsloop/ml-sass-lib/lib/parser" as parser;
+
+@use "./components/Button/Button.meta.scss" as Button;
+
+$vars: (
+  button: (
+    background-color: blue,
+    radius: 6px,
+    #{state.state(hover, Button.$customStates)}: (
+        background-color: purple,
+      ),
+  ),
+);
+
+body {
+  @debug state.state(hover, Button.$customStates);
+  @include parser.compile(($vars, ()));
+}

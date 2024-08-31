@@ -1,0 +1,9 @@
+.root[data-popover-state=closed]:hover {
+  --ml-popover-trigger-text-color: var(--ml-popover-trigger-text-color__hover, var(--text-color__hover));
+}
+.root[data-popover-state=open] {
+  --ml-popover-trigger-text-color: var(--ml-popover-trigger-text-color__selected, var(--text-color__selected));
+  --ml-popover-trigger-background-color: var(--ml-popover-trigger-background-color__selected, var(--background-color__selected));
+}
+
+/*# sourceMappingURL=PopoverTrigger.module.css.map */

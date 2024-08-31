@@ -1,0 +1,8 @@
+.root {
+  --background-color: #808080;
+  --height: 6px;
+  background: var(--ml-strip-background-color, var(--background-color));
+  height: var(--ml-strip-height, var(--height));
+}
+
+/*# sourceMappingURL=Strip.module.css.map */

@@ -1,0 +1,35 @@
+// @use '@melsloop/ml-sass-lib/index' as ml;
+
+// @use '../../../styles/lib/refs';
+@use '../../list-item/ListItem.meta' as item;
+@use '../../list-item/ListItem.mixin' as mixin;
+@use '../../button/Button.mixin' as button-mixin;
+@use './MenuBar.meta' as host;
+
+@function prop($part, $prop, $state: '') {
+	@return use(host.name(item.name(#{$part}-#{$prop}, item.state($state))));
+}
+
+@function val($meta, $mode, $prop, $state: '') {
+	@return ref(#{$meta}-#{host.name()}-#{item.name($mode)}-#{$prop}#{item.state($state)});
+}
+
+@mixin trigger($meta, $mode) {
+	@include button-mixin.button($meta, $mode);
+}
+
+@mixin entries($meta, $mode) {
+	#{prop(entry, radius)}: val($meta, $mode, radius);
+	#{prop(entry, background-color)}: val($meta, $mode, background-color);
+	#{prop(entry, background-color, hovered)}: val($meta, $mode, background-color, hovered);
+	#{prop(entry, background-color, selected)}: val($meta, $mode, background-color, selected);
+	#{prop(entry-marker, background-color)}: val($meta, $mode, marker-background-color);
+}
+
+@mixin variant($meta, $mode) {
+	#{prop(entry, radius)}: val($meta, $mode, radius);
+	#{prop(entry, background-color)}: val($meta, $mode, background-color);
+	#{prop(entry, background-color, hovered)}: val($meta, $mode, background-color, hovered);
+	#{prop(entry, background-color, selected)}: val($meta, $mode, background-color, selected);
+	#{prop(entry-marker, background-color)}: val($meta, $mode, marker-background-color);
+}

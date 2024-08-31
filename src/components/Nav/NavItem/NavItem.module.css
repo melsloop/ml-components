@@ -1,0 +1,69 @@
+.root {
+  text-decoration: none;
+  display: block;
+  border-radius: var(--ml-nav-item-item-radius, var(--radius));
+}
+.root .gutter {
+  padding: 5px;
+  display: block;
+}
+.root .marker {
+  background-color: red;
+}
+.root .content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border-radius: var(--ml-nav-item-item-radius, var(--radius));
+  gap: var(--ml-nav-item-item-gap, var(--gap));
+  padding-top: var(--ml-nav-item-item-padding-top, var(--padding-top));
+  padding-bottom: var(--ml-nav-item-item-padding-bottom, var(--padding-bottom));
+  padding-right: var(--ml-nav-item-item-padding-right, var(--padding-right));
+  padding-left: var(--ml-nav-item-item-padding-left, var(--padding-left));
+}
+.root .content .icon {
+  position: relative;
+  top: 0.1em;
+  color: var(--ml-nav-item-icon-text-color, var(--text-color));
+}
+.root .content .meta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-nav-item-content-gap, var(--gap));
+}
+.root .content:hover .meta .title {
+  color: var(--ml-nav-item-item-title-text-color__hover, var(--text-color__hover));
+}
+.root .content:hover .meta .author,
+.root .content:hover .meta .description {
+  color: var(--ml-nav-item-subtitle-text-color__hover, var(--text-color__hover));
+}
+.root .content:hover .meta .icon {
+  color: var(--ml-nav-item-icon-text-color__hover, var(--text-color__hover));
+}
+.root[data-selected=true] .marker, .root[data-selected=true]:hover .marker {
+  border-radius: var(--ml-nav-item-item-radius, var(--radius));
+  background-color: var(--ml-nav-item-item-marker-background-color__selected, var(--background-color__selected));
+  position: absolute;
+  top: 0;
+  width: 0.35em;
+  height: 100%;
+  opacity: 0.85;
+  left: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.root[data-selected=true] .meta .title, .root[data-selected=true]:hover .meta .title {
+  color: var(--ml-nav-item-item-title-text-color__selected, var(--text-color__selected));
+}
+.root[data-selected=true] .meta .author,
+.root[data-selected=true] .meta .description, .root[data-selected=true]:hover .meta .author,
+.root[data-selected=true]:hover .meta .description {
+  color: var(--ml-nav-item-subtitle-text-color__selected, var(--text-color__selected));
+}
+.root[data-selected=true] .icon, .root[data-selected=true]:hover .icon {
+  color: var(--ml-nav-item-icon-text-color__selected, var(--text-color__selected));
+}
+
+/*# sourceMappingURL=NavItem.module.css.map */

@@ -7,6 +7,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
+	tags: ['autodocs'],
   args: {}
 } satisfies Meta<typeof Container>;
 

@@ -1,0 +1,10 @@
+.root {
+  --gap: 4px;
+  display: flex;
+  gap: var(--ml-toggle-group-gap, var(--gap));
+}
+.root .item {
+  user-select: none;
+}
+
+/*# sourceMappingURL=ToggleGroup.module.css.map */

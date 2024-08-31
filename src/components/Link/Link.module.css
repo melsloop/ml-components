@@ -1,0 +1,23 @@
+.root {
+  cursor: pointer;
+  color: var(--ml-link-text-color, var(--text-color));
+}
+.root a:-webkit-any-link {
+  color: var(--ml-link-text-color, var(--text-color));
+}
+.root:link, .root:visited,
+.root a:-webkit-any-link:link,
+.root a:-webkit-any-link:visited {
+  color: var(--ml-link-text-color, var(--text-color));
+  background-color: var(--ml-link-background-color, var(--background-color));
+}
+.root:hover,
+.root a:-webkit-any-link:hover {
+  color: var(--ml-name()-text-color__hover, var(--text-color__hover));
+}
+.root:active,
+.root a:-webkit-any-link:active {
+  color: var(--ml-name()-text-color__active, var(--text-color__active));
+}
+
+/*# sourceMappingURL=Link.module.css.map */

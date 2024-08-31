@@ -1,0 +1,46 @@
+.root {
+  --min-width: 2em;
+  --padding-top: 1em;
+  --padding-bottom: 1em;
+  --padding-right: 1em;
+  --padding-left: 1em;
+  --radius: 0;
+  --text-color: black;
+  --text-color__hover: #080;
+  --text-color__disabled: #808080;
+  --text-color__selected: #00f;
+  --background-color: #f0f0f0;
+  --background-color__hover: #0c0;
+  --background-color__disabled: #c0c0c0;
+  --background-color__selected: #004;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  min-width: var(--ml-button-min-width, var(--min-width));
+  color: var(--ml-button-text-color, var(--text-color));
+  background-color: var(--ml-button-background-color, var(--background-color));
+  padding-top: var(--ml-button-padding-top, var(--padding-top));
+  padding-bottom: var(--ml-button-padding-bottom, var(--padding-bottom));
+  padding-right: var(--ml-button-padding-right, var(--padding-right));
+  padding-left: var(--ml-button-padding-left, var(--padding-left));
+  border-radius: var(--ml-button-radius, var(--radius));
+}
+.root:hover, .root[data-state=open] {
+  color: var(--ml-button-text-color__hover, var(--text-color__hover));
+  background-color: var(--ml-button-background-color__hover, var(--background-color__hover));
+}
+.root[disabled] {
+  cursor: default;
+  color: var(--ml-button-text-color__disabled, var(--text-color__disabled));
+  background-color: var(--ml-button-background-color__disabled, var(--background-color__disabled));
+}
+.root[data-state=on] {
+  color: var(--ml-button-text-color__selected, var(--text-color__selected));
+  background-color: var(--ml-button-background-color__selected, var(--background-color__selected));
+}
+
+/*# sourceMappingURL=Button.module.css.map */

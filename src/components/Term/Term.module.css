@@ -1,0 +1,17 @@
+.root {
+  --content: "*";
+  --offset-y: -0.3em;
+  --decoration-color: #000;
+}
+.root .label {
+  font-style: var(--ml-term-font-style, var(--font-style));
+}
+.root::after {
+  position: relative;
+  cursor: pointer;
+  content: var(--ml-term-suffix-content, var(--content));
+  opacity: var(--ml-term-suffix-opacity, var(--opacity));
+  top: var(--ml-term-suffix-offset-y, var(--offset-y));
+}
+
+/*# sourceMappingURL=Term.module.css.map */

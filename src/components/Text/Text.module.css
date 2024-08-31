@@ -1,0 +1,10 @@
+.root {
+  font-size: var(--ml-text-font-size, var(--font-size));
+  color: var(--ml-text-text-color, var(--text-color));
+  line-height: var(--ml-text-line-height, var(--line-height));
+  text-transform: var(--ml-text-text-transform, var(--text-transform));
+  letter-spacing: var(--ml-text-letter-spacing, var(--letter-spacing));
+  font-style: var(--ml-text-font-style, var(--font-style));
+}
+
+/*# sourceMappingURL=Text.module.css.map */

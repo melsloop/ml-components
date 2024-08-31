@@ -1,0 +1,8 @@
+@use "./Input.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id
+);
+
+.root {
+  box-sizing: border-box;
+}

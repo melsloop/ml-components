@@ -1,6 +1,6 @@
-@use "./Text.config" as config;
+@use "./Text.meta" as meta;
 @use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
-  $stylesheet-id: config.$stylesheet-id
+  $stylesheet-id: meta.$stylesheet-id
 );
 
 // $variant: #{attr(data-variant)};

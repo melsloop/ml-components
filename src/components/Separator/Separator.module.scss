@@ -1,0 +1,20 @@
+@use "./Separator.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id
+);
+
+.root {
+  --background-color: black;
+
+  @include use-background-color;
+
+  &[data-orientation="vertical"] {
+    width: 1px;
+    height: 16px;
+  }
+
+  &[data-orientation="horizontal"] {
+    width: 16px;
+    height: 1px;
+  }
+}

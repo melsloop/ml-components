@@ -1,0 +1,17 @@
+@use "./ToggleGroup.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id,
+  $customStates: meta.$customStates
+);
+
+.root {
+  --gap: 4px;
+
+  display: flex;
+
+  @include use-gap;
+
+  .item {
+    user-select: none;
+  }
+}

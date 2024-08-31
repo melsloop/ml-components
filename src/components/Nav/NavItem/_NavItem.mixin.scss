@@ -1,0 +1,105 @@
+@use '../../../styles/lib/refs';
+@use './NavItem.meta' as host;
+
+@mixin nav-item-refs($titleTextTransform, $titleTextColor) {
+	#{refs.use(host.name(item-title-text-transform))}: $titleTextTransform;
+	#{refs.use(host.name(item-title-text-color))}: $titleTextColor;
+	// #{refs.use(host.name(surface-background-color))}: $bgColor;
+	// #{refs.use(host.name(surface-background-color, host.state(hovered)))}: $bgColorHover;
+	// #{refs.use(host.name(surface-background-color, host.state(selected)))}: $bgColorSelected;
+	// #{refs.use(host.name(marker-background-color))}: $markerColor;
+}
+
+@function val($meta, $mode, $prop, $state: '') {
+	@return refs.ref(#{$meta}-#{host.name()}-#{$mode}-#{$prop}#{$state});
+}
+
+@mixin variant($meta, $variant) {
+	@include nav-item-refs(
+		$titleTextTransform: val($meta, $variant, title-text-transform),
+		$titleTextColor: val($meta, $variant, title-text-color),
+		// $titleTextColorHover: val($meta, $variant, title-text-color, host.state(hovered)),
+		// $bgColorHover: val($meta, $variant, item-background-color, host.state(hovered)),
+		// $bgColorSelected: val($meta, $variant, item-background-color, host.state(selected)),
+		// $radius: val($meta, $variant, item-radius),
+		// $markerColor: val($meta, $variant, item-marker-color)
+	);
+}
+
+// $defaultItemGutter: 0;
+// $defaultItemRadius: 0;
+// $defaultTextTransform: capitalize;
+// $defaultFontWeight: 300;
+// $defaultTextColor: black;
+// $defaultTextColorHover: white;
+// $defaultTextColorSelected: blue;
+// $defaultBgColor: none;
+// $defaultBgColorHover: #444;
+// $defaultBgColorSelected: lightblue;
+// $defaultItemMarkerColor: darkblue;
+
+// @function val($meta, $mode, $prop, $state: '') {
+// 	@return refs.ref(#{$meta}-#{host.name()}-#{$mode}-#{$prop}#{$state});
+// }
+
+// @mixin title(
+// 	$text-transform: $defaultTextTransform,
+// 	$font-weight: $defaultFontWeight,
+// 	$text-color: $defaultTextColor,
+// 	$text-color-hover: $defaultTextColorHover,
+// 	$text-color-selected: $defaultTextColorSelected
+// ) {
+// 	#{refs.use(host.name(title-text-transform))}: $text-transform;
+// 	#{refs.use(host.name(title-font-weight))}: $font-weight;
+// 	#{refs.use(host.name(title-text-color))}: $text-color;
+// 	#{refs.use(host.name(title-text-color, host.state(hovered)))}: $text-color-hover;
+// 	#{refs.use(host.name(title-text-color, host.state(selected)))}: $text-color-selected;
+// }
+
+// @mixin subtitle(
+// 	$text-transform: $defaultTextTransform,
+// 	$font-weight: $defaultFontWeight,
+// 	$text-color: $defaultTextColor,
+// 	$text-color-hover: $defaultTextColorHover,
+// 	$text-color-selected: $defaultTextColorSelected
+// ) {
+// 	#{refs.use(host.name(subtitle-text-transform))}: $text-transform;
+// 	#{refs.use(host.name(subtitle-font-weight))}: $font-weight;
+// 	#{refs.use(host.name(subtitle-text-color))}: $text-color;
+// 	#{refs.use(host.name(subtitle-text-color, host.state(hovered)))}: $text-color-hover;
+// 	#{refs.use(host.name(subtitle-text-color, host.state(selected)))}: $text-color-selected;
+// }
+
+// @mixin icon(
+// 	$text-color: $defaultTextColor,
+// 	$text-color-hover: $defaultTextColorHover,
+// 	$text-color-selected: $defaultTextColorSelected
+// ) {
+// 	#{refs.use(host.name(icon-text-color))}: $text-color;
+// 	#{refs.use(host.name(icon-text-color, host.state(hovered)))}: $text-color-hover;
+// 	#{refs.use(host.name(icon-text-color, host.state(selected)))}: $text-color-selected;
+// }
+
+// @mixin nav-item-refs-mixin($title-text-transform) {
+// 	#{refs.use(host.name(title-text-transform))}: $title-text-transform;
+// }
+
+// @function val($meta, $mode, $prop, $state: '') {
+// 	@return refs.ref(#{$meta}-#{host.name()}-#{$mode}-#{$prop}#{host.state($state)});
+// }
+
+// @mixin variant($meta, $mode) {
+// 	@include nav-item-refs-mixin($title-text-transform: val($meta, $mode, title-text-transform))
+// 		// #{refs.use(host.name(title-font-weight))}: $font-weight;
+// 		// #{refs.use(host.name(title-text-color))}: $text-color;
+// 		// #{refs.use(host.name(title-text-color, host.state(hovered)))}: $text-color-hover;
+// 		// #{refs.use(host.name(title-text-color, host.state(selected)))}: $text-color-selected;
+// 		// @include title(
+// 		// 	$text-transform: val($meta, $mode, title-text-transform),
+// 		// 	// $font-weight: $defaultFontWeight,
+// 		// 	$text-color: val($meta, $mode, title-text-color),
+// 		// 	// $text-color-hover: $defaultTextColorHover,
+// 		// 	// $text-color-selected: $defaultTextColorSelected
+// 		// );
+// ;
+// }

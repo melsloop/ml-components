@@ -8,6 +8,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
+	tags: ['autodocs'],
   args: {
     children: 'Lorem Ipsum',
   }

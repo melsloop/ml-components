@@ -1,0 +1,19 @@
+.trigger {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--ml-popover-toolbar-gutter, var(--gutter));
+  border-width: var(--ml-popover-dialog-border-size, var(--border-size));
+  border-style: var(--ml-popover-dialog-border-style, var(--border-style));
+  border-color: var(--ml-popover-dialog-border-color, var(--border-color));
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+/*# sourceMappingURL=Popover.module.css.map */

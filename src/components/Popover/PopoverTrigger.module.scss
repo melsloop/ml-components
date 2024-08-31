@@ -1,0 +1,28 @@
+@use "./PopoverTrigger.meta" as config;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: config.$stylesheet-id,
+  $customStates: config.$customStates
+);
+
+@function -text-color($state: "") {
+  @return compRef(id(), text-color, $state);
+}
+
+@function -bg-color($state: "") {
+  @return compRef(id(), background-color, $state);
+}
+
+.root {
+  &[data-popover-state="closed"] {
+    // #{use(term-suffix-text-color)}: -suffix-color();
+
+    &:hover {
+      #{use(#{id()}-text-color)}: -text-color(state(hovered));
+    }
+  }
+
+  &[data-popover-state="open"] {
+    #{use(#{id()}-text-color)}: -text-color(state(selected));
+    #{use(#{id()}-background-color)}: -bg-color(state(selected));
+  }
+}

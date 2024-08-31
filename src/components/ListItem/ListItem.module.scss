@@ -1,0 +1,34 @@
+@use "./ListItem.meta" as meta;
+@use "../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id,
+  $customStates: meta.$customStates
+);
+
+.root {
+  overflow: hidden;
+  position: relative;
+
+  @include use-radius(id(surface));
+  @include use-background-color(id(surface));
+  @include use-text-color(id(content));
+
+  .container {
+  }
+  .marker {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0.5em;
+
+    @include use-background-color(id(marker));
+  }
+
+  &[data-selected="true"] {
+    @include use-background-color(id(surface), state(selected));
+  }
+
+  &:not([data-selected="true"]):hover {
+    @include use-background-color(id(surface), state(hovered));
+  }
+}

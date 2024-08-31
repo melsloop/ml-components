@@ -1,0 +1,17 @@
+$stylesheet-id: custom-field;
+
+$customStates: (
+  valid: valid,
+  focused: focused,
+  hovered: hovered,
+  invalid: invalid,
+  invalid-focused: (
+    (invalid, focused),
+  ),
+  invalid-hovered: (
+    (invalid, hovered),
+  ),
+  invalid-focused-hovered: (
+    (invalid, focused, hovered),
+  ),
+);

@@ -1,0 +1,122 @@
+@use "./NavItem.meta" as meta;
+@use "../../../../node_modules/@melsloop/ml-sass-lib" as * with (
+  $stylesheet-id: meta.$stylesheet-id,
+  $customStates: meta.$customStates
+);
+
+@mixin text-hooks-mixin($var) {
+  // @include use-font-weight($var);
+  // @include use-text-transform($var);
+  // @include use-text-color($var);
+  // @include use-background-color($var);
+}
+
+.root {
+  text-decoration: none;
+  display: block;
+
+  @include use-radius(id(item));
+
+  // @include use-inner-gutter(id(item));
+  // @include use-background-color(id(item));
+  // background-color: red;
+  // &:hover {
+  // 	@include use-background-color(id(item), state(hovered));
+  // }
+
+  .gutter {
+    padding: 5px;
+    display: block;
+  }
+
+  .marker {
+    background-color: red;
+  }
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    @include use-radius(id(item));
+    @include use-gap(id(item));
+    @include use-padding-top(id(item));
+    @include use-padding-bottom(id(item));
+    @include use-padding-right(id(item));
+    @include use-padding-left(id(item));
+
+    .icon {
+      position: relative;
+      top: 0.1em; // todo: use offset
+
+      @include use-text-color(id(icon));
+    }
+
+    .meta {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      @include use-gap(id(content));
+
+      .title {
+        @include text-hooks-mixin(id(item-title));
+      }
+
+      .author,
+      .description {
+        @include text-hooks-mixin(id(subtitle));
+      }
+    }
+
+    &:hover {
+      // @include use-background-color(id(item), state(hovered));
+
+      .meta {
+        .title {
+          @include use-text-color(id(item-title), state(hovered));
+        }
+
+        .author,
+        .description {
+          @include use-text-color(id(subtitle), state(hovered));
+        }
+
+        .icon {
+          @include use-text-color(id(icon), state(hovered));
+        }
+      }
+    }
+  }
+
+  &[data-selected="true"],
+  &[data-selected="true"]:hover {
+    .marker {
+      @include use-radius(id(item));
+      @include use-background-color(id(item-marker), state(selected));
+
+      position: absolute;
+      top: 0;
+      width: 0.35em;
+      height: 100%;
+      opacity: 0.85;
+
+      left: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .meta {
+      .title {
+        @include use-text-color(id(item-title), state(selected));
+      }
+
+      .author,
+      .description {
+        @include use-text-color(id(subtitle), state(selected));
+      }
+    }
+    .icon {
+      @include use-text-color(id(icon), state(selected));
+    }
+  }
+}

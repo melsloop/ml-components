@@ -1,0 +1,25 @@
+.root {
+  --margin-top: 0;
+  --margin-bottom: 0;
+  --margin-right: 0;
+  --margin-left: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-right: 0;
+  --padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--ml-list-margin-top, var(--margin-top));
+  margin-bottom: var(--ml-list-margin-bottom, var(--margin-bottom));
+  margin-left: var(--ml-list-margin-left, var(--margin-left));
+  margin-right: var(--ml-list-margin-right, var(--margin-right));
+  padding-top: var(--ml-list-padding-top, var(--padding-top));
+  padding-bottom: var(--ml-list-padding-bottom, var(--padding-bottom));
+  padding-left: var(--ml-list-padding-left, var(--padding-left));
+  padding-right: var(--ml-list-padding-right, var(--padding-right));
+}
+.root .items {
+  background-color: var(--ml-list-items-background-color, var(--background-color));
+}
+
+/*# sourceMappingURL=List.module.css.map */
