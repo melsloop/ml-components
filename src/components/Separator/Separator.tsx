@@ -1,7 +1,7 @@
 import React from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import styles from './Separator.module.scss';
 import classNames from 'classnames';
+import styles from './Separator.module.css';
 
 export interface SeparatorProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	orientation?: 'vertical' | 'horizontal';

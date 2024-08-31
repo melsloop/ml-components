@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import styles from './CodeBlock.module.scss';
+import styles from './CodeBlock.module.css';
 
 type CodeProps = {
 	className?: string;

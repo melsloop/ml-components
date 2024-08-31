@@ -3,7 +3,7 @@ import CustomField, { type CustomFieldProps } from '../CustomField/CustomField';
 import { getValidityErrorMessage } from '../CustomField/helpers';
 import { useInputValidation } from './useInputValidation';
 import classNames from 'classnames';
-import styles from './Input.module.scss';
+import styles from './Input.module.css';
 
 type InputProps = {
 	translateFn: (s: string) => string;

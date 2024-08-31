@@ -9,7 +9,6 @@ import Recaptcha from '../Recaptcha';
 import { handleSubmit } from '../Recaptcha/Recaptcha';
 import CustomField from '../CustomField';
 // import { ApiRoutes } from '../../apiRoutes';
-import styles from './Form.module.scss';
 
 type FormFieldProps = {
 	name: string;

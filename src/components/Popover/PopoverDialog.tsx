@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import styles from './PopoverDialog.module.scss';
+import styles from './PopoverDialog.module.css';
 import classNames from 'classnames';
 
 export interface PopoverDialogProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

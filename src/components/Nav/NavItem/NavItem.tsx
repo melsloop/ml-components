@@ -1,9 +1,9 @@
 import React from 'react';
 import { getIcon } from '../../icons';
-import styles from './NavItem.module.scss';
 import classNames from 'classnames';
 import Link from '../../Link';
 import Text from '../../Text';
+import styles from './NavItem.module.css';
 
 type NavItemContentProps = {
 	title?: string;

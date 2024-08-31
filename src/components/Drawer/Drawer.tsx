@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 import { default as ModernDrawer } from 'react-modern-drawer';
 import classNames from 'classnames';
-import styles from './Drawer.module.scss';
-import './styles.scss';
+import styles from './Drawer.module.css';
+import './styles.css';
 
 export interface DrawerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	open: boolean;

@@ -1,6 +1,6 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import styles from './ListItem.module.scss';
+import styles from './ListItem.module.css';
 
 type ListItemProps = {
 	label?: string;

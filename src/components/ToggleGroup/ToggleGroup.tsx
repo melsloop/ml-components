@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 import * as ToggleGroupPrimitives from '@radix-ui/react-toggle-group';
-import classNames from 'classnames';
-import styles from './ToggleGroup.module.scss';
 import Button from '../Button';
+import classNames from 'classnames';
+import styles from './ToggleGroup.module.css';
 
 type ToggleGroupProps = {
 	defaultValue: string;

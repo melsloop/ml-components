@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import styles from './PopoverTrigger.module.scss';
+import styles from './PopoverTrigger.module.css';
 import c from 'classnames';
 
 export interface PopoverTriggerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {

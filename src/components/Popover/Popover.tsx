@@ -3,9 +3,9 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { getIcon } from '../icons';
 import Button from '../Button';
 // import { ToolbarItem } from '..';
-import styles from './Popover.module.scss';
 import PopoverTrigger from './PopoverTrigger';
 import PopoverDialog from './PopoverDialog';
+import styles from './Popover.module.css';
 
 export interface CustomPopoverProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
 	trigger: React.ReactNode;

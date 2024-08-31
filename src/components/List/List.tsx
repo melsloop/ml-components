@@ -1,10 +1,11 @@
+import type { ListItemProps } from '../ListItem/ListItem'
+
 import React, { HTMLAttributes, PropsWithChildren } from 'react';
 import Link from '../Link';
 import Text from '../Text';
 import ListItem from '../ListItem';
 import classNames from 'classnames';
-import styles from './List.module.scss';
-import type { ListItemProps } from '../ListItem/ListItem'
+import styles from './List.module.css';
 
 type ListProps = {
 	items?: ListItemProps[];

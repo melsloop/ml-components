@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import styles from './Term.module.scss';
+import styles from './Term.module.css';
 
 export interface TermProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
 	className?: string;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './LoadingIndicator.module.scss';
+import styles from './LoadingIndicator.module.css';
 
 export interface LoadingIndicatorProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	/**

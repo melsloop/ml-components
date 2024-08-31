@@ -1,7 +1,7 @@
 import React from 'react';
 import { format as dateFormat } from 'date-fns';
 import classNames from 'classnames';
-import styles from './DateFormat.module.scss';
+import styles from './DateFormat.module.css';
 
 type DateFormatProps = {
 	date: Date;

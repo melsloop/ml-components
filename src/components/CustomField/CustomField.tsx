@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { getIcon } from '../icons';
-import styles from './CustomField.module.scss';
+import styles from './CustomField.module.css';
 import classNames from 'classnames';
 import type { PropsWithChildren, SyntheticEvent } from 'react';
 

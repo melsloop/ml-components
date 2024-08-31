@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Annotation.module.scss';
+import styles from './Annotation.module.css';
 import { leadingZero } from './helpers';
 import classNames from 'classnames';
 

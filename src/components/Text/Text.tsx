@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import c from 'classnames';
-import styles from './Text.module.scss';
+import styles from './Text.module.css';
 
 // type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 // type SubtitleVariant = 'subtitle1' | 'subtitle2' | 'subtitle3' | 'subtitle4';

@@ -1,15 +1,16 @@
 import React, { PropsWithChildren, SyntheticEvent } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import c from 'classnames';
-import styles from './Button.module.scss';
+// import styles from './Button.module.css';
+import styles from './Button.module.css';
 
 export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
 	title?: string;
-	asChild?: boolean;
 	disabled?: boolean;
   label?: string;
 	onClick?: (e: SyntheticEvent | string | number | boolean) => void;
 	type?: 'submit';
+	asChild?: boolean;
   ref?: React.RefObject<HTMLButtonElement>;
 	className?: string;
 }

@@ -6,9 +6,9 @@ import ListItem from "../../ListItem";
 import Button from "../../Button";
 import NavItem from "../NavItem/NavItem";
 import c from "classnames";
-import styles from "./MenuBar.module.scss";
+import styles from "./MenuBar.module.css";
 import { NavProps, NavItemProps } from "./types";
-import "./styles.scss";
+import "./styles.css";
 
 const renderItems = (items: NavItemProps[], currentPath: string) =>
   items?.map((item) => {

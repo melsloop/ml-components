@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 import * as ToggleRoot from '@radix-ui/react-toggle';
-import classNames from 'classnames';
-import styles from './ToggleButton.module.scss';
 import Button from '../Button';
+import classNames from 'classnames';
+import styles from './ToggleButton.module.css';
 
 type ToggleButtonProps = {
 	title: string;
