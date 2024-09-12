@@ -2,12 +2,16 @@ import React, { PropsWithChildren, useState } from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { getIcon } from '../icons';
 import Button from '../Button';
-// import { ToolbarItem } from '..';
 import PopoverTrigger from './PopoverTrigger';
 import PopoverDialog from './PopoverDialog';
 import styles from './Popover.module.css';
+import PopoverToolbarItem from './ToolbarItem/ToolbarItem';
 
-export interface CustomPopoverProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface CustomPopoverProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLElement>,
+		HTMLElement
+	> {
 	trigger: React.ReactNode;
 	side: 'top' | 'right' | 'bottom' | 'left';
 	locale: string;
@@ -55,16 +59,19 @@ const Popover = ({
 							>
 								<div className={styles.panel}>{toolbarItems}</div>
 								<div className={styles.closeButton}>
-									{/* <ToolbarItem> */}
+									<PopoverToolbarItem>
 										<PopoverPrimitive.Close asChild>
 											<Button
+												variant="contained"
+												mode="primary"
+												size="xs"
 												onClick={() => setVisible(false)}
 												className={styles.close}
 											>
 												{getIcon('close')}
 											</Button>
 										</PopoverPrimitive.Close>
-									{/* </ToolbarItem> */}
+									</PopoverToolbarItem>
 								</div>
 							</div>
 						)}

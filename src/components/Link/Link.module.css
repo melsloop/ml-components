@@ -1,23 +1,30 @@
-.root {
-  cursor: pointer;
-  color: var(--ml-link-text-color, var(--text-color));
-}
-.root a:-webkit-any-link {
-  color: var(--ml-link-text-color, var(--text-color));
-}
-.root:link, .root:visited,
-.root a:-webkit-any-link:link,
-.root a:-webkit-any-link:visited {
-  color: var(--ml-link-text-color, var(--text-color));
-  background-color: var(--ml-link-background-color, var(--background-color));
-}
-.root:hover,
-.root a:-webkit-any-link:hover {
-  color: var(--ml-name()-text-color__hover, var(--text-color__hover));
-}
-.root:active,
-.root a:-webkit-any-link:active {
-  color: var(--ml-name()-text-color__active, var(--text-color__active));
+:root {
+	--ml-link-text-color: var(--ml-color-primary-light);
+	--ml-link-background-color: none;
+	--ml-link-text-decoration: underline;
+	--ml-link-text-style: normal;
 }
 
-/*# sourceMappingURL=Link.module.css.map */
+.root {
+	cursor: pointer;
+}
+
+.root:link,
+.root:visited,
+.root a:-webkit-any-link .root a:-webkit-any-link:link,
+.root a:-webkit-any-link:visited {
+	color: var(--ml-link-text-color);
+	background-color: var(--ml-link-background-color);
+	text-decoration: var(--ml-link-text-decoration);
+	font-style: var(--ml-link-text-style);
+}
+
+.root:hover,
+.root a:-webkit-any-link:hover {
+	--ml-link-text-color: var(--ml-color-primary-dark);
+}
+
+.root:active,
+.root a:-webkit-any-link:active {
+	--ml-link-text-color: var(--ml-color-primary-dark);
+}

@@ -3,7 +3,11 @@ import { Slot } from '@radix-ui/react-slot';
 import classNames from 'classnames';
 import styles from './Link.module.css';
 
-export interface LinkProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+export interface LinkProps
+	extends React.DetailedHTMLProps<
+		React.AnchorHTMLAttributes<HTMLAnchorElement>,
+		HTMLAnchorElement
+	> {
 	label?: string;
 	asChild?: boolean;
 	onClick?: (e: SyntheticEvent) => void;
@@ -32,7 +36,7 @@ const Link = ({
 				href={href}
 				target={target}
 			> */}
-        {children || label}
+			{children || label}
 			{/* </NextLink> */}
 		</Comp>
 	);

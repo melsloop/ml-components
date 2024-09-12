@@ -1,13 +1,9 @@
 import React from 'react';
 import CustomField, { type CustomFieldProps } from '../CustomField/CustomField';
-import { getValidityErrorMessage } from '../CustomField/helpers';
+import { getErrorMessage } from '../CustomField/helpers';
 import { useInputValidation } from './useInputValidation';
 import classNames from 'classnames';
 import styles from './Input.module.css';
-
-type InputProps = {
-	translateFn: (s: string) => string;
-} & CustomFieldProps;
 
 const Input = ({
 	label,
@@ -16,17 +12,14 @@ const Input = ({
 	placeholder,
 	type,
 	value,
-	translateFn,
 	className,
-	...rest
-}: InputProps) => {
+	...props
+}: CustomFieldProps) => {
 	const trErrorMessage = (validity: ValidityState) =>
-		getValidityErrorMessage({
-			validity,
-			translateFn,
-		});
+		getErrorMessage({ validity });
 
-	const { valid, invalid, errorMessage, validate } = useInputValidation(trErrorMessage);
+	const { valid, invalid, errorMessage, validate } =
+		useInputValidation(trErrorMessage);
 
 	const CustomInput = type === 'textarea' ? 'textarea' : 'input';
 
@@ -42,7 +35,7 @@ const Input = ({
 			isValid={valid}
 			isInvalid={invalid}
 			errorMessage={errorMessage}
-			{...rest}
+			{...props}
 		>
 			<CustomInput
 				onChange={validate}

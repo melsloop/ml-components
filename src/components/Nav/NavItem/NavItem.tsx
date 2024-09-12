@@ -38,7 +38,12 @@ const NavItemContent = ({
 			<span className={styles.content}>
 				{icon && <span className={styles.icon}>{getIcon(icon)}</span>}
 				<span className={styles.meta}>
-					<Text data-xxx="h1" className={styles.title}>{title}</Text>
+					<Text
+						data-xxx="h1"
+						className={styles.title}
+					>
+						{title}
+					</Text>
 					<Text className={styles.description}>{description}</Text>
 					<Text className={styles.author}>{author}</Text>
 				</span>

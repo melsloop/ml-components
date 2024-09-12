@@ -1,8 +1,8 @@
-type GetErrorMessageProps = {
+type ErrorMessageProps = {
 	validity: ValidityState;
-	translateFn?: (s: string) => string;
 };
-export const getValidityErrorMessage = ({ validity, translateFn }: GetErrorMessageProps) => {
+
+export const getErrorMessage = ({ validity }: ErrorMessageProps) => {
 	const {
 		valueMissing,
 		typeMismatch,
@@ -14,52 +14,28 @@ export const getValidityErrorMessage = ({ validity, translateFn }: GetErrorMessa
 		stepMismatch,
 		tooLong,
 		tooShort,
-		valid,
 	} = validity;
 
-	if (valid) {
-		return '';
-	}
-
 	if (valueMissing) {
-		return translateFn?.('valueMissing') || 'Value missing';
+		return 'Value missing';
+	} else if (typeMismatch) {
+		return 'Type mismatch';
+	} else if (badInput) {
+		return 'Bad input';
+	} else if (customError) {
+		return 'Custom error';
+	} else if (patternMismatch) {
+		return 'Pattern mismatch';
+	} else if (rangeOverflow) {
+		return 'Range overflow';
+	} else if (rangeUnderflow) {
+		return 'Range underflow';
+	} else if (stepMismatch) {
+		return 'Step mismatch';
+	} else if (tooLong) {
+		return 'Too long';
+	} else if (tooShort) {
+		return 'Too short';
 	}
-
-	if (typeMismatch) {
-		return translateFn?.('typeMismatch') || 'Type mismatch';
-	}
-
-	if (badInput) {
-		return translateFn?.('badInput') || 'Bad input';
-	}
-
-	if (customError) {
-		return translateFn?.('customError') || 'Custom error';
-	}
-
-	if (patternMismatch) {
-		return translateFn?.('patternMismatch') || 'Pattern mismatch';
-	}
-
-	if (rangeOverflow) {
-		return translateFn?.('rangeOverflow') || 'Range overflow';
-	}
-
-	if (rangeUnderflow) {
-		return translateFn?.('rangeUnderflow') || 'Range underflow';
-	}
-
-	if (stepMismatch) {
-		return translateFn?.('stepMismatch') || 'Step mismatch';
-	}
-
-	if (tooLong) {
-		return translateFn?.('tooLong') || 'Too long';
-	}
-
-	if (tooShort) {
-		return translateFn?.('tooShort') || 'Too short';
-	}
-
 	return '';
 };

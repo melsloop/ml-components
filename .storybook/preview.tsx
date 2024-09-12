@@ -1,26 +1,67 @@
 import React from 'react';
-import type { Preview } from "@storybook/react";
-// import '!style-loader!css-loader!sass-loader!./../src/theme.scss';
+import type { Preview } from '@storybook/react';
+import { makeDecorator } from 'storybook/internal/preview-api';
+import { getTheme } from '../src/theme';
+import lightTheme from '../src/theme/light';
+import darkTheme from '../src/theme/dark';
+
+const themeData = {
+	light: {
+		id: 'light',
+		backgroundColor: '#fff',
+	},
+	dark: {
+		id: 'dark',
+		backgroundColor: '#181a1c',
+	},
+};
+
+const clearThemeStyle = () => {
+	document.documentElement.querySelector('#ml-style')?.remove();
+};
+
+const createThemeStyle = (themeName: string, themeObj: Record<string, any>) => {
+	const mlStyle = document.createElement('style');
+	mlStyle.id = 'ml-style';
+	mlStyle.innerHTML = getTheme(themeObj);
+	document.documentElement.querySelector('body')?.prepend(mlStyle);
+	document.documentElement.setAttribute('data-ml-theme', themeName);
+};
+
+export const withTheme = makeDecorator({
+	name: 'withTheme',
+	parameterName: '',
+	skipIfNoParametersOrOptions: false,
+	wrapper: (getStory, context) => {
+		const backgroundColorValue = context.globals?.backgrounds?.value;
+		const backgroundColorOptions = context.parameters?.backgrounds?.values;
+		const themeName =
+			backgroundColorOptions.find(({ value }) => value === backgroundColorValue)
+				?.name || 'light';
+
+		clearThemeStyle();
+		createThemeStyle(themeName, themeName === 'light' ? lightTheme : darkTheme);
+
+		return getStory(context);
+	},
+});
 
 const preview: Preview = {
-	decorators: [
-		(Story) => {
-			return (
-				<div data-ml-theme="light" data-locale="en">
-					{Story()}
-				</div>
-			);
+	decorators: [withTheme(), (Story) => Story()],
+	parameters: {
+		backgrounds: {
+			values: [
+				{
+					name: themeData.light.id,
+					value: themeData.light.backgroundColor,
+				},
+				{
+					name: themeData.dark.id,
+					value: themeData.dark.backgroundColor,
+				},
+			],
 		},
-	],
-  parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/,
-      },
-    },
-  },
+	},
 };
 
 export default preview;

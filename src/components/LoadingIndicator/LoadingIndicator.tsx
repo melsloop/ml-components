@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './LoadingIndicator.module.css';
 
-export interface LoadingIndicatorProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface LoadingIndicatorProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLDivElement>,
+		HTMLDivElement
+	> {
 	/**
 	 * Number of MILLISECONDS to wait before displaying
 	 */
@@ -9,7 +13,10 @@ export interface LoadingIndicatorProps extends React.DetailedHTMLProps<React.HTM
 	readonly label?: string;
 }
 
-const LoadingIndicator = ({ delay, label }: LoadingIndicatorProps): JSX.Element => {
+const LoadingIndicator = ({
+	delay,
+	label,
+}: LoadingIndicatorProps): JSX.Element => {
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {

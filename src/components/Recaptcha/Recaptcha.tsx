@@ -55,7 +55,9 @@ const handleSubmit = ({
 };
 
 const Recaptcha = ({ siteKey }: RecaptchaProps) => {
-	return <script src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} />;
+	return (
+		<script src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} />
+	);
 };
 
 export default Recaptcha;

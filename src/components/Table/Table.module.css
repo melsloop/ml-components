@@ -1,0 +1,38 @@
+:root {
+	--ml-table-border-top-size: 1px;
+	--ml-table-border-top-style: solid;
+	--ml-table-border-top-color: #c0c0c0;
+	--ml-table-border-bottom-size: 1px;
+	--ml-table-border-bottom-style: solid;
+	--ml-table-border-bottom-color: #c0c0c0;
+	--ml-table-border-right-size: 1px;
+	--ml-table-border-right-style: solid;
+	--ml-table-border-right-color: #c0c0c0;
+	--ml-table-border-left-size: 1px;
+	--ml-table-border-left-style: solid;
+	--ml-table-border-left-color: #c0c0c0;
+	--ml-table-radius: 4px;
+}
+
+.root {
+	margin: 0 auto;
+	border-spacing: 0;
+	border-radius: var(--ml-table-radius);
+	border-top-width: var(--ml-table-border-top-size);
+	border-top-style: var(--ml-table-border-top-style);
+	border-top-color: var(--ml-table-border-top-color);
+	border-left-width: var(--ml-table-border-left-size);
+	border-left-style: var(--ml-table-border-left-style);
+	border-left-color: var(--ml-table-border-left-color);
+}
+
+.root td,
+.root th {
+	padding: 1rem 2rem;
+	border-right-width: var(--ml-table-border-right-size);
+	border-right-style: var(--ml-table-border-right-style);
+	border-right-color: var(--ml-table-border-right-color);
+	border-bottom-width: var(--ml-table-border-bottom-size);
+	border-bottom-style: var(--ml-table-border-bottom-style);
+	border-bottom-color: var(--ml-table-border-bottom-color);
+}

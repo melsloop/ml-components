@@ -1,39 +1,16 @@
+import type { FormProps } from './types';
+
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import { Field, Formik, Form as FormikForm } from 'formik';
-import { getIcon } from '../icons';
+import { handleSubmit } from '../Recaptcha/Recaptcha';
 import Container from '../Container';
 import Button from '../Button';
 import LoadingIndicator from '../LoadingIndicator';
 import Recaptcha from '../Recaptcha';
-import { handleSubmit } from '../Recaptcha/Recaptcha';
 import CustomField from '../CustomField';
-// import { ApiRoutes } from '../../apiRoutes';
-
-type FormFieldProps = {
-	name: string;
-	type: 'text' | 'number' | 'tel' | 'email' | 'textarea';
-	initialValue: unknown;
-	required?: boolean;
-	label?: string;
-	placeholder?: string;
-	icon?: string;
-	validation?: yup.Schema;
-	input?: React.ReactNode;
-	component?: 'input' | 'textarea' | 'select';
-};
-
-type FormProps = {
-	name: string;
-	path: string;
-	fields: FormFieldProps[];
-	recaptchaSiteKey?: string;
-	onSuccess?: () => void;
-	onError?: (e: unknown) => void;
-	submitButtonLabel?: string;
-	submitButtonIcon?: string;
-	submitButtonLabelActive?: string;
-};
+import { getIcon } from '../icons';
+import styles from './Form.module.css';
 
 const Form = ({
 	fields,
@@ -48,12 +25,12 @@ const Form = ({
 	const [submitting, setSubmitting] = useState(false);
 
 	const initialValues = Object.fromEntries(
-		fields.map(({ name, initialValue }) => [name, initialValue])
+		fields.map(({ name, initialValue }) => [name, initialValue]),
 	);
 
 	const validationSchema = Object.fromEntries(
-		fields.map(({ name, validation }) => [name, validation])
-	);
+		fields.map(({ name, validation }) => [name, validation]),
+	) as yup.ObjectShape;
 
 	return (
 		<div className={styles.root}>
@@ -72,33 +49,44 @@ const Form = ({
 							resetForm();
 							onSuccess?.();
 						},
-						onError: (e) => onError?.((e as Error)?.message || 'Form submit error'),
+						onError: (e) =>
+							onError?.((e as Error)?.message || 'Form submit error'),
 					});
 				}}
 			>
 				{({ dirty, isValid, touched, errors }) => (
 					<FormikForm>
 						<div className={styles.fieldset}>
-							{fields.map(({ name, label, placeholder, icon, required, type, component }) => (
-								<CustomField
-									key={name}
-									name={name}
-									label={label}
-									icon={icon}
-									placeholder={placeholder}
-									type={type}
-									isInvalid={!!touched[name] && !!errors[name]?.length}
-									isValid={touched[name] && !errors[name]?.length}
-									errorMessage={errors[name]}
-									required={required}
-								>
-									<Field
+							{fields.map(
+								({
+									name,
+									label,
+									placeholder,
+									icon,
+									required,
+									type,
+									component,
+								}) => (
+									<CustomField
+										key={name}
 										name={name}
+										label={label}
+										icon={icon}
+										placeholder={placeholder}
 										type={type}
-										component={component}
-									/>
-								</CustomField>
-							))}
+										isInvalid={!!touched[name] && !!errors[name]?.length}
+										isValid={touched[name] && !errors[name]?.length}
+										errorMessage={errors[name]}
+										required={required}
+									>
+										<Field
+											name={name}
+											type={type}
+											component={component}
+										/>
+									</CustomField>
+								),
+							)}
 						</div>
 						<Container
 							className={styles.panel}
@@ -107,6 +95,9 @@ const Form = ({
 							// alignContentRight
 						>
 							<Button
+								variant="contained"
+								mode="primary"
+								size="xs"
 								className={styles.submitButton}
 								type="submit"
 								disabled={!dirty || (dirty && !isValid)}
@@ -134,4 +125,3 @@ const Form = ({
 };
 
 export default Form;
-export type { FormFieldProps, FormProps };

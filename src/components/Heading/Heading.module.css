@@ -1,0 +1,12 @@
+:root {
+}
+
+.root {
+	margin: 0;
+	padding: 0;
+}
+
+/* .root:not(:first-child) {
+	margin-top: 3em;
+	margin-bottom: 1em;
+} */

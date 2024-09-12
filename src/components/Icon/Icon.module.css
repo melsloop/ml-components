@@ -1,0 +1,44 @@
+:root {
+	--ml-icon-size-xs: var(--ml-size-xs, 0.5em);
+	--ml-icon-size-sm: var(--ml-size-sm, 0.75em);
+	--ml-icon-size-md: var(--ml-size-md, 1em);
+	--ml-icon-size-lg: var(--ml-size-lg, 1.5em);
+	--ml-icon-size-xl: var(--ml-size-xl, 2.5em);
+	--ml-icon-color: var(--ml-color-surface-contrast);
+}
+
+.root {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--ml-icon-height);
+	height: var(--ml-icon-height);
+	color: var(--ml-icon-color);
+}
+
+.root svg {
+	width: var(--ml-icon-width);
+	height: var(--ml-icon-height);
+}
+
+/* size */
+.root[data-size='xs'] svg {
+	--ml-icon-width: var(--ml-icon-size-xs);
+	--ml-icon-height: var(--ml-icon-size-xs);
+}
+.root[data-size='sm'] svg {
+	--ml-icon-width: var(--ml-icon-size-sm);
+	--ml-icon-height: var(--ml-icon-size-sm);
+}
+.root[data-size='md'] svg {
+	--ml-icon-width: var(--ml-icon-size-md);
+	--ml-icon-height: var(--ml-icon-size-md);
+}
+.root[data-size='lg'] svg {
+	--ml-icon-width: var(--ml-icon-size-lg);
+	--ml-icon-height: var(--ml-icon-size-lg);
+}
+.root[data-size='xl'] svg {
+	--ml-icon-width: var(--ml-icon-size-xl);
+	--ml-icon-height: var(--ml-icon-size-xl);
+}

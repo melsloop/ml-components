@@ -1,10 +1,79 @@
-.root {
-  font-size: var(--ml-text-font-size, var(--font-size));
-  color: var(--ml-text-text-color, var(--text-color));
-  line-height: var(--ml-text-line-height, var(--line-height));
-  text-transform: var(--ml-text-text-transform, var(--text-transform));
-  letter-spacing: var(--ml-text-letter-spacing, var(--letter-spacing));
-  font-style: var(--ml-text-font-style, var(--font-style));
+:root {
+	--ml-text-size-xs: var(--ml-size-xs, 0.65em);
+	--ml-text-size-sm: var(--ml-size-sm, 0.85em);
+	--ml-text-size-md: var(--ml-size-md, 1em);
+	--ml-text-size-lg: var(--ml-size-lg, 1.15em);
+	--ml-text-size-xl: var(--ml-size-xl, 1.25em);
+
+	--ml-text-text-color: var(--ml-color-surface-contrast);
+	--ml-text-font-family: var(--ml-font-font1-family);
+	--ml-text-line-height: var(--ml-font-font1-line-height);
+	--ml-text-font-size: var(--ml-text-size);
 }
 
-/*# sourceMappingURL=Text.module.css.map */
+.root {
+	font-family: var(--ml-text-font-family);
+	font-size: var(--ml-text-font-size);
+	color: var(--ml-text-text-color);
+	line-height: var(--ml-text-line-height, var(--line-height));
+	/* text-transform: var(--ml-text-text-transform, var(--text-transform));
+  letter-spacing: var(--ml-text-letter-spacing, var(--letter-spacing));
+  font-style: var(--ml-text-font-style, var(--font-style)); */
+}
+
+.root:not(:last-child) {
+	margin-bottom: 1em;
+}
+
+/* size */
+.root[data-size='xs'] {
+	font-size: var(--ml-text-size-xs);
+}
+.root[data-size='sm'] {
+	font-size: var(--ml-text-size-sm);
+}
+.root[data-size='md'] {
+	font-size: var(--ml-text-size-md);
+}
+.root[data-size='lg'] {
+	font-size: var(--ml-text-size-lg);
+}
+.root[data-size='xl'] {
+	font-size: var(--ml-text-size-xl);
+}
+
+.root[data-variant='h1'],
+.root[data-variant='h2'],
+.root[data-variant='h3'],
+.root[data-variant='h4'],
+.root[data-variant='h5'],
+.root[data-variant='h6'] {
+	display: block;
+	margin-bottom: 2em;
+}
+
+.root[data-variant='h1'] .text {
+	font-size: 2.5em;
+}
+.root[data-variant='h2'] .text {
+	font-size: 2em;
+}
+.root[data-variant='h3'] .text {
+	font-size: 1.75em;
+}
+.root[data-variant='h4'] .text {
+	font-size: 1.5em;
+}
+.root[data-variant='h5'] .text {
+	font-size: 1.25em;
+}
+.root[data-variant='h6'] .text {
+	font-size: 1em;
+}
+
+.root[data-variant='body1'] {
+}
+
+.root[data-italics='true'] {
+	font-style: italic;
+}

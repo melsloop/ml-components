@@ -1,48 +1,104 @@
-.root {
-  --DEBUG-id: container;
-  --DEBUG-state: __hover;
-  --min-width: 2em;
-  --padding-top: 1em;
-  --padding-bottom: 1em;
-  --padding-right: 1em;
-  --padding-left: 1em;
-  --radius: 0;
-  --text-color: black;
-  --text-color__hover: #080;
-  --text-color__disabled: #808080;
-  --text-color__selected: #00f;
-  --background-color: #f0f0f0;
-  --background-color__hover: #0c0;
-  --background-color__disabled: #c0c0c0;
-  --background-color__selected: #004;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  padding: 0;
-  background: none;
-  cursor: pointer;
-  min-width: var(--ml-container-min-width, var(--min-width));
-  color: var(--ml-container-text-color, var(--text-color));
-  background-color: var(--ml-container-background-color, var(--background-color));
-  padding-top: var(--ml-container-padding-top, var(--padding-top));
-  padding-bottom: var(--ml-container-padding-bottom, var(--padding-bottom));
-  padding-right: var(--ml-container-padding-right, var(--padding-right));
-  padding-left: var(--ml-container-padding-left, var(--padding-left));
-  border-radius: var(--ml-container-radius, var(--radius));
-}
-.root:hover, .root[data-state=open] {
-  color: var(--ml-container-text-color__hover, var(--text-color__hover));
-  background-color: var(--ml-container-background-color__hover, var(--background-color__hover));
-}
-.root[disabled] {
-  cursor: default;
-  color: var(--ml-container-text-color__disabled, var(--text-color__disabled));
-  background-color: var(--ml-container-background-color__disabled, var(--background-color__disabled));
-}
-.root[data-state=on] {
-  color: var(--ml-container-text-color__selected, var(--text-color__selected));
-  background-color: var(--ml-container-background-color__selected, var(--background-color__selected));
+:root {
+	--ml-container-padding-top: 1em;
+	--ml-container-padding-bottom: 1em;
+	--ml-container-padding-right: 1em;
+	--ml-container-padding-left: 1em;
+	--ml-container-radius: 0;
+	--ml-container-gap: 0;
+	--ml-container-padding: var(--ml-spacing-md);
+	--ml-container-background-color: var(--ml-color-surface-main);
 }
 
-/*# sourceMappingURL=Container.module.css.map */
+.root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	gap: var(--ml-container-gap);
+	min-width: var(--ml-container-min-width);
+	background-color: var(--ml-container-background-color);
+	padding: var(--ml-container-padding);
+	border: none;
+	border-radius: var(--ml-container-radius);
+}
+
+/* sticky */
+.root[data-sticky='true'] {
+	position: fixed;
+	left: 0;
+	width: 100%;
+}
+.root[data-sticky-position='true'] {
+	z-index: 1;
+}
+.root[data-sticky-position='bottom'] {
+	bottom: 0;
+}
+.root[data-sticky-position-top='top'] {
+	top: 0;
+}
+
+/* gap */
+.root[data-gap='sm'] {
+	gap: var(--ml-spacing-sm);
+}
+.root[data-gap='md'] {
+	gap: var(--ml-spacing-md);
+}
+.root[data-gap='lg'] {
+	gap: var(--ml-spacing-lg);
+}
+
+/* shadow */
+.root[data-shadow='sm'] {
+	box-shadow: var(--ml-shadow-sm);
+}
+.root[data-shadow='md'] {
+	box-shadow: var(--ml-shadow-md);
+}
+.root[data-shadow='lg'] {
+	box-shadow: var(--ml-shadow-lg);
+}
+
+/* radius */
+.root[data-radius='sm'] {
+	border-radius: var(--ml-radius-sm);
+}
+.root[data-radius='md'] {
+	border-radius: var(--ml-radius-md);
+}
+.root[data-radius='lg'] {
+	border-radius: var(--ml-radius-lg);
+}
+
+.root[data-radius='md'] {
+	border-radius: var(--ml-radius-md);
+}
+
+.root[data-radius='lg'] {
+	border-radius: var(--ml-radius-lg);
+}
+
+.root[data-flex-direction='row'] {
+	flex-direction: row;
+}
+
+.root[data-flex-direction='column'] {
+	flex-direction: column;
+}
+
+.root[data-space-between='true'] {
+	justify-content: space-between;
+}
+
+.root[data-align-content-right='true'] {
+	justify-content: right;
+}
+
+.root[data-align-content-left='true'] {
+	justify-content: left;
+}
+
+.root[data-align-items-center='true'] {
+	align-items: center;
+}

@@ -1,9 +1,9 @@
-import type { ListItemProps } from '../ListItem/ListItem'
+import type { ListItemProps } from './ListItem/ListItem';
 
 import React, { HTMLAttributes, PropsWithChildren } from 'react';
 import Link from '../Link';
 import Text from '../Text';
-import ListItem from '../ListItem';
+import ListItem from './ListItem';
 import classNames from 'classnames';
 import styles from './List.module.css';
 
@@ -37,12 +37,13 @@ const renderListItems = (items: ListItemProps[]) =>
 	});
 
 const List = ({
-	items,
+	items = [],
 	label,
 	ordered,
 	children,
 	className,
-}: PropsWithChildren<ListProps> & HTMLAttributes<HTMLDivElement>): JSX.Element => {
+}: PropsWithChildren<ListProps> &
+	HTMLAttributes<HTMLDivElement>): JSX.Element => {
 	const Tag = ordered ? 'ol' : 'ul';
 	return (
 		<div className={classNames(styles.root, className)}>

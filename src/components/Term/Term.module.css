@@ -1,17 +1,18 @@
-.root {
-  --content: "*";
-  --offset-y: -0.3em;
-  --decoration-color: #000;
-}
-.root .label {
-  font-style: var(--ml-term-font-style, var(--font-style));
-}
-.root::after {
-  position: relative;
-  cursor: pointer;
-  content: var(--ml-term-suffix-content, var(--content));
-  opacity: var(--ml-term-suffix-opacity, var(--opacity));
-  top: var(--ml-term-suffix-offset-y, var(--offset-y));
+:root {
+	--ml-term-suffix: attr(data-suffix);
+	--ml-term-suffix-color: var(--ml-color-surface-contrast);
+	--ml-term-suffix-offset: -0.25em;
+	--ml-term-font-style: normal;
 }
 
-/*# sourceMappingURL=Term.module.css.map */
+.root {
+	font-style: var(--ml-term-font-style);
+}
+
+.root::after {
+	position: relative;
+	cursor: pointer;
+	content: var(--ml-term-suffix);
+	opacity: var(--ml-term-suffix-opacity);
+	top: var(--ml-term-suffix-offset);
+}

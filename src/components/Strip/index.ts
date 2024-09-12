@@ -1,1 +1,1 @@
-export { default } from "./Strip";
+export { default } from './Strip';

@@ -1,1 +1,1 @@
-export { default } from "./Recaptcha";
+export { default } from './Recaptcha';

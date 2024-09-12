@@ -2,7 +2,11 @@ import React, { PropsWithChildren } from 'react';
 import styles from './PopoverTrigger.module.css';
 import classnames from 'classnames';
 
-export interface PopoverTriggerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+export interface PopoverTriggerProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLSpanElement>,
+		HTMLSpanElement
+	> {
 	opened?: boolean;
 	className?: string;
 }

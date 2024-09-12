@@ -1,40 +1,40 @@
 export type NavItemLocaleProps = Record<string, string>;
 
 export type NavProps = {
-  data: NavItemProps[];
-  direction: "ltr" | "rtl";
-  currentPath: string;
-  className?: string;
+	data: NavItemProps[];
+	direction: 'ltr' | 'rtl';
+	currentPath: string;
+	className?: string;
 };
 
 export type NavItemDataProps = {
-  id: string;
-  type: string;
-  url: string;
-  locale: NavItemLocaleProps;
-  icon?: string;
-  target?: string;
+	id: string;
+	type: string;
+	url: string;
+	locale: NavItemLocaleProps;
+	icon?: string;
+	target?: string;
 };
 
 export type NavSectionDataProps = {
-  id: string;
-  locale: NavItemLocaleProps;
-  items: string[];
+	id: string;
+	locale: NavItemLocaleProps;
+	items: string[];
 };
 
 type NavItemData = {
-  title?: string;
-  description?: string;
-  author?: string;
-  icon?: string;
-  url?: string;
-  items?: NavItemProps[];
+	title?: string;
+	description?: string;
+	author?: string;
+	icon?: string;
+	url?: string;
+	items?: NavItemProps[];
 };
 
 export type NavItemProps = {
-  id: string;
-  type: "section" | "article" | "link";
-  data: NavItemData;
+	id: string;
+	type: 'section' | 'article' | 'link';
+	data: NavItemData;
 };
 
 // const mockData = [
@@ -99,14 +99,14 @@ export type NavItemProps = {
 // ];
 
 type ItemProps = {
-  title?: string;
-  author?: string;
-  url?: string;
+	title?: string;
+	author?: string;
+	url?: string;
 };
 
 type NavSection = {
-  type: "section";
-  data: ItemProps & { items: ItemProps[] };
+	type: 'section';
+	data: ItemProps & { items: ItemProps[] };
 };
 
 // export type ItemDataProps = {

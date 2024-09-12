@@ -1,14 +1,13 @@
-// rollup.config.js
 import terser from '@rollup/plugin-terser';
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
-import postcss from "rollup-plugin-postcss";
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import dts from 'rollup-plugin-dts';
+import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import replace from '@rollup/plugin-replace';
 
-
-import pkg from "./package.json" assert { type: 'json' };
+import pkg from './package.json' assert { type: 'json' };
 
 export default [
 	{
@@ -21,29 +20,45 @@ export default [
 			},
 			{
 				file: pkg.module,
-				format: "esm",
+				format: 'esm',
 				sourcemap: true,
 			},
-			/* {
+			{
 				file: 'dist/bundle.min.js',
 				format: 'iife',
-				name: 'version',
-				plugins: [terser()]
-			} */
+				name: 'MLComponents',
+				globals: {
+					react: 'React', // Externalized global name for React
+					'react-dom': 'ReactDOM', // Externalized global name for ReactDOM
+					'react/jsx-runtime': 'jsxRuntime', // Externalized global name for jsxRuntime
+				},
+				plugins: [terser()],
+			},
 		],
+		external: ['react', 'react-dom', 'react/jsx-runtime'],
 		plugins: [
-			peerDepsExternal(),
-			resolve(),
+			peerDepsExternal(), // exclude peer dependencies
+			resolve({
+				// Exclude tests and stories directories from resolution
+				exclude: ['**/tests/**', '**/stories/**'],
+			}),
 			commonjs(),
-			typescript({ tsconfig: "./tsconfig.json" }),
+			typescript({
+				tsconfig: './tsconfig.json',
+				exclude: ['**/tests/**', '**/stories/**'], // Exclude tests and stories directories
+			}),
 			postcss(),
-			terser()
-		]
+			terser(),
+			replace({
+				'use client': '', // Remove the "use client" directive
+				preventAssignment: true,
+			}),
+		],
 	},
 	{
-		input: "dist/esm/types/index.d.ts",
-		output: [{ file: "dist/index.d.ts", format: "esm" }],
+		input: 'dist/esm/types/index.d.ts',
+		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
 		plugins: [dts()],
-		external: [/\.(css|less|scss)$/],
+		external: [/\.(css)$/], // Exclude style files from .d.ts bundle
 	},
 ];

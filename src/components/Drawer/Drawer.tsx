@@ -4,7 +4,11 @@ import classNames from 'classnames';
 import styles from './Drawer.module.css';
 import './styles.css';
 
-export interface DrawerProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface DrawerProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLDivElement>,
+		HTMLDivElement
+	> {
 	open: boolean;
 	direction: 'left' | 'right' | 'top' | 'bottom';
 	duration?: number;

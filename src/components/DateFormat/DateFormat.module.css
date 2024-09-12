@@ -1,5 +1,8 @@
-.root {
-  direction: ltr;
+:root {
+	--ml-font-family: var(--ml-font-font1-family);
 }
 
-/*# sourceMappingURL=DateFormat.module.css.map */
+.root {
+	direction: ltr;
+	font-family: var(--ml-font-family);
+}

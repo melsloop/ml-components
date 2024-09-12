@@ -1,66 +1,69 @@
-import React, { PropsWithChildren, useMemo } from 'react';
-import * as ToggleGroupPrimitives from '@radix-ui/react-toggle-group';
-import Button from '../Button';
+import React, { PropsWithChildren, useMemo, useState } from 'react';
+import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import classnames from 'classnames';
 import styles from './ToggleGroup.module.css';
 
-type ToggleGroupProps = {
-	defaultValue: string;
-	onSelect?: (val: string) => void;
-	type: 'single';
+export type ToggleGroupProps = {
+	defaultValue?: string;
 	noEmptyValue?: boolean;
+	fullWidth?: boolean;
+	orientation?: 'horizontal' | 'vertical';
+	dir?: 'ltr' | 'rtl';
+	loop?: boolean;
+	onSelect?: (val: string) => void;
 	className?: string;
 };
 
+// single select
 const ToggleGroup = ({
 	defaultValue,
-	type,
-	onSelect,
 	noEmptyValue = true,
+	fullWidth,
 	children,
+	onSelect,
 	className,
+	...props
 }: PropsWithChildren<ToggleGroupProps>): JSX.Element => {
-	const childrenWithProps = useMemo(
+	const [selected, setSelected] = useState<string>(defaultValue || '');
+
+	const onItemSelect = (val: string) => {
+		setSelected(val);
+		onSelect?.(val);
+	};
+
+	const items = useMemo(
 		() =>
 			React.Children.map(children, (child) => {
 				if (React.isValidElement(child)) {
-					const isDisabled =
-						child.props.disabled || noEmptyValue
-
-							? child.props['data-value'] === defaultValue
-							: false;
+					const value = child.props['data-value'];
+					const isSelected = value === selected;
 					return (
-						<ToggleGroupPrimitives.Item
+						<ToggleGroupPrimitive.Item
 							className={styles.item}
-							value={child.props['data-value']}
+							value={value}
 							asChild
-							disabled={isDisabled}
+							onClick={() => onItemSelect(value)}
+							data-selected={isSelected}
 						>
-              <Button asChild>
-							{React.cloneElement(child, {})}
-              </Button>
-						</ToggleGroupPrimitives.Item>
+							{React.cloneElement(child)}
+						</ToggleGroupPrimitive.Item>
 					);
 				}
-				return child;
 			}),
-		[children, defaultValue, noEmptyValue]
+		[children, defaultValue, noEmptyValue, selected],
 	);
 
 	return (
-		<ToggleGroupPrimitives.Root
-			type={type}
+		<ToggleGroupPrimitive.Root
+			type="single"
 			defaultValue={defaultValue}
-			onValueChange={(val) => {
-				console.log(defaultValue);
-				val && onSelect?.(val);
-			}}
+			data-full-width={fullWidth}
 			className={classnames(styles.root, className)}
+			{...props}
 		>
-			{childrenWithProps}
-		</ToggleGroupPrimitives.Root>
+			{items}
+		</ToggleGroupPrimitive.Root>
 	);
 };
 
 export default ToggleGroup;
-export type { ToggleGroupProps };

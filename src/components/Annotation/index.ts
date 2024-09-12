@@ -1,1 +1,1 @@
-export { default } from "./Annotation";
+export { default } from './Annotation';

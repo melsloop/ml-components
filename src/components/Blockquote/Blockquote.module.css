@@ -1,0 +1,46 @@
+:root {
+	--ml-blockquote-font-family: var(--ml-font-font1-family);
+	--ml-blockquote-border-style: solid;
+	--ml-blockquote-border-width: var(--ml-border-lg);
+	--ml-blockquote-border-color: var(--ml-color-surface-dark);
+	--ml-blockquote-border-radius: 0;
+	--ml-blockquote-border-spacing: 2em;
+	--ml-blockquote-cite-text-style: var(--ml-link-text-style, normal);
+	--ml-blockquote-cite-margin: 1em;
+	--ml-blockquote-cite-prefix: '–';
+	--ml-blockquote-cite-prefix-margin: 0.5em;
+}
+
+.root {
+	display: block;
+	font-family: var(--ml-blockquote-font-family);
+}
+
+.blockquote {
+	margin: 0;
+}
+
+.content {
+	display: block;
+	border-inline-start-style: var(--ml-blockquote-border-style);
+	border-inline-start-width: var(--ml-blockquote-border-width);
+	border-inline-start-color: var(--ml-blockquote-border-color);
+	border-inline-start-radius: var(--ml-blockquote-border-radius);
+	padding: 0 var(--ml-blockquote-border-spacing);
+}
+
+.content * {
+	display: block;
+	margin: 0;
+}
+
+.cite {
+	display: block;
+	margin-top: var(--ml-blockquote-cite-margin);
+	font-style: var(--ml-blockquote-cite-text-style);
+}
+
+.citeContent::before {
+	content: var(--ml-blockquote-cite-prefix);
+	margin-inline-end: var(--ml-blockquote-cite-prefix-margin);
+}

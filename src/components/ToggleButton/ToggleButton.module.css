@@ -1,3 +1,14 @@
+:root {
+}
 
+.root {
+	display: inline-flex;
+}
 
-/*# sourceMappingURL=ToggleButton.module.css.map */
+.root[data-state='off'] {
+}
+
+.root[data-state='on'] .item {
+	--ml-button-border-color: var(--ml-color-primary-dark);
+	--ml-button-text-color: var(--ml-color-primary-dark);
+}

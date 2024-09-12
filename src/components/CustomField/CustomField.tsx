@@ -1,107 +1,93 @@
+import type { PropsWithChildren, SyntheticEvent } from 'react';
+
 import React, { useMemo } from 'react';
-import { getIcon } from '../icons';
 import styles from './CustomField.module.css';
 import classNames from 'classnames';
-import type { PropsWithChildren, SyntheticEvent } from 'react';
+import Text from '../Text';
+import Icon from '../Icon';
 
 type CustomFieldProps = {
 	name?: string;
 	label?: string;
-	icon?: string;
 	required?: boolean;
-	placeholder?: string;
-	field?: object;
-	type?: 'text' | 'number' | 'tel' | 'email' | 'textarea';
-	value?: string | number;
+	fullWidth?: boolean;
+	icon?: React.ReactNode;
 	isInvalid?: boolean;
 	isValid?: boolean;
 	errorMessage?: string;
+
 	onChange?: (e: SyntheticEvent) => void;
 	onBlur?: (e: SyntheticEvent) => void;
+
 	className?: string;
 };
 
+const VALID_INPUTS = ['input', 'textarea'];
+
 const CustomField = ({
-	name,
 	label,
 	icon,
 	required,
-	placeholder,
-	type,
-	value,
-	className,
 	isInvalid,
 	isValid,
 	errorMessage,
 	children,
-	...rest
+	fullWidth,
+	className,
+	...props
 }: PropsWithChildren<CustomFieldProps>) => {
-	const childrenWithProps = useMemo(
+	const inputElement = useMemo(
 		() =>
-			React.Children.map(children, (child) => {
-				if (React.isValidElement(child)) {
-					return React.cloneElement(child, {
-						...{
-							name,
-							required,
-							placeholder,
-							type,
-							className: classNames(styles.input, className),
-							value,
-							// onBlur: onCustomFieldBlur,
-							// 'data-is-invalid': isInvalid ? 'true' : 'false',
-							// 'data-is-valid': isValid ? 'true' : 'false',
-							// 'data-error-message': error,
-							// id,
-							// onBlur: (e) => {
-							// 	setTouched({ [name]: true });
-							// 	console.log('blur');
-							// },
-						},
-						...rest,
-					});
-				}
-				return child;
-			}),
-		[children, name, required, placeholder, type, className, value, rest]
+			React.Children.map(
+				children,
+				(child) =>
+					React.isValidElement(child) &&
+					VALID_INPUTS.includes(child.type.toString()) &&
+					React.cloneElement(child, { ...{ required }, ...props }),
+			),
+		[children, props],
 	);
 
 	return (
-		<div className={styles.root}>
-			<label
-				data-is-invalid={isInvalid}
-				data-is-valid={isValid}
-			>
-				<span className={styles.layout}>
-					<span className={styles.container}>
-						<span className={styles.label}>
-							{icon && <span className={styles.icon}>{getIcon(icon, styles.icon)}</span>}
-							<span className={styles.text}>
-								{label}
-								{required && <span className={styles.requiredIndicator}></span>}
-								{/* {isValid && (
-										<span className={styles.validIndicator}>
-											{getIcon('check', styles.checkIcon)}
-										</span>
-									)} */}
-							</span>
-							{/* {isValid ? getIcon('check', styles.checkIcon) : ''} */}
-						</span>
-						<span className={classNames(styles.inputField)}>
-							<span className={styles.inputFieldContainer}>
-								{childrenWithProps}
-								{isInvalid && errorMessage && (
-									<span
-										className={classNames(
-											styles.validation,
-											isInvalid ? styles.showValidation : ''
-										)}
-									>
-										{errorMessage}
-									</span>
+		<div
+			data-invalid={isInvalid}
+			data-valid={isValid}
+			data-full-width={fullWidth}
+			className={classNames(styles.root, className)}
+		>
+			<label>
+				<span className={styles.label}>
+					<span className={styles.content}>
+						{icon && (
+							<Icon
+								icon={icon}
+								className={styles.icon}
+							/>
+						)}
+						<Text
+							variant="body1"
+							size="sm"
+							className={styles.text}
+						>
+							{label}
+							{required && <span className={styles.requiredIndicator}></span>}
+						</Text>
+					</span>
+				</span>
+
+				<span className={classNames(styles.inputField)}>
+					<span className={styles.inputFieldContainer}>
+						{inputElement}
+						{isInvalid && errorMessage && (
+							<span
+								className={classNames(
+									styles.validation,
+									isInvalid ? styles.showValidation : '',
 								)}
+							>
+								{errorMessage}
 							</span>
-						</span>
+						)}
 					</span>
 				</span>
 			</label>

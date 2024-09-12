@@ -1,19 +1,27 @@
 import React from 'react';
-import styles from './Annotation.module.css';
-import { leadingZero } from './helpers';
+import { addLeadingZero } from './helpers';
 import classNames from 'classnames';
+import styles from './Annotation.module.css';
 
-export interface AnnotationProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+export interface AnnotationProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLSpanElement>,
+		HTMLSpanElement
+	> {
 	index: number;
-	hasPrefix?: boolean;
+	leadingZero?: boolean;
 	className?: string;
 }
 
-const Annotation = ({ index, hasPrefix = true, className }: AnnotationProps): JSX.Element => (
+const Annotation = ({
+	index,
+	leadingZero = true,
+	className,
+}: AnnotationProps): JSX.Element => (
 	<span className={classNames(styles.root, className)}>
 		<span
 			className={styles.content}
-			data-prefix-content={hasPrefix ? leadingZero(index) : ''}
+			data-prefix-content={leadingZero ? addLeadingZero(index) : ''}
 			data-seq={index}
 		></span>
 	</span>

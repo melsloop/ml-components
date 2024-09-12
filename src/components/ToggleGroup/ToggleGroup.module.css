@@ -1,10 +1,20 @@
-.root {
-  --gap: 4px;
-  display: flex;
-  gap: var(--ml-toggle-group-gap, var(--gap));
-}
-.root .item {
-  user-select: none;
+:root {
+	--ml-toggle-group-gap: 0.5em;
 }
 
-/*# sourceMappingURL=ToggleGroup.module.css.map */
+.root {
+	display: inline-flex;
+	user-select: none;
+	gap: var(--ml-toggle-group-gap);
+}
+
+.root[data-full-width='true'] {
+	display: flex;
+}
+
+.root[data-orientation='vertical'] {
+	flex-direction: column;
+}
+
+.item {
+}
