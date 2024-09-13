@@ -1,5 +1,3 @@
-import globals from '../../globals';
-
 export default {
 	surface: {
 		main: '#f2efe4',
@@ -24,22 +22,4 @@ export default {
 		accent3: '#1a355f',
 		accent4: '#00173a',
 	},
-	//   error1: "#f44",
-	//   success1: "#4a4",
-	// primary-main: var(--ml-global-color-accent1-main);
-	// primary-light: var(--ml-global-color-accent2-light);
-	// primary-dark: var(--ml-global-color-accent3-dark);
-	// primary-contrast: var(--ml-global-color-accent3-contrast);
-	// secondary-main: var(--ml-global-color-primary2-main);
-	// secondary-light: var(--ml-global-color-primary3-light);
-	// secondary-dark: var(--ml-global-color-primary1-dark);
-	// secondary-contrast: var(--ml-global-color-primary1-contrast);
-	// error-main: var(--ml-global-color-error1-main);
-	// error-light: var(--ml-global-color-error1-light);
-	// error-dark: var(--ml-global-color-error1-dark);
-	// error-contrast: var(--ml-global-color-error1-contrast);
-	// success-main: var(--ml-global-color-success-main);
-	// success-light: var(--ml-global-color-success-light);
-	// success-dark: var(--ml-global-color-success-dark);
-	// success-contrast: var(--ml-global-color-success-contrast);
 };

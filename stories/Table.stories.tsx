@@ -3,17 +3,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Table from '../src/components/Table/Table';
 
 const meta = {
-	title: 'Semantic/Table',
+	title: 'Text/Table',
 	component: Table,
 	tags: ['autodocs'],
+	args: {},
 	argTypes: {},
 } satisfies Meta<typeof Table>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-	args: {},
+export const Default: Story = {
 	render: function Render() {
 		return (
 			<Table>

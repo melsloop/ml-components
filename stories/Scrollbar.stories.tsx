@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Scrollbar from '../src/components/Scrollbar';
 
 const meta = {
-	title: 'Scrollbar',
+	title: 'Container/Scrollbar',
 	component: Scrollbar,
 	tags: ['autodocs'],
 	args: {

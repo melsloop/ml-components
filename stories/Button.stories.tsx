@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
 	sizeControls,
 	fullWidthControls,
@@ -8,14 +7,14 @@ import {
 	seoTitleControls,
 	buttonVariantControls,
 	buttonModeControls,
-} from './commonControls';
+} from './helpers/commonControls';
 import Button from '../src/components/Button';
 import Icon from '../src/components/Icon';
 
 type Story = StoryObj<typeof meta>;
 
 const meta = {
-	title: 'Button',
+	title: 'Button/Button',
 	component: Button,
 	tags: ['autodocs'],
 	args: {

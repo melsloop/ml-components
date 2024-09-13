@@ -1,6 +1,6 @@
 export { default as Button } from './Button';
 export { default as Container } from './Container';
-export { default as LoadingIndicator } from './LoadingIndicator';
+export { default as Spinner } from './Spinner';
 export { default as Annotation } from './Annotation';
 export { default as Term } from './Term';
 export { default as Popover } from './Popover';
@@ -14,7 +14,8 @@ export { default as ToggleGroup } from './ToggleGroup';
 export { default as ToggleButton } from './ToggleButton';
 export { default as Form } from './Form';
 export { default as CustomField } from './CustomField';
-export { default as Input } from './Input';
+export { default as TextField } from './TextField';
+export { default as EmailField } from './EmailField';
 export { default as MenuBar } from './Nav/MenuBar';
 export { default as NavItem } from './Nav/NavItem';
 export { default as Icon } from './Icon';

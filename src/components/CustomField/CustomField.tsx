@@ -5,37 +5,38 @@ import styles from './CustomField.module.css';
 import classNames from 'classnames';
 import Text from '../Text';
 import Icon from '../Icon';
+import type { ThemeComponentSize } from '../../theme/types';
 
-type CustomFieldProps = {
+export type InputProps = {
 	name?: string;
 	label?: string;
+	placeholder?: string;
 	required?: boolean;
 	fullWidth?: boolean;
-	icon?: React.ReactNode;
-	isInvalid?: boolean;
-	isValid?: boolean;
+	icon?: string;
+	invalid?: boolean;
 	errorMessage?: string;
-
+	size?: keyof ThemeComponentSize;
 	onChange?: (e: SyntheticEvent) => void;
 	onBlur?: (e: SyntheticEvent) => void;
-
+	onFocus?: (e: SyntheticEvent) => void;
 	className?: string;
 };
 
 const VALID_INPUTS = ['input', 'textarea'];
 
 const CustomField = ({
+	size,
 	label,
 	icon,
 	required,
-	isInvalid,
-	isValid,
+	invalid,
 	errorMessage,
 	children,
 	fullWidth,
 	className,
 	...props
-}: PropsWithChildren<CustomFieldProps>) => {
+}: PropsWithChildren<InputProps>) => {
 	const inputElement = useMemo(
 		() =>
 			React.Children.map(
@@ -43,57 +44,50 @@ const CustomField = ({
 				(child) =>
 					React.isValidElement(child) &&
 					VALID_INPUTS.includes(child.type.toString()) &&
-					React.cloneElement(child, { ...{ required }, ...props }),
+					React.cloneElement(child, {
+						...{ required, className: styles.inputElement },
+						...props,
+					}),
 			),
 		[children, props],
 	);
 
 	return (
 		<div
-			data-invalid={isInvalid}
-			data-valid={isValid}
+			data-required={required}
+			data-invalid={invalid}
 			data-full-width={fullWidth}
 			className={classNames(styles.root, className)}
 		>
-			<label>
+			<label className={styles.field}>
 				<span className={styles.label}>
-					<span className={styles.content}>
-						{icon && (
-							<Icon
-								icon={icon}
-								className={styles.icon}
-							/>
-						)}
+					{icon && (
+						<Icon
+							icon={icon}
+							size={size}
+							className={styles.icon}
+						/>
+					)}
+					{label && (
 						<Text
 							variant="body1"
-							size="sm"
+							size={size}
 							className={styles.text}
 						>
 							{label}
 							{required && <span className={styles.requiredIndicator}></span>}
 						</Text>
-					</span>
+					)}
 				</span>
-
-				<span className={classNames(styles.inputField)}>
-					<span className={styles.inputFieldContainer}>
-						{inputElement}
-						{isInvalid && errorMessage && (
-							<span
-								className={classNames(
-									styles.validation,
-									isInvalid ? styles.showValidation : '',
-								)}
-							>
-								{errorMessage}
-							</span>
-						)}
+				{inputElement}
+				{invalid && (
+					<span className={classNames(styles.errorMessage)}>
+						{errorMessage}
 					</span>
-				</span>
+				)}
 			</label>
 		</div>
 	);
 };
 
 export default CustomField;
-export type { CustomFieldProps };

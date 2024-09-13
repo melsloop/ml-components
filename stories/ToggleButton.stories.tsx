@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import ToggleButton from '../src/components/ToggleButton';
 import Button from '../src/components/Button';
-import { sizeControls } from './commonControls';
+import { sizeControls } from './helpers/commonControls';
 
 const meta = {
-	title: 'ToggleButton',
+	title: 'Button/ToggleButton',
 	component: ToggleButton,
 	parameters: {
 		viewport: {
@@ -16,8 +16,7 @@ const meta = {
 	tags: ['autodocs'],
 	args: {
 		children: 'Click',
-		isToggled: false,
-		title: 'Toggle Button',
+		isPressed: false,
 	},
 	argTypes: {
 		...sizeControls,
@@ -29,9 +28,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ children, ...props }) {
+	render: function Render({ children, ...args }) {
 		return (
-			<ToggleButton {...props}>
+			<ToggleButton {...args}>
 				<Button
 					size="md"
 					variant="outline"

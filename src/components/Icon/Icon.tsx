@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import styles from './Icon.module.css';
 
 export interface IconProps {
-	icon?: keyof typeof Icons;
+	icon?: string;
 	size?: string;
 	color?: string;
 	className?: string;
@@ -13,7 +13,7 @@ export interface IconProps {
 const Icon = ({ icon, size, color, className, ...props }: IconProps) => {
 	if (!icon) return null;
 
-	const SelectedIcon = Icons[icon];
+	const SelectedIcon = Icons[icon as keyof typeof Icons];
 
 	if (!SelectedIcon) return null;
 

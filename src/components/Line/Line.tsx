@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import styles from './Line.module.css';
 
 type LineProps = {
-	index: number;
+	index?: number;
 };
 
 export const Line = ({
@@ -18,7 +18,7 @@ export const Line = ({
 			className={styles.root}
 			data-line-index={index}
 		>
-			<a id={`line${index + 1}`}></a>
+			{index && <a id={`line${index + 1}`}></a>}
 			{children}
 		</span>
 	);

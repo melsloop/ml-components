@@ -49,6 +49,7 @@ const ToggleGroup = ({
 						</ToggleGroupPrimitive.Item>
 					);
 				}
+				return child;
 			}),
 		[children, defaultValue, noEmptyValue, selected],
 	);

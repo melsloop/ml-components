@@ -4,7 +4,7 @@ import List from '../src/components/List';
 import ListItem from '../src/components/List/ListItem';
 
 const meta = {
-	title: 'Semantic/List',
+	title: 'Text/List',
 	component: List,
 	tags: ['autodocs'],
 	args: {},
@@ -14,10 +14,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-	render: function Render() {
+export const Default: Story = {
+	render: function Render(args) {
 		return (
-			<List>
+			<List {...args}>
 				<ListItem>Item 1</ListItem>
 				<ListItem>Item 2</ListItem>
 			</List>

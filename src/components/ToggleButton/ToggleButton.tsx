@@ -1,6 +1,5 @@
 import type { WithDataAttributes } from '../types';
 import type { ButtonProps } from '../Button/Button';
-
 import React, {
 	PropsWithChildren,
 	useCallback,
@@ -14,21 +13,19 @@ import classnames from 'classnames';
 import styles from './ToggleButton.module.css';
 
 export interface ToggleButtonProps {
-	title: string;
-	isToggled?: boolean;
+	isPressed?: boolean;
 	onClick?: () => void;
 	className?: string;
 }
 
 const ToggleButton = ({
-	isToggled,
-	title,
+	isPressed,
 	children,
 	onClick,
 	className,
 	...props
 }: PropsWithChildren<ToggleButtonProps>): JSX.Element => {
-	const [toggled, setToggled] = useState<boolean>(!!isToggled);
+	const [toggled, setToggled] = useState<boolean>(!!isPressed);
 
 	const onToggle = useCallback(() => setToggled(!toggled), [toggled]);
 
@@ -51,8 +48,7 @@ const ToggleButton = ({
 	return (
 		<ToggleRoot.Root
 			onPressedChange={onClick}
-			defaultPressed={isToggled}
-			title={title}
+			defaultPressed={isPressed}
 			className={classnames(styles.root, className)}
 			asChild
 			{...props}

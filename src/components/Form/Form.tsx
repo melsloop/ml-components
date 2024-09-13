@@ -6,7 +6,7 @@ import { Field, Formik, Form as FormikForm } from 'formik';
 import { handleSubmit } from '../Recaptcha/Recaptcha';
 import Container from '../Container';
 import Button from '../Button';
-import LoadingIndicator from '../LoadingIndicator';
+import Spinner from '../Spinner';
 import Recaptcha from '../Recaptcha';
 import CustomField from '../CustomField';
 import { getIcon } from '../icons';
@@ -103,7 +103,7 @@ const Form = ({
 								disabled={!dirty || (dirty && !isValid)}
 							>
 								{submitting ? (
-									<LoadingIndicator
+									<Spinner
 										delay={0}
 										label={submitButtonLabelActive}
 									/>

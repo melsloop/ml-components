@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../src/components/Text';
 import Blockquote from '../src/components/Blockquote/Blockquote';
 
 const meta = {
-	title: 'Semantic/Blockquote',
+	title: 'Text/Blockquote',
 	component: Blockquote,
 	tags: ['autodocs'],
 	args: {
@@ -21,7 +21,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
 	render: function Render({ children, ...args }) {
 		return <Blockquote {...args}>{children}</Blockquote>;
 	},
@@ -35,6 +35,7 @@ export const ContentComposition: Story = {
 					<Text
 						asChild
 						variant="h2"
+						size="md"
 						contentEditable
 					>
 						<p>
@@ -49,7 +50,11 @@ export const ContentComposition: Story = {
 							mortal coil, Must give us pause.
 						</p>
 					</Text>
-					<Text asChild>
+					<Text
+						variant="h2"
+						size="md"
+						asChild
+					>
 						<p>
 							There's the respect That makes calamity of so long life. For who
 							would bear the whips and scorns of time, Th' oppressor's wrong,

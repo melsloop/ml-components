@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Container from '../src/components/Container';
 import { Button } from '../src';
-import { radiusControls, shadowControls } from './commonControls';
+import { radiusControls, shadowControls } from './helpers/commonControls';
 
 const meta = {
-	title: 'Container',
+	title: 'Container/Container',
 	component: Container,
 	tags: ['autodocs'],
 	args: {

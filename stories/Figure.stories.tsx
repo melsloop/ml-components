@@ -1,27 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Figure from '../src/components/Figure';
 import {
 	fullWidthControls,
 	radiusControls,
 	shadowControls,
 	sizeControls,
-} from './commonControls';
+} from './helpers/commonControls';
 import Text from '../src/components/Text';
 
 const meta = {
-	title: 'Semantic/Figure',
+	title: 'Text/Figure',
 	component: Figure,
 	tags: ['autodocs'],
-	argTypes: {},
-} satisfies Meta<typeof Figure>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Primary: Story = {
 	args: {
 		fullWidth: false,
 		bordered: false,
@@ -34,6 +25,13 @@ export const Primary: Story = {
 		...radiusControls,
 		...fullWidthControls,
 	},
+} satisfies Meta<typeof Figure>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
 	render: function Render(args) {
 		return (
 			<Figure {...args}>

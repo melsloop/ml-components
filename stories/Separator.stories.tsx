@@ -2,10 +2,10 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Separator from '../src/components/Separator';
 import Text from '../src/components/Text';
-import { sizeControls } from './commonControls';
+import { sizeControls } from './helpers/commonControls';
 
 const meta = {
-	title: 'Separator',
+	title: 'Visual/Separator',
 	component: Separator,
 	tags: ['autodocs'],
 	args: {

@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Line from '../src/components/Line';
 import Text from '../src/components/Text';
 
 const meta = {
-	title: 'Semantic/Line',
+	title: 'Text/Line',
 	component: Line,
 	tags: ['autodocs'],
+	args: {},
 	argTypes: {},
 } satisfies Meta<typeof Line>;
 
@@ -23,17 +23,15 @@ const lines = [
 	'rolled.',
 ];
 
-export const Primary: Story = {
-	args: {
-		index: 0,
-	},
-	render: function Render() {
+export const Default: Story = {
+	render: function Render(args) {
 		return (
 			<>
 				{lines.map((text, index) => (
 					<Line
 						index={index}
 						key={`line-${index + 1}`}
+						{...args}
 					>
 						<Text
 							variant="body1"

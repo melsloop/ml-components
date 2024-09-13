@@ -4,7 +4,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import NavItem from '../src/components/Nav/NavItem';
 
 const meta = {
-	title: 'NavItem',
+	title: 'Menu/NavItem',
 	component: NavItem,
 	parameters: {
 		viewport: {
@@ -12,26 +12,28 @@ const meta = {
 		},
 	},
 	tags: ['autodocs'],
-	argTypes: {},
-} satisfies Meta<typeof NavItem>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const NavBar: Story = {
 	args: {
 		icon: 'article',
 		title: 'Nav Item 1',
 		description: 'Item description',
 		author: '',
 	},
-	render: function Render({ icon, title, description, author }) {
+	argTypes: {},
+} satisfies Meta<typeof NavItem>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const NavBar: Story = {
+	render: function Render({ icon, title, description, author, ...args }) {
 		return (
 			<NavItem
 				icon={icon}
 				title={title}
 				description={description}
 				author={author}
+				{...args}
 			/>
 		);
 	},

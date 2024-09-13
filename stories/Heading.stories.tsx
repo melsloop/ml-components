@@ -1,13 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Heading from '../src/components/Heading/Heading';
-import { sizeControls } from './commonControls';
+import { sizeControls } from './helpers/commonControls';
 
 const levels = [1, 2, 3, 4, 5, 6];
 
 const meta = {
-	title: 'Semantic/Heading',
+	title: 'Text/Heading',
 	component: Heading,
 	tags: ['autodocs'],
 	args: {
@@ -28,7 +27,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
 	render: function Render({ level, size, children, ...args }) {
 		return (
 			<Heading
@@ -43,7 +42,7 @@ export const Primary: Story = {
 };
 
 export const Headings: Story = {
-	render: function Render({ size }) {
+	render: function Render({ size, ...args }) {
 		return (
 			<>
 				{levels.map((level: number) => {
@@ -52,6 +51,7 @@ export const Headings: Story = {
 							level={level}
 							size={size}
 							key={`heading${level}`}
+							{...args}
 						>
 							Heading {level}
 						</Heading>

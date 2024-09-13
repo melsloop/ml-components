@@ -1,7 +1,6 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { FormFieldProps } from '../src/components/Form/types';
-
-import React from 'react';
 import Form from '../src/components/Form';
 import * as yup from 'yup';
 
@@ -31,7 +30,7 @@ const formFields: FormFieldProps[] = [
 ];
 
 const meta = {
-	title: 'Form',
+	title: 'Input/Form',
 	component: Form,
 	parameters: {
 		layout: 'centered',
@@ -48,7 +47,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
 	render: function Render({ name, fields }) {
 		return (
 			<Form

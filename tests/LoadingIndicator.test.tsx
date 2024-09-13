@@ -1,9 +1,14 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import LoadingIndicator from "../src/components/LoadingIndicator";
+import React from 'react';
+import { render } from '@testing-library/react';
+import Spinner from '../src/components/Spinner';
 
-describe("Loading Indicator", () => {
-  test("renders the Loading Indicator component", () => {
-    render(<LoadingIndicator label="Loading..." delay={1000} />);
-  });
+describe('Spinner', () => {
+	test('renders the spinner component', () => {
+		render(
+			<Spinner
+				label="Loading..."
+				delay={1000}
+			/>,
+		);
+	});
 });

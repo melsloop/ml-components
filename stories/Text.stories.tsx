@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../src/components/Text';
-import { textVariantControls } from './commonControls';
+import { textVariantControls } from './helpers/commonControls';
 
 const meta = {
-	title: 'Semantic/Text',
+	title: 'Text/Text',
 	component: Text,
 	tags: ['autodocs'],
 	args: {

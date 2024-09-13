@@ -1,29 +1,21 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Paragraph from '../src/components/Paragraph/Paragraph';
 
 const meta = {
-	title: 'Semantic/Paragraph',
+	title: 'Text/Paragraph',
 	component: Paragraph,
 	tags: ['autodocs'],
+	args: {},
 	argTypes: {},
 } satisfies Meta<typeof Paragraph>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-	args: {},
-	render: function Render() {
-		return <Paragraph>Some content</Paragraph>;
+export const Default: Story = {
+	render: function Render(args) {
+		return <Paragraph {...args}>Some content</Paragraph>;
 	},
 };
-
-// export const FromChildren: Story = {
-// 	args: {
-// 		message: 'Some error occured',
-// 	},
-// 	render: function Render({ message }) {
-// 		return <Paragraph>{message}</Paragraph>;
-// 	},
-// };

@@ -1,32 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import CustomField from '../src/components/CustomField';
-import { Pencil1Icon } from '@radix-ui/react-icons';
+import icons from './helpers/icons';
 
 const meta = {
-	title: 'CustomField',
+	title: 'Input/CustomField',
 	component: CustomField,
 	tags: ['autodocs'],
-	argTypes: {},
+	args: {
+		name: 'custom-field-name',
+		label: 'Label',
+		required: false,
+		fullWidth: false,
+		icon: 'FileIcon',
+	},
+	argTypes: {
+		icon: {
+			options: icons,
+			control: 'select',
+		},
+	},
 } satisfies Meta<typeof CustomField>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-	args: {
-		name: 'custom-field-name',
-		label: 'Label',
-		required: false,
-		fullWidth: false,
-	},
-	render: ({ ...args }) => (
-		<CustomField
-			icon="Pencil1Icon"
-			{...args}
-		>
+export const Default: Story = {
+	render: (args) => (
+		<CustomField {...args}>
 			<input placeholder="Placeholder" />
 		</CustomField>
 	),

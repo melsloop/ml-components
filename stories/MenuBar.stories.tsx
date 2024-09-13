@@ -65,7 +65,7 @@ const mockData = [
 ];
 
 const meta = {
-	title: 'MenuBar',
+	title: 'Menu/MenuBar',
 	component: MenuBar,
 	parameters: {
 		viewport: {
@@ -85,12 +85,13 @@ export const Default: Story = {
 		direction: 'rtl',
 		currentPath: '#/a2',
 	},
-	render: function Render({ data, direction, currentPath }) {
+	render: function Render({ data, direction, currentPath, ...args }) {
 		return (
 			<MenuBar
 				data={data}
 				direction={direction}
 				currentPath={currentPath}
+				{...args}
 			/>
 		);
 	},

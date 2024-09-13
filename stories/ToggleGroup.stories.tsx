@@ -1,19 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
-// import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import type { Meta, StoryObj } from '@storybook/react';
 import ToggleGroup from '../src/components/ToggleGroup';
 import Button from '../src/components/Button';
-import { fullWidthControls } from './commonControls';
+import { fullWidthControls } from './helpers/commonControls';
 
 const meta = {
-	title: 'ToggleGroup',
+	title: 'Button/ToggleGroup',
 	component: ToggleGroup,
-	// parameters: {
-	// 	viewport: {
-	// 		viewports: INITIAL_VIEWPORTS,
-	// 	},
-	// },
 	tags: ['autodocs'],
 	args: {
 		defaultValue: '',
@@ -65,14 +58,6 @@ export const Default: Story = {
 					data-value="3"
 				>
 					Item 3
-				</Button>
-				<Button
-					variant="contained"
-					mode="primary"
-					asChild
-					data-value="4"
-				>
-					Item 4
 				</Button>
 			</ToggleGroup>
 		);

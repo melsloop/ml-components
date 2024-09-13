@@ -3,42 +3,35 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Popover from '../src/components/Popover';
 
 const meta = {
-	title: 'Popover',
+	title: 'Container/Popover',
 	component: Popover,
 	parameters: {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
-	argTypes: {},
-} satisfies Meta<typeof Popover>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
 	args: {
 		trigger: 'Trigger',
 		locale: 'en',
 		side: 'right',
 	},
-	render: function Render({ trigger, locale, side }) {
+	argTypes: {},
+} satisfies Meta<typeof Popover>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+	render: function Render({ trigger, locale, side, ...args }) {
 		return (
 			<Popover
 				trigger={trigger}
 				locale={locale}
 				side={side}
+				{...args}
 			>
 				Content
 			</Popover>
 		);
 	},
 };
-
-// export const FromChildren: Story = {
-// 	args: {
-// 		message: 'Some error occured',
-// 	},
-// 	render: function Render({ message }) {
-// 		return <Popover>{message}</Popover>;
-// 	},
-// };

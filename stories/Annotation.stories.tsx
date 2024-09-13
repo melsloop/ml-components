@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Annotation from '../src/components/Annotation';
 import Text from '../src/components/Text';
 
 const meta = {
-	title: 'Annotation',
+	title: 'Text/Annotation',
 	component: Annotation,
 	tags: ['autodocs'],
 	args: {

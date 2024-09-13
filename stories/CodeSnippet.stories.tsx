@@ -5,7 +5,7 @@ import Text from '../src/components/Text';
 import { Container } from '../src';
 
 const meta = {
-	title: 'CodeSnippet',
+	title: 'Text/CodeSnippet',
 	component: CodeSnippet,
 	tags: ['autodocs'],
 	args: {
@@ -29,9 +29,9 @@ export const Default: Story = {
 };
 
 export const Block: Story = {
-	render: function Render({ children, ...args }) {
+	render: function Render(args) {
 		return (
-			<CodeSnippet>
+			<CodeSnippet {...args}>
 				{`export const Block: Story = {
 	render: function Render({ children, ...args }) {
 		return <CodeSnippet {...args}>{children}</CodeSnippet>;
@@ -43,7 +43,7 @@ export const Block: Story = {
 };
 
 export const Inline: Story = {
-	render: function Render(...args) {
+	render: function Render(args) {
 		return (
 			<>
 				<Container
@@ -56,8 +56,8 @@ export const Inline: Story = {
 					>
 						This is a{' '}
 						<CodeSnippet
-							inline
 							{...args}
+							inline
 						>
 							{'<CodeSnippet inline/>'}
 						</CodeSnippet>{' '}
@@ -73,8 +73,8 @@ export const Inline: Story = {
 						variant="body1"
 					>
 						<CodeSnippet
-							inline
 							{...args}
+							inline
 						>
 							{'<CodeSnippet inline/>'}
 						</CodeSnippet>{' '}
@@ -91,8 +91,8 @@ export const Inline: Story = {
 					>
 						At the end of a line:{' '}
 						<CodeSnippet
-							inline
 							{...args}
+							inline
 						>
 							{'<CodeSnippet inline/>'}
 						</CodeSnippet>

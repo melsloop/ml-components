@@ -4,11 +4,11 @@ import Drawer from '../src/components/Drawer';
 import Button from '../src/components/Button';
 
 const meta = {
-	title: 'Drawer',
+	title: 'Container/Drawer',
 	component: Drawer,
 	tags: ['autodocs'],
 	args: {
-		// open: false,
+		open: false,
 		direction: 'right',
 	},
 	argTypes: {},
@@ -17,29 +17,30 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-	render: function Render({ direction }) {
-		const [open, setOpen] = useState<boolean>(false);
+export const Default: Story = {
+	render: function Render({ open, direction, ...args }) {
+		const [opened, setOpened] = useState<boolean>(false);
 		return (
 			<>
 				<Button
 					variant="contained"
 					mode="primary"
 					size="xs"
-					onClick={() => setOpen(true)}
+					onClick={() => setOpened(true)}
 				>
 					Open Drawer
 				</Button>
 				<Drawer
-					open={open}
+					open={open || opened}
 					direction={direction}
+					{...args}
 				>
 					<div>
 						<Button
 							variant="contained"
 							mode="primary"
 							size="xs"
-							onClick={() => setOpen(false)}
+							onClick={() => setOpened(false)}
 						>
 							Close Drawer
 						</Button>
