@@ -1,4 +1,4 @@
-:root {
+.root {
 	--ml-annotation-font-family: var(--ml-font-font1-family);
 	--ml-annotation-font-size: 0.65em;
 	--ml-annotation-font-weight: normal;
@@ -9,28 +9,31 @@
 	--ml-annotation-decoration-opacity: 0.5;
 }
 
-.root {
+.notation {
 	position: relative;
+	top: var(--ml-annotation-offset-y);
 	font-family: var(--ml-annotation-font-family);
 	font-size: var(--ml-annotation-font-size);
-	top: var(--ml-annotation-offset-y);
-}
-
-.root .content::after {
-	content: attr(data-prefix-content) attr(data-seq);
 	font-weight: var(--ml-annotation-font-weight);
-	padding: 0 var(--ml-annotation-decoration-spacing);
 }
 
-.root::before {
+.notation {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.notation::before {
 	content: var(--ml-annotation-decoration-prefix);
 }
 
-.root::after {
+.notation::after {
 	content: var(--ml-annotation-decoration-suffix);
 }
 
-.root::before,
-.root::after {
+.notation::before,
+.notation::after {
 	opacity: var(--ml-annotation-decoration-opacity);
+	padding: 0 var(--ml-annotation-decoration-spacing);
 }

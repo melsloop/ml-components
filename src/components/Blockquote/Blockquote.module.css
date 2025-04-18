@@ -1,4 +1,4 @@
-:root {
+.root {
 	--ml-blockquote-font-family: var(--ml-font-font1-family);
 	--ml-blockquote-border-style: solid;
 	--ml-blockquote-border-width: var(--ml-border-lg);
@@ -9,9 +9,7 @@
 	--ml-blockquote-cite-margin: 1em;
 	--ml-blockquote-cite-prefix: '–';
 	--ml-blockquote-cite-prefix-margin: 0.5em;
-}
 
-.root {
 	display: block;
 	font-family: var(--ml-blockquote-font-family);
 }

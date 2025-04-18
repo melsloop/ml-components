@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Term from '../src/components/Term';
 
 const meta = {
-	title: 'Text/Term',
+	title: 'Footnotes/Term',
 	component: Term,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		children: 'Term',
 	},
@@ -16,7 +16,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ children, ...args }) {
-		return <Term {...args}>{children}</Term>;
-	},
+	render: ({ children, decoration, asChild }) => <Term decoration={decoration} asChild={asChild}>{children}</Term>,
 };

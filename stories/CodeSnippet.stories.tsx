@@ -7,7 +7,7 @@ import { Container } from '../src';
 const meta = {
 	title: 'Text/CodeSnippet',
 	component: CodeSnippet,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		inline: false,
 		children: 'snippet content',
@@ -23,17 +23,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ children, ...args }) {
-		return <CodeSnippet {...args}>{children}</CodeSnippet>;
-	},
-};
-
-export const Block: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return (
 			<CodeSnippet {...args}>
 				{`export const Block: Story = {
-	render: function Render({ children, ...args }) {
+	render: ({ children, ...args }) => {
 		return <CodeSnippet {...args}>{children}</CodeSnippet>;
 	}
 }`}
@@ -43,13 +37,9 @@ export const Block: Story = {
 };
 
 export const Inline: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return (
-			<>
-				<Container
-					alignContentLeft
-					alignItemsCenter
-				>
+			<Container>
 					<Text
 						size="md"
 						variant="body1"
@@ -64,42 +54,6 @@ export const Inline: Story = {
 						inside a running text.
 					</Text>
 				</Container>
-				<Container
-					alignItemsCenter
-					alignContentLeft
-				>
-					<Text
-						size="md"
-						variant="body1"
-					>
-						<CodeSnippet
-							{...args}
-							inline
-						>
-							{'<CodeSnippet inline/>'}
-						</CodeSnippet>{' '}
-						at the start of a line.
-					</Text>
-				</Container>
-				<Container
-					alignContentLeft
-					alignItemsCenter
-				>
-					<Text
-						size="md"
-						variant="body1"
-					>
-						At the end of a line:{' '}
-						<CodeSnippet
-							{...args}
-							inline
-						>
-							{'<CodeSnippet inline/>'}
-						</CodeSnippet>
-						.
-					</Text>
-				</Container>
-			</>
 		);
 	},
 };

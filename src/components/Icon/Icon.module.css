@@ -1,13 +1,11 @@
-:root {
+.root {
 	--ml-icon-size-xs: var(--ml-size-xs, 0.5em);
 	--ml-icon-size-sm: var(--ml-size-sm, 0.75em);
 	--ml-icon-size-md: var(--ml-size-md, 1em);
 	--ml-icon-size-lg: var(--ml-size-lg, 1.5em);
 	--ml-icon-size-xl: var(--ml-size-xl, 2.5em);
 	--ml-icon-color: var(--ml-color-surface-contrast);
-}
 
-.root {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

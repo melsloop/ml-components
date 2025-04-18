@@ -1,17 +1,17 @@
 import type { ListItemProps } from './ListItem/ListItem';
 
-import React, { HTMLAttributes, PropsWithChildren } from 'react';
+import React, { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 import Link from '../Link';
-import Text from '../Text';
 import ListItem from './ListItem';
 import classNames from 'classnames';
 import styles from './List.module.css';
 
 type ListProps = {
 	items?: ListItemProps[];
-	label?: string;
 	ordered?: boolean;
+	itemDecoration?: 'disc' | 'square' | 'circle';
 	className?: string;
+	children?: ReactNode | ((props: { className: string }) => ReactNode);
 };
 
 const renderListItems = (items: ListItemProps[]) =>
@@ -38,18 +38,46 @@ const renderListItems = (items: ListItemProps[]) =>
 
 const List = ({
 	items = [],
-	label,
 	ordered,
+	itemDecoration,
 	children,
 	className,
-}: PropsWithChildren<ListProps> &
-	HTMLAttributes<HTMLDivElement>): JSX.Element => {
+}: ListProps & HTMLAttributes<HTMLDivElement>): JSX.Element => {
 	const Tag = ordered ? 'ol' : 'ul';
+	const hasItemsProp = Object.keys(items).length > 0;
+
+	const renderChildren = () => {
+		if (typeof children === 'function') {
+			return children({ className: styles.item });
+		}
+
+		if (Array.isArray(children)) {
+			return React.Children.map(children, (child) => {
+				if (
+					React.isValidElement<{ className?: string; 'data-type'?: string }>(
+						child,
+					)
+				) {
+					return React.cloneElement(child, {
+						className: classNames(child.props.className, styles.item),
+						'data-type': child.props['data-type'],
+					});
+				}
+				return child;
+			});
+		}
+
+		return children;
+	};
+
 	return (
-		<div className={classNames(styles.root, className)}>
-			{label && <Text className={styles.label}>{label}</Text>}
-			<Tag className={styles.items}>{children || renderListItems(items)}</Tag>
-		</div>
+		<Tag
+			data-ordered={ordered}
+			data-item-decoration={itemDecoration}
+			className={classNames(styles.root, className)}
+		>
+			{renderChildren()}
+		</Tag>
 	);
 };
 

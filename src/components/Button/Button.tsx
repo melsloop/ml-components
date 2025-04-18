@@ -1,4 +1,9 @@
-import type { ThemeComponentSize } from '../../theme/types';
+import type {
+	ComponentSize,
+	RadiusSize,
+	ShadowSize,
+	ThemeComponentSize,
+} from '../../theme/types';
 
 import React, {
 	forwardRef,
@@ -6,13 +11,15 @@ import React, {
 	type SyntheticEvent,
 } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import classnames from 'classnames';
 import styles from './Button.module.css';
+import classNames from 'classnames';
 
 export type ButtonProps = {
 	variant?: 'contained' | 'outline';
 	mode?: 'primary' | 'secondary';
-	size?: keyof ThemeComponentSize;
+	size?: ComponentSize;
+	shadow?: ShadowSize;
+	radius?: RadiusSize;
 	fullWidth?: boolean;
 	title?: string;
 	disabled?: boolean;
@@ -36,6 +43,8 @@ const Button = forwardRef<
 		{
 			asChild,
 			size,
+			shadow,
+			radius,
 			fullWidth,
 			variant,
 			mode,
@@ -48,17 +57,30 @@ const Button = forwardRef<
 		},
 		ref,
 	): JSX.Element => {
-		const Comp = asChild && typeof children !== 'string' ? Slot : 'button';
+		const Comp = asChild ? Slot : 'button';
 		return (
 			<Comp
-				data-variant={variant}
-				data-mode={mode}
-				data-size={size}
-				data-full-width={fullWidth}
+				// data-variant={variant}
+				// data-mode={mode}
 				disabled={disabled}
 				title={title}
 				ref={ref}
-				className={classnames(styles.root, className)}
+				className={classNames(
+					styles.root,
+					styles[`size-${size}`],
+					styles[`radius-${radius}`],
+					styles[`shadow-${shadow}`],
+					// styles[`spacing-${spacing}`],
+					{
+						[styles.fullWidth]: fullWidth,
+						[styles.contained]: variant === 'contained',
+						[styles.outline]: variant === 'outline',
+						[styles.primary]: mode === 'primary',
+						[styles.secondary]: mode === 'secondary',
+						// [styles.bordered]: bordered,
+					},
+					className,
+				)}
 				onClick={(e: SyntheticEvent<HTMLButtonElement>) => onClick?.(e)}
 				{...props}
 			>

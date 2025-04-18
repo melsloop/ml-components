@@ -1,15 +1,31 @@
-import React, { PropsWithChildren, useMemo, useState } from 'react';
+import React, {
+	PropsWithChildren,
+	ReactElement,
+	useMemo,
+	useState,
+} from 'react';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
-import classnames from 'classnames';
 import styles from './ToggleGroup.module.css';
+import classNames from 'classnames';
+import {
+	ComponentSize,
+	RadiusSize,
+	ShadowSize,
+	SpacingSize,
+} from '../../theme/types';
 
 export type ToggleGroupProps = {
 	defaultValue?: string;
 	noEmptyValue?: boolean;
 	fullWidth?: boolean;
 	orientation?: 'horizontal' | 'vertical';
-	dir?: 'ltr' | 'rtl';
+	direction?: 'ltr' | 'rtl';
 	loop?: boolean;
+	bordered?: boolean;
+	radius?: RadiusSize;
+	shadow?: ShadowSize;
+	size?: ComponentSize;
+	spacing: SpacingSize;
 	onSelect?: (val: string) => void;
 	className?: string;
 };
@@ -19,50 +35,64 @@ const ToggleGroup = ({
 	defaultValue,
 	noEmptyValue = true,
 	fullWidth,
+	direction,
+	orientation,
 	children,
+	bordered,
+	radius,
+	shadow,
+	spacing,
+	size,
 	onSelect,
 	className,
-	...props
+	...rest
 }: PropsWithChildren<ToggleGroupProps>): JSX.Element => {
-	const [selected, setSelected] = useState<string>(defaultValue || '');
-
-	const onItemSelect = (val: string) => {
-		setSelected(val);
-		onSelect?.(val);
-	};
-
-	const items = useMemo(
-		() =>
-			React.Children.map(children, (child) => {
-				if (React.isValidElement(child)) {
-					const value = child.props['data-value'];
-					const isSelected = value === selected;
+	const renderChildren = () => {
+		if (Array.isArray(children)) {
+			return React.Children.map(children, (child) => {
+				if (
+					React.isValidElement<{ className?: string; 'data-value': string }>(
+						child,
+					)
+				) {
 					return (
 						<ToggleGroupPrimitive.Item
 							className={styles.item}
-							value={value}
 							asChild
-							onClick={() => onItemSelect(value)}
-							data-selected={isSelected}
+							value={child.props['data-value']}
 						>
 							{React.cloneElement(child)}
 						</ToggleGroupPrimitive.Item>
 					);
 				}
 				return child;
-			}),
-		[children, defaultValue, noEmptyValue, selected],
-	);
+			});
+		}
+
+		return children;
+	};
 
 	return (
 		<ToggleGroupPrimitive.Root
 			type="single"
+			dir={direction}
 			defaultValue={defaultValue}
-			data-full-width={fullWidth}
-			className={classnames(styles.root, className)}
-			{...props}
+			className={classNames(
+				styles.root,
+				styles[`size-${size}`],
+				styles[`radius-${radius}`],
+				styles[`shadow-${shadow}`],
+				styles[`spacing-${spacing}`],
+				{
+					[styles.fullWidth]: fullWidth,
+					[styles.bordered]: bordered,
+					[styles.vertical]: orientation === 'vertical',
+				},
+				className,
+			)}
+			{...rest}
 		>
-			{items}
+			{renderChildren()}
 		</ToggleGroupPrimitive.Root>
 	);
 };

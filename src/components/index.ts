@@ -12,7 +12,7 @@ export { default as DateFormat } from './DateFormat';
 export { default as CodeSnippet } from './CodeSnippet';
 export { default as ToggleGroup } from './ToggleGroup';
 export { default as ToggleButton } from './ToggleButton';
-export { default as Form } from './Form';
+// export { default as Form } from './Form';
 export { default as CustomField } from './CustomField';
 export { default as TextField } from './TextField';
 export { default as EmailField } from './EmailField';

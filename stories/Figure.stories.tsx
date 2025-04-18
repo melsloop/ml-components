@@ -12,7 +12,7 @@ import Text from '../src/components/Text';
 const meta = {
 	title: 'Text/Figure',
 	component: Figure,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		fullWidth: false,
 		bordered: false,
@@ -32,7 +32,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return (
 			<Figure {...args}>
 				<Text

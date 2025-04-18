@@ -20,7 +20,7 @@ const clearThemeStyle = () => {
 	document.documentElement.querySelector('#ml-style')?.remove();
 };
 
-const createThemeStyle = (themeName: string, themeObj: Record<string, any>) => {
+export const createThemeStyle = (themeName: string, themeObj: Record<string, any>) => {
 	const mlStyle = document.createElement('style');
 	mlStyle.id = 'ml-style';
 	mlStyle.innerHTML = getTheme(themeObj);

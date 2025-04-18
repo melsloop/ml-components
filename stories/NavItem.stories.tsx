@@ -11,7 +11,7 @@ const meta = {
 			viewports: INITIAL_VIEWPORTS,
 		},
 	},
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		icon: 'article',
 		title: 'Nav Item 1',
@@ -26,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const NavBar: Story = {
-	render: function Render({ icon, title, description, author, ...args }) {
+	render: ({ icon, title, description, author, ...args }) => {
 		return (
 			<NavItem
 				icon={icon}

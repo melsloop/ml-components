@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react';
-import Text from '../Text';
 import Link from '../Link';
 import styles from './Blockquote.module.css';
 import classNames from 'classnames';
@@ -23,24 +22,20 @@ const Blockquote = ({
 			citeNode = (
 				<cite className={styles.cite}>
 					<span className={styles.citeContent}>
-						<Text asChild>
-							<Link
-								title={cite}
-								href={citeSrc}
-								target="_blank"
-							>
-								{cite}
-							</Link>
-						</Text>
+						<Link
+							title={cite}
+							href={citeSrc}
+							target="_blank"
+						>
+							{cite}
+						</Link>
 					</span>
 				</cite>
 			);
 		} else {
 			citeNode = (
 				<cite className={styles.cite}>
-					<span className={styles.citeContent}>
-						<Text>{cite}</Text>
-					</span>
+					<span className={styles.citeContent}>{cite}</span>
 				</cite>
 			);
 		}
@@ -49,9 +44,7 @@ const Blockquote = ({
 	return (
 		<span className={classNames(styles.root, className)}>
 			<blockquote className={styles.blockquote}>
-				<span className={styles.content}>
-					<Text>{children}</Text>
-				</span>
+				<span className={styles.content}>{children}</span>
 				{citeNode}
 			</blockquote>
 		</span>

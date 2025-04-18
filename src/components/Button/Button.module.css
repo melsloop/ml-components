@@ -1,29 +1,28 @@
-:root {
-	--ml-button-text-color: var(--ml-color-primary-contrast, #000);
+.root {
+	--ml-button-text-color: var(--ml-color-primary-contrast);
 	--ml-button-background-color: transparent;
 	--ml-button-font-family: var(--ml-font-font1-family, Tahoma);
 	--ml-button-font-weight: var(--ml-font-font1-weight-regular, 400);
 	--ml-button-gap: var(--ml-spacing-sm);
 	--ml-button-padding-horizontal: var(--ml-spacing-md, 1em);
-	--ml-button-border-radius: var(--ml-radius-sm, 4px);
 	--ml-button-border-width: var(--ml-border-sm, 2px);
 	--ml-button-border-color: var(--ml-button-background-color);
 	--ml-button-border-style: solid;
 	--ml-button-outline-width: 0;
 	--ml-button-outline-color: transparent;
 	--ml-button-outline-style: solid;
-	--ml-button-size-xs: var(--ml-size-xs, 0.65em);
-	--ml-button-size-sm: var(--ml-size-sm, 0.85em);
-	--ml-button-size-md: var(--ml-size-md, 1em);
-	--ml-button-size-lg: var(--ml-size-lg, 1.15em);
-	--ml-button-size-xl: var(--ml-size-xl, 1.25em);
-	--ml-button-min-width: 3em;
-	--ml-button-min-height: 3em;
-	--ml-button-full-width: 100%;
-}
 
-.root {
+	--ml-button-size: var(--size);
+	--ml-button-shadow: var(--shadow);
+	--ml-button-radius: var(--radius);
+
+	--ml-button-min-width: 0;
+	--ml-button-min-height: 2.5em;
+
 	cursor: pointer;
+	cursor: -webkit-pointer;
+	cursor: -moz-pointer;
+
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -37,119 +36,96 @@
 	min-height: var(--ml-button-min-height);
 	padding-right: var(--ml-button-padding-horizontal);
 	padding-left: var(--ml-button-padding-horizontal);
-	border-radius: var(--ml-button-border-radius);
 	border-width: var(--ml-button-border-width);
 	border-color: var(--ml-button-border-color);
 	border-style: var(--ml-button-border-style);
+
+	font-size: var(--ml-button-size);
+	box-shadow: var(--ml-button-shadow);
+	border-radius: var(--ml-button-radius);
 
 	/* override icon color */
 	--ml-icon-color: var(--ml-button-text-color);
 }
 
 /* size */
-.root[data-size='xs'] {
-	font-size: var(--ml-button-size-xs);
+.size-xs {
+	--size: var(--ml-size-xs);
 }
-.root[data-size='sm'] {
-	font-size: var(--ml-button-size-sm);
+.size-sm {
+	--size: var(--ml-size-sm);
 }
-.root[data-size='md'] {
-	font-size: var(--ml-button-size-md);
+.size-md {
+	--size: var(--ml-size-md);
 }
-.root[data-size='lg'] {
-	font-size: var(--ml-button-size-lg);
+.size-lg {
+	--size: var(--ml-size-lg);
 }
-.root[data-size='xl'] {
-	font-size: var(--ml-button-size-xl);
+.size-xl {
+	--size: var(--ml-size-xl);
+}
+.size-xxl {
+	--size: var(--ml-size-xxl);
 }
 
 /* shadow */
-.root[data-shadow='sm'] {
-	box-shadow: var(--ml-shadow-sm);
+.shadow-sm {
+	--shadow: var(--ml-shadow-sm);
 }
-.root[data-shadow='md'] {
-	box-shadow: var(--ml-shadow-md);
+.shadow-md {
+	--shadow: var(--ml-shadow-md);
 }
-.root[data-shadow='lg'] {
-	box-shadow: var(--ml-shadow-lg);
+.shadow-lg {
+	--shadow: var(--ml-shadow-lg);
 }
 
 /* radius */
-.root[data-radius='sm'] {
-	border-radius: var(--ml-radius-sm);
+.radius-sm {
+	--radius: var(--ml-radius-sm);
 }
-.root[data-radius='md'] {
-	border-radius: var(--ml-radius-md);
+.radius-md {
+	--radius: var(--ml-radius-md);
 }
-.root[data-radius='lg'] {
-	border-radius: var(--ml-radius-lg);
-}
-
-.root[data-radius='md'] {
-	border-radius: var(--ml-radius-md);
-}
-
-.root[data-radius='lg'] {
-	border-radius: var(--ml-radius-lg);
-}
-
-.root[data-fixed-position='true'] {
-	position: fixed;
-	z-index: 1;
+.radius-lg {
+	--radius: var(--ml-radius-lg);
 }
 
 /* full-width */
-.root[data-full-width='true'] {
-	width: var(--ml-button-full-width);
+.fullWidth {
+	width: 100%;
 }
 
 /* variants */
-.root[data-variant='contained'] {
+.contained {
 	background-color: var(--ml-button-background-color);
 }
-.root[data-variant='outline'] {
-	background-color: none;
+.outline {
+	background-color: transparent;
 }
 
-/* mode: primary */
-.root[data-variant='contained'][data-mode='primary']:not([disabled]) {
+/* modes */
+.primary {
 	--ml-button-text-color: var(--ml-color-primary-contrast);
 	--ml-button-background-color: var(--ml-color-primary-light);
-	--ml-button-border-color: var(--ml-color-primary-light);
 }
-.root[data-variant='contained'][data-mode='primary']:not([disabled]):hover {
+.primary:hover {
 	--ml-button-background-color: var(--ml-color-primary-dark);
-	--ml-button-border-color: var(--ml-color-primary-dark);
+	--ml-button-text-color: var(--ml-color-surface-light);
 }
-
-.root[data-variant='outline'][data-mode='primary']:not([disabled]) {
-	--ml-button-text-color: var(--ml-color-primary-light);
-	--ml-button-background-color: var(--ml-color-primary-light);
-	--ml-button-border-color: var(--ml-color-primary-light);
-}
-.root[data-variant='outline'][data-mode='primary']:not([disabled]):hover {
-	--ml-button-text-color: var(--ml-color-primary-dark);
-	--ml-button-border-color: var(--ml-color-primary-dark);
-}
-
-/* mode: secondary */
-.root[data-variant='contained'][data-mode='secondary']:not([disabled]) {
+.secondary {
 	--ml-button-text-color: var(--ml-color-secondary-contrast);
 	--ml-button-background-color: var(--ml-color-secondary-light);
-	--ml-button-border-color: var(--ml-color-secondary-light);
 }
-.root[data-variant='contained'][data-mode='secondary']:not([disabled]):hover {
+.secondary:hover {
 	--ml-button-background-color: var(--ml-color-secondary-dark);
-	--ml-button-border-color: var(--ml-color-secondary-dark);
+	--ml-button-text-color: var(--ml-color-surface-light);
 }
-.root[data-variant='outline'][data-mode='secondary']:not([disabled]) {
+
+.outline.primary {
+	--ml-button-text-color: var(--ml-color-primary-light);
+}
+.outline.secondary {
 	--ml-button-text-color: var(--ml-color-secondary-light);
-	--ml-button-background-color: var(--ml-color-secondary-light);
-	--ml-button-border-color: var(--ml-color-secondary-light);
-}
-.root[data-variant='outline'][data-mode='secondary']:not([disabled]):hover {
-	--ml-button-text-color: var(--ml-color-secondary-dark);
-	--ml-button-border-color: var(--ml-color-secondary-dark);
 }
 
 /* disabled */
@@ -165,9 +141,4 @@
 .root:focus {
 	outline-width: 2px;
 	outline-color: var(--ml-color-surface-dark);
-}
-
-/* selected */
-.root[data-selected='true'] {
-	border: 2px solid red;
 }

@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react';
-import Text from '../Text';
 import styles from './Paragraph.module.css';
 import classNames from 'classnames';
 
@@ -10,11 +9,14 @@ type ParagraphProps = {
 export const Paragraph = ({
 	children,
 	className,
-}: PropsWithChildren<ParagraphProps>): JSX.Element => (
-	<p className={classNames(styles.root, className)}>
-		<Text variant="body1">{children}</Text>
-	</p>
-);
+}: PropsWithChildren<ParagraphProps>): JSX.Element => {
+	if (!children) {
+		return <></>;
+	}
+
+	return <p className={classNames(styles.root, className)}>{children}</p>;
+};
 
 export default Paragraph;
+
 export type { ParagraphProps };

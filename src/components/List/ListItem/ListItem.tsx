@@ -28,7 +28,7 @@ const ListItem = forwardRef<HTMLLIElement, PropsWithChildren<ListItemProps>>(
 		>
 			<span className={styles.container}>
 				{children}
-				{isSelected && <span className={styles.marker} />}
+				{/* {isSelected && <span className={styles.marker} />} */}
 			</span>
 		</li>
 	),

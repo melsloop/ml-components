@@ -11,7 +11,7 @@ import {
 const meta = {
 	title: 'Input/EmailField',
 	component: EmailField,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		size: 'md',
 		label: 'Label',

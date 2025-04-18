@@ -1,19 +1,22 @@
-:root {
+.root {
 	--ml-link-text-color: var(--ml-color-primary-light);
 	--ml-link-background-color: none;
 	--ml-link-text-decoration: underline;
 	--ml-link-text-style: normal;
+
+	cursor: pointer;
+	cursor: -webkit-pointer;
+	cursor: -moz-pointer;
 }
 
-.root {
-	cursor: pointer;
+.root * {
+	color: var(--ml-link-text-color);
 }
 
 .root:link,
 .root:visited,
 .root a:-webkit-any-link .root a:-webkit-any-link:link,
 .root a:-webkit-any-link:visited {
-	color: var(--ml-link-text-color);
 	background-color: var(--ml-link-background-color);
 	text-decoration: var(--ml-link-text-decoration);
 	font-style: var(--ml-link-text-style);

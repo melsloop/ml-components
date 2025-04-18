@@ -1,18 +1,17 @@
-:root {
+.root {
 	--ml-list-item-surface-radius: 0;
 	--ml-list-item-content-text-color: black;
 	--ml-list-item-surface-background-color: none;
 	--ml-list-item-marker-background-color: pink;
-}
 
-.root {
-	overflow: hidden;
-	position: relative;
+	/* overflow: hidden; */
+	/* position: relative;
 	border-radius: var(--ml-list-item-surface-radius);
 	background-color: var(--ml-list-item-surface-background-color);
-	color: var(--ml-list-item-content-text-color);
+	color: var(--ml-list-item-content-text-color); */
 }
 
+/* 
 .root .marker {
 	pointer-events: none;
 	position: absolute;
@@ -28,4 +27,4 @@
 
 .root:not([data-selected='true']):hover {
 	background-color: var(--ml-list-item-surface-background-color__hover);
-}
+} */

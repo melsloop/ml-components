@@ -13,27 +13,27 @@ export default [
 	{
 		input: 'src/index.ts',
 		output: [
-			{
-				file: pkg.main,
-				format: 'cjs',
-				sourcemap: true,
-			},
+			// {
+			// 	file: pkg.main,
+			// 	format: 'cjs',
+			// 	sourcemap: true,
+			// },
 			{
 				file: pkg.module,
 				format: 'esm',
 				sourcemap: true,
 			},
-			{
-				file: 'dist/bundle.min.js',
-				format: 'iife',
-				name: 'MLComponents',
-				globals: {
-					react: 'React', // Externalized global name for React
-					'react-dom': 'ReactDOM', // Externalized global name for ReactDOM
-					'react/jsx-runtime': 'jsxRuntime', // Externalized global name for jsxRuntime
-				},
-				plugins: [terser()],
-			},
+			// {
+			// 	file: 'dist/bundle.min.js',
+			// 	format: 'iife',
+			// 	name: 'MLComponents',
+			// 	globals: {
+			// 		react: 'React', // Externalized global name for React
+			// 		'react-dom': 'ReactDOM', // Externalized global name for ReactDOM
+			// 		'react/jsx-runtime': 'jsxRuntime', // Externalized global name for jsxRuntime
+			// 	},
+			// 	// plugins: [terser()],
+			// },
 		],
 		external: ['react', 'react-dom', 'react/jsx-runtime'],
 		plugins: [
@@ -48,7 +48,7 @@ export default [
 				exclude: ['**/tests/**', '**/stories/**'], // Exclude tests and stories directories
 			}),
 			postcss(),
-			terser(),
+			// terser(),
 			replace({
 				'use client': '', // Remove the "use client" directive
 				preventAssignment: true,
@@ -56,7 +56,7 @@ export default [
 		],
 	},
 	{
-		input: 'dist/esm/types/index.d.ts',
+		input: 'src/index.ts',
 		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
 		plugins: [dts()],
 		external: [/\.(css)$/], // Exclude style files from .d.ts bundle

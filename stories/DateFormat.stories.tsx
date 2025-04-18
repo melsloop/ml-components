@@ -5,10 +5,10 @@ import DateFormat from '../src/components/DateFormat';
 const meta = {
 	title: 'Text/DateFormat',
 	component: DateFormat,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
-		date: '2024-12-09',
-		format: 'MM/dd/yy',
+		value: '2024-12-09',
+		template: 'MM/dd/yy',
 	},
 	argTypes: {},
 } satisfies Meta<typeof DateFormat>;
@@ -18,7 +18,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
-		return <DateFormat {...args} />;
-	},
+	render: ({ value, template }) =>
+		<DateFormat value={value || ''} template={template} />
 };

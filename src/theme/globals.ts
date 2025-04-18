@@ -104,11 +104,12 @@ const border: ThemeBorder = {
 
 const size: ThemeComponentSize = {
 	none: '',
-	xs: '0.65em',
-	sm: '0.85em',
+	xs: '0.75em',
+	sm: '.85em',
 	md: '1em',
 	lg: '1.15em',
 	xl: '1.25em',
+	xxl: '1.75em',
 };
 
 const spacing: ThemeSpacing = {

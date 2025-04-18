@@ -1,36 +1,37 @@
 import React, { PropsWithChildren } from 'react';
+import Text, { headingVariants, type HeadingVariant, type TextAlign } from '../Text/Text';
 import styles from './Heading.module.css';
 import classNames from 'classnames';
-import Text from '../Text';
-import { HeadingVariant } from '../Text/Text';
-import { ComponentSize } from '../../theme/types';
 
 type HeadingProps = {
 	level?: number;
-	size?: ComponentSize;
+	textAlign?: TextAlign;
 	className?: string;
 };
 
 export const Heading = ({
 	level = 1,
-	size = 'md',
-	className,
+	textAlign,
 	children,
 }: PropsWithChildren<HeadingProps>): JSX.Element => {
 	const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 	return (
-		<Text
-			size={size}
-			variant={Tag as HeadingVariant}
-			asChild
+		<Tag
+			role="heading"
+			className={classNames(styles.root)}
 		>
-			<Tag
-				role="heading"
-				className={classNames(styles.root, className)}
+			<Text
+				data-level={level}
+				variant={headingVariants[level - 1]}
+				textAlign={textAlign}
+				fullWidth
+				asChild
 			>
+				<span>
 				{children}
-			</Tag>
-		</Text>
+				</span>
+			</Text>
+		</Tag>
 	);
 };
 

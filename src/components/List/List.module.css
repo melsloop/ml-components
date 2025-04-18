@@ -1,4 +1,4 @@
-:root {
+.root {
 	--ml-list-margin-top: 0;
 	--ml-list-margin-bottom: 0;
 	--ml-list-margin-right: 0;
@@ -7,20 +7,54 @@
 	--ml-list-padding-bottom: 0;
 	--ml-list-padding-right: 0;
 	--ml-list-padding-left: 0;
-}
 
-.root {
 	display: flex;
 	flex-direction: column;
-	margin-top: var(--ml-list-margin-top);
+	padding: 0;
+	margin: 0;
+
+	padding-inline-start: 0.5em;
+	margin-inline-start: 1em;
+
+	/* margin-top: var(--ml-list-margin-top);
 	margin-bottom: var(--ml-list-margin-bottom);
 	margin-left: var(--ml-list-margin-left);
 	margin-right: var(--ml-list-margin-right);
 	padding-top: var(--ml-list-padding-top);
 	padding-bottom: var(--ml-list-padding-bottom);
 	padding-left: var(--ml-list-padding-left);
-	padding-right: var(--ml-list-padding-right);
+	padding-right: var(--ml-list-padding-right); */
 }
-.root .items {
-	background-color: var(--ml-list-items-background-color);
+
+.root:not([data-ordered='true']) > * {
+	list-style-type: '-';
+}
+
+.list {
+	/* padding: 0; */
+	/* margin: 0; */
+}
+
+.item {
+	list-style: disc;
+	cursor: pointer;
+	cursor: -webkit-pointer;
+	cursor: -moz-pointer;
+}
+
+.root .item {
+	list-style-type: var(--ml-list-item-decoration);
+}
+.root[data-item-decoration='disc']:not([data-ordered='true']) .item {
+	--ml-list-item-decoration: disc;
+}
+.root[data-item-decoration='circle']:not([data-ordered='true']) .item {
+	--ml-list-item-decoration: circle;
+}
+.root[data-item-decoration='square']:not([data-ordered='true']) .item {
+	--ml-list-item-decoration: square;
+}
+
+.root[data-ordered='true'] .item {
+	--ml-list-item-decoration: decimal;
 }

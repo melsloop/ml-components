@@ -7,11 +7,12 @@ import { radiusControls, shadowControls } from './helpers/commonControls';
 const meta = {
 	title: 'Container/Container',
 	component: Container,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		sticky: false,
 		shadow: 'none',
 		radius: 'none',
+		gap: 'none'
 	},
 	argTypes: {
 		sticky: {
@@ -20,6 +21,52 @@ const meta = {
 		stickyPosition: {
 			options: ['none', 'top', 'bottom'],
 			control: 'select',
+		},
+		gap: {
+			options: [
+				'none',
+				'xs',
+				'sm',
+				'md',
+				'lg',
+				'xl'
+			],
+			control: 'select',
+		},
+		justifyContent: {
+			options: [
+				'center',
+				'start',
+				'end',
+				'flex-start',
+				'flex-end',
+				'left',
+				'right'
+			],
+			control: 'select',
+		},
+		alignItems: {
+			options: [
+				'normal',
+				'stretch',
+				'center',
+				'start',
+				'end',
+				'flex-start',
+				'flex-end',
+				'self-start',
+				'self-end',
+				'anchor-center',
+				'baseline',
+				'first-baseline',
+				'last-baseline',
+				'safe-center',
+				'unsafe-center'
+			],
+			control: 'select',
+		},
+		bordered: {
+			control: 'boolean',
 		},
 		...shadowControls,
 		...radiusControls,
@@ -31,9 +78,33 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: (args) => {
+	render: ({
+		sticky,
+		stickyPosition,
+		flexDirection,
+		justifyContent,
+		alignItems,
+		spacing,
+		shadow,
+		radius,
+		gap,
+		bordered,
+		minHeight,
+	}) => {
 		return (
-			<Container {...args}>
+			<Container
+				radius={radius}
+				spacing={spacing}
+				shadow={shadow}
+				gap={gap}
+				bordered={bordered}
+				sticky={sticky}
+				stickyPosition={stickyPosition}
+				flexDirection={flexDirection}
+				justifyContent={justifyContent}
+				alignItems={alignItems}
+				minHeight={minHeight}
+			>
 				<Button
 					variant="contained"
 					mode="primary"

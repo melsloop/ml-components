@@ -1,21 +1,20 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import ToggleGroup from '../src/components/ToggleGroup';
-import Button from '../src/components/Button';
 import { fullWidthControls } from './helpers/commonControls';
 
 const meta = {
 	title: 'Button/ToggleGroup',
 	component: ToggleGroup,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		defaultValue: '',
 		orientation: 'horizontal',
-		dir: 'ltr',
+		direction: 'ltr',
 		loop: false,
 	},
 	argTypes: {
-		dir: {
+		direction: {
 			options: ['ltr', 'rtl'],
 			control: 'select',
 		},
@@ -32,33 +31,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ ...args }) {
+	render: ({ defaultValue, direction, orientation, fullWidth, bordered, radius, shadow, size, spacing }) => {
 		return (
-			<ToggleGroup {...args}>
-				<Button
-					variant="contained"
-					mode="primary"
-					asChild
-					data-value="1"
-				>
-					Item 1
-				</Button>
-				<Button
-					variant="contained"
-					mode="primary"
-					asChild
-					data-value="2"
-				>
-					Item 2
-				</Button>
-				<Button
-					variant="contained"
-					mode="primary"
-					asChild
-					data-value="3"
-				>
-					Item 3
-				</Button>
+			<ToggleGroup
+				defaultValue={defaultValue}
+				direction={direction}
+				orientation={orientation}
+				size={size}
+				bordered={bordered}
+				radius={radius}
+				shadow={shadow}
+				spacing={spacing}
+				fullWidth={fullWidth}
+			>
+				<span data-value="1">EN</span>
+				<span data-value="2">ע</span>
+				<span data-value="3">Item 3</span>
 			</ToggleGroup>
 		);
 	},

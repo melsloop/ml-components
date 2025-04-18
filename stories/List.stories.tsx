@@ -6,8 +6,10 @@ import ListItem from '../src/components/List/ListItem';
 const meta = {
 	title: 'Text/List',
 	component: List,
-	tags: ['autodocs'],
-	args: {},
+	// tags: ['autodocs'],
+	args: {
+		ordered: false
+	},
 	argTypes: {},
 } satisfies Meta<typeof List>;
 
@@ -15,9 +17,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
+	render: ({ ordered, itemDecoration }) => {
 		return (
-			<List {...args}>
+			<List ordered={ordered} itemDecoration={itemDecoration}>
 				<ListItem>Item 1</ListItem>
 				<ListItem>Item 2</ListItem>
 			</List>

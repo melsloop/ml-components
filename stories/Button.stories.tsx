@@ -7,6 +7,8 @@ import {
 	seoTitleControls,
 	buttonVariantControls,
 	buttonModeControls,
+	shadowControls,
+	radiusControls,
 } from './helpers/commonControls';
 import Button from '../src/components/Button';
 import Icon from '../src/components/Icon';
@@ -16,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 const meta = {
 	title: 'Button/Button',
 	component: Button,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		children: 'Click',
 		size: 'md',
@@ -32,6 +34,8 @@ const meta = {
 			name: 'Text',
 			control: 'text',
 		},
+		...radiusControls,
+		...shadowControls,
 		...sizeControls,
 		...buttonVariantControls,
 		...buttonModeControls,
@@ -48,10 +52,12 @@ export const Default: Story = {
 };
 
 export const ButtonWithIcon: Story = {
-	render: ({ children, size, ...args }) => {
+	render: ({ children, size, shadow, radius, ...args }) => {
 		return (
 			<Button
 				size={size}
+				shadow={shadow}
+				radius={radius}
 				{...args}
 			>
 				<Icon

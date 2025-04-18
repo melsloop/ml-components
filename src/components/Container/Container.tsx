@@ -1,4 +1,4 @@
-import type { RadiusSize, ShadowSize } from '../../theme/types';
+import type { RadiusSize, ShadowSize, SpacingSize } from '../../theme/types';
 
 import React, { PropsWithChildren } from 'react';
 import { Slot } from '@radix-ui/react-slot';
@@ -9,14 +9,36 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	sticky?: boolean;
 	stickyPosition?: 'top' | 'bottom';
 	flexDirection?: 'row' | 'column';
-	spaceBetween?: boolean;
-	alignItemsCenter?: boolean;
-	alignContentRight?: boolean;
-	alignContentLeft?: boolean;
-	horizontalGutter?: boolean;
+	justifyContent?:
+		| 'center'
+		| 'start'
+		| 'end'
+		| 'flex-start'
+		| 'flex-end'
+		| 'left'
+		| 'right';
+	alignItems?:
+		| 'normal'
+		| 'stretch'
+		| 'center'
+		| 'start'
+		| 'end'
+		| 'flex-start'
+		| 'flex-end'
+		| 'self-start'
+		| 'self-end'
+		| 'anchor-center'
+		| 'baseline'
+		| 'first-baseline'
+		| 'last-baseline'
+		| 'safe-center'
+		| 'unsafe-center';
+	spacing?: SpacingSize;
 	shadow?: ShadowSize;
 	radius?: RadiusSize;
+	bordered?: boolean;
 	gap?: string;
+	minHeight?: string;
 	asChild?: boolean;
 	className?: string;
 }
@@ -24,15 +46,15 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 const Container = ({
 	sticky,
 	stickyPosition,
-	spaceBetween,
+	justifyContent,
+	alignItems,
 	flexDirection,
-	alignItemsCenter,
-	alignContentRight,
-	alignContentLeft,
-	horizontalGutter,
+	spacing,
 	shadow,
 	radius,
 	gap,
+	bordered,
+	minHeight,
 	children,
 	asChild,
 	className,
@@ -42,18 +64,32 @@ const Container = ({
 
 	return (
 		<Comp
-			data-sticky={sticky}
+			// data-sticky={sticky}
 			data-sticky-position={stickyPosition}
-			data-space-between={spaceBetween}
-			data-align-items-center={alignItemsCenter}
-			data-align-content-right={alignContentRight}
-			data-align-content-left={alignContentLeft}
-			data-shadow={shadow}
-			data-radius={radius}
-			data-gap={gap}
-			data-horizontal-gutter={horizontalGutter}
-			data-flex-direction={flexDirection}
-			className={classnames(styles.root, className)}
+			// data-shadow={shadow}
+			// data-radius={radius}
+			// data-gap={gap}
+			// data-flex-direction={flexDirection}
+			// data-justify-content={justifyContent}
+			// data-align-items={alignItems}
+			// data-spacing={spacing}
+			// data-bordered={bordered}
+			className={classnames(
+				styles[`radius-${radius}`],
+				styles[`shadow-${shadow}`],
+				styles[`spacing-${spacing}`],
+				styles[`flex-direction-${flexDirection}`],
+				styles[`align-items-${alignItems}`],
+				styles[`justify-content-${justifyContent}`],
+				styles[`gap-${gap}`],
+				// [styles.stickyPosition],
+				styles.root, {
+					[styles.bordered]: bordered,
+					[styles.sticky]: sticky,
+				},
+				className
+			)}
+			style={{ minHeight }}
 			{...props}
 		>
 			{children}

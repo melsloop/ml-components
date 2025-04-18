@@ -18,7 +18,7 @@ export const Line = ({
 			className={styles.root}
 			data-line-index={index}
 		>
-			{index && <a id={`line${index + 1}`}></a>}
+			{index ? <a id={`line-index-${index + 1}`}></a> : ''}
 			{children}
 		</span>
 	);

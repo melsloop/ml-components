@@ -1,11 +1,12 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Link from '../src/components/Link';
+import { Text } from '../src';
 
 const meta = {
 	title: 'Text/Link',
 	component: Link,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		href: '#',
 		children: 'Link',
@@ -18,7 +19,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
-		return <Link {...args}>Link</Link>;
+	render: (args) => {
+		return <Link {...args}>
+			<Text variant="body1" size="md">
+				Link
+			</Text>
+		</Link>;
 	},
 };

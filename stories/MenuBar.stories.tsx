@@ -72,7 +72,7 @@ const meta = {
 			viewports: INITIAL_VIEWPORTS,
 		},
 	},
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	argTypes: {},
 } satisfies Meta<typeof MenuBar>;
 
@@ -85,7 +85,7 @@ export const Default: Story = {
 		direction: 'rtl',
 		currentPath: '#/a2',
 	},
-	render: function Render({ data, direction, currentPath, ...args }) {
+	render: ({ data, direction, currentPath, ...args }) => {
 		return (
 			<MenuBar
 				data={data}

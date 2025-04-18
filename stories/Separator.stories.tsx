@@ -7,7 +7,7 @@ import { sizeControls } from './helpers/commonControls';
 const meta = {
 	title: 'Visual/Separator',
 	component: Separator,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		orientation: 'vertical',
 		size: 'md',
@@ -26,13 +26,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return <Separator {...args} />;
 	},
 };
 
 export const WithText: Story = {
-	render: function Render({ size, ...args }) {
+	render: ({ size, ...args }) => {
 		return (
 			<>
 				<Text

@@ -6,7 +6,7 @@ import Button from '../src/components/Button';
 const meta = {
 	title: 'Container/Drawer',
 	component: Drawer,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		open: false,
 		direction: 'right',
@@ -18,7 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ open, direction, ...args }) {
+	render: ({ open, direction, ...args }) => {
 		const [opened, setOpened] = useState<boolean>(false);
 		return (
 			<>

@@ -5,7 +5,7 @@ import Scrollbar from '../src/components/Scrollbar';
 const meta = {
 	title: 'Container/Scrollbar',
 	component: Scrollbar,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		textDirection: 'ltr',
 		height: 400,
@@ -26,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return (
 			<Scrollbar {...args}>
 				<div style={{ height: '1000px' }}>Content</div>

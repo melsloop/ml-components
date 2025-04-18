@@ -6,7 +6,7 @@ import icons from './helpers/icons';
 const meta = {
 	title: 'Input/CustomField',
 	component: CustomField,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		name: 'custom-field-name',
 		label: 'Label',

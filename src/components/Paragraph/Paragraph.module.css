@@ -1,9 +1,8 @@
-:root {
+.root {
 	--ml-paragraph-text-color: black;
 	--ml-paragraph-margin-bottom: 1em;
-}
 
-.root {
 	margin-bottom: var(--ml-paragraph-margin-bottom);
 	color: var(--ml-paragraph-text-color);
+	display: block;
 }

@@ -8,20 +8,19 @@ export interface LinkProps
 		React.AnchorHTMLAttributes<HTMLAnchorElement>,
 		HTMLAnchorElement
 	> {
-	label?: string;
 	asChild?: boolean;
 	onClick?: (e: SyntheticEvent) => void;
 	className?: string;
 }
 
 const Link = ({
-	label,
 	title,
 	href,
 	target,
 	asChild,
 	children,
 	className,
+	onClick,
 }: PropsWithChildren<LinkProps>): JSX.Element => {
 	const Comp = asChild ? Slot : 'a';
 
@@ -31,13 +30,9 @@ const Link = ({
 			title={title}
 			href={href}
 			target={target}
+			onClick={onClick}
 		>
-			{/* <NextLink
-				href={href}
-				target={target}
-			> */}
-			{children || label}
-			{/* </NextLink> */}
+			{children}
 		</Comp>
 	);
 };

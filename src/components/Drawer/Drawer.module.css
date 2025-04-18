@@ -1,8 +1,6 @@
-:root {
-	--ml-drawer-background-color: var(--ml-color-surface-main);
-}
-
 .root {
+	--ml-drawer-background-color: var(--ml-color-surface-main);
+
 	background-color: var(--ml-drawer-background-color);
 }
 

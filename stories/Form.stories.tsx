@@ -35,7 +35,7 @@ const meta = {
 	parameters: {
 		layout: 'centered',
 	},
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		name: 'StoryForm',
 		fields: formFields,
@@ -48,7 +48,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ name, fields }) {
+	render: ({ name, fields }) => {
 		return (
 			<Form
 				name={name}

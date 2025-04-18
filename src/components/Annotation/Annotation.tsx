@@ -1,5 +1,4 @@
-import React from 'react';
-import { addLeadingZero } from './helpers';
+import React, { PropsWithChildren, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './Annotation.module.css';
 
@@ -8,23 +7,38 @@ export interface AnnotationProps
 		React.HTMLAttributes<HTMLSpanElement>,
 		HTMLSpanElement
 	> {
-	index: number;
-	leadingZero?: boolean;
+	index?: number;
+	padIndex?: boolean;
+	leadingChar?: string;
+	indexMaxLength?: number;
 	className?: string;
 }
 
 const Annotation = ({
 	index,
-	leadingZero = true,
+	padIndex = true,
+	leadingChar = '0',
+	indexMaxLength = 2,
+	children,
 	className,
-}: AnnotationProps): JSX.Element => (
-	<span className={classNames(styles.root, className)}>
-		<span
-			className={styles.content}
-			data-prefix-content={leadingZero ? addLeadingZero(index) : ''}
-			data-seq={index}
-		></span>
-	</span>
-);
+}: PropsWithChildren<AnnotationProps>): JSX.Element => {
+	const notation = useMemo(
+		() => (
+			<span className={styles.notation}>
+				<span className={styles.index}>
+					{padIndex ? `${index}`.padStart(indexMaxLength, leadingChar) : index}
+				</span>
+			</span>
+		),
+		[padIndex, leadingChar, index, indexMaxLength],
+	);
+
+	return (
+		<span className={classNames(styles.root, className)}>
+			{children}
+			{!Number.isNaN(index) ? notation : ''}
+		</span>
+	);
+};
 
 export default Annotation;

@@ -13,8 +13,9 @@ const CodeSnippet = ({
 	className,
 }: PropsWithChildren<CodeProps>): JSX.Element => (
 	<div
-		data-inline={inline}
-		className={classNames(styles.root, className)}
+		className={classNames(styles.root, className, {
+			[styles.inline]: inline,
+		})}
 	>
 		<pre className={styles.pre}>
 			<code className={styles.code}>{children}</code>

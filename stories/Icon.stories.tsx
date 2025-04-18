@@ -7,7 +7,7 @@ import icons from './helpers/icons';
 const meta = {
 	title: 'Visual/Icon',
 	component: Icon,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		icon: 'FileIcon',
 		size: 'md',
@@ -29,7 +29,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return <Icon {...args} />;
 	},
 };

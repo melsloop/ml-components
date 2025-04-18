@@ -1,4 +1,4 @@
-:root {
+.root {
 	--ml-scrollbar-container-color: var(--ml-color-surface-light);
 	--ml-scrollbar-track-color: var(--ml-color-surface-main);
 	--ml-scrollbar-thumb-color: var(--ml-color-surface-dark);
@@ -18,9 +18,7 @@
 	--ml-scrollbar-border-left-size: 2px;
 	--ml-scrollbar-border-left-color: gold;
 	--ml-scrollbar-border-left-style: solid;
-}
 
-.root {
 	background-color: var(--ml-scrollbar-container-color);
 }
 
@@ -56,6 +54,9 @@
 	flex: 1;
 	/* transition: 75ms background-color ease-in-out; */
 	cursor: pointer;
+	cursor: -webkit-pointer;
+	cursor: -moz-pointer;
+
 	background-color: var(--ml-scrollbar-thumb-color);
 	/* border-width: var(--ml-scrollbar-border-right-size);
 	border-color: var(--ml-scrollbar-border-right-color);

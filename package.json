@@ -2,8 +2,7 @@
 	"name": "@melsloop/ml-components",
 	"version": "0.0.1",
 	"description": "Mel's Loop UI Components Library",
-	"main": "dist/cjs/bundle.js",
-	"module": "dist/esm/bundle.js",
+	"module": "dist/index.esm.js",
 	"types": "dist/index.d.ts",
 	"files": [
 		"dist"
@@ -94,6 +93,7 @@
 		"@radix-ui/react-slot": "1.1.0",
 		"@radix-ui/react-toggle": "1.1.0",
 		"@radix-ui/react-toggle-group": "1.1.0",
+		"@radix-ui/react-tooltip": "^1.2.0",
 		"classnames": "2.5.1",
 		"date-fns": "3.6.0",
 		"formik": "2.4.6",

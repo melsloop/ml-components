@@ -1,4 +1,4 @@
-:root {
+.root {
 	--ml-separator-color: var(--ml-color-surface-contrast);
 	--ml-separator-width: var(--ml-border-xs);
 	--ml-separator-height: var(--ml-border-xs);
@@ -9,9 +9,7 @@
 	--ml-separator-size-xl: var(--ml-size-xl, 1.25em);
 	--ml-separator-margin-inline-start: 0.5em;
 	--ml-separator-margin-inline-end: 0.5em;
-}
 
-.root {
 	display: inline-block;
 	position: relative;
 	top: 0.1em;

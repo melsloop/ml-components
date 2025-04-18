@@ -13,7 +13,7 @@ const meta = {
 			viewports: INITIAL_VIEWPORTS,
 		},
 	},
-	tags: ['autodocs'],
+	// tags: ['autodocs'],1
 	args: {
 		children: 'Click',
 		isPressed: false,
@@ -28,7 +28,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ children, ...args }) {
+	render: ({ children, ...args }) => {
 		return (
 			<ToggleButton {...args}>
 				<Button

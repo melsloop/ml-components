@@ -4,27 +4,21 @@ import classNames from 'classnames';
 import styles from './DateFormat.module.css';
 
 export type DateFormatProps = {
-	date: string;
-	format?: string;
+	value: string | Date;
+	template?: string;
 	className?: string;
 };
 
+const DEFAULT_DATE_TEMPLATE = 'MM/dd/yy';
+
 const DateFormat = ({
-	date,
-	format = 'MM/dd/yy',
+	value,
+	template,
 	className,
-}: DateFormatProps): JSX.Element => {
-	const val = isValid(date) ? date : new Date();
-
-	let res;
-
-	try {
-		res = formatDate(val, format || 'MM/dd/yy');
-	} catch {
-		res = formatDate(val, 'MM/dd/yy');
-	}
-
-	return <time className={classNames(styles.root, className)}>{res}</time>;
-};
+}: DateFormatProps): JSX.Element => (
+	<time className={classNames(styles.root, className)}>
+		{formatDate(value, template || DEFAULT_DATE_TEMPLATE)}
+	</time>
+);
 
 export default DateFormat;

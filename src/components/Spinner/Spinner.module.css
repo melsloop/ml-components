@@ -1,11 +1,3 @@
-:root {
-	--ml-loading-indicator-size: 24px;
-	--ml-loading-indicator-height: 20em;
-	--ml-loading-indicator-label-margin: 1em;
-	--ml-loading-indicator-animation-duration: 2s;
-	--ml-loading-indicator-animation-easing: linear;
-}
-
 @keyframes rotation {
 	from {
 		transform: rotate(0deg);
@@ -16,6 +8,12 @@
 }
 
 .root {
+	--ml-loading-indicator-size: 24px;
+	--ml-loading-indicator-height: 20em;
+	--ml-loading-indicator-label-margin: 1em;
+	--ml-loading-indicator-animation-duration: 2s;
+	--ml-loading-indicator-animation-easing: linear;
+
 	display: inline-block;
 	align-items: center;
 	justify-content: center;

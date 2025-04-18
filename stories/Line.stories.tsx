@@ -6,7 +6,7 @@ import Text from '../src/components/Text';
 const meta = {
 	title: 'Text/Line',
 	component: Line,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {},
 	argTypes: {},
 } satisfies Meta<typeof Line>;
@@ -24,7 +24,7 @@ const lines = [
 ];
 
 export const Default: Story = {
-	render: function Render(args) {
+	render: (args) => {
 		return (
 			<>
 				{lines.map((text, index) => (

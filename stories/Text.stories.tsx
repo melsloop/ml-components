@@ -6,12 +6,11 @@ import { textVariantControls } from './helpers/commonControls';
 const meta = {
 	title: 'Text/Text',
 	component: Text,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		children: 'Lorem Ipsum',
-		variant: 'body1',
-		size: 'md',
-		italics: false,
+		variant: 'title',
+		textAlign: 'left'
 	},
 	argTypes: {
 		...textVariantControls,
@@ -23,12 +22,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: function Render({ size, variant, ...args }) {
+	render: ({ variant, fullWidth, textAlign }) => {
 		return (
 			<Text
-				size={size}
 				variant={variant}
-				{...args}
+				fullWidth={fullWidth}
+				textAlign={textAlign}
 			>
 				Lorem Ipsum
 			</Text>

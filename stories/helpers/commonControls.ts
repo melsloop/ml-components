@@ -56,7 +56,7 @@ export const radiusControls: ArgTypes = {
 
 export const textVariantControls: ArgTypes = {
 	variant: {
-		options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'body1', 'body2'],
+		options: ['title', 'subtitle1', 'subtitle2', 'subtitle3', 'subtitle4', 'subtitle5', 'body1', 'body2'],
 		control: { type: 'select' },
 	},
 };

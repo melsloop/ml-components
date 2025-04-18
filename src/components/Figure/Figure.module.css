@@ -1,4 +1,4 @@
-:root {
+.root {
 	--ml-figure-border-size: 2px;
 	--ml-figure-border-color: #000;
 	--ml-figure-border-style: solid;
@@ -13,9 +13,7 @@
 	--ml-figure-caption-font-size: var(--ml-figure-size);
 	--ml-figure-caption-text-color: inherit;
 	--ml-figure-caption-font-weight: inherit;
-}
 
-.root {
 	display: inline-block;
 	justify-content: center;
 	box-sizing: border-box;

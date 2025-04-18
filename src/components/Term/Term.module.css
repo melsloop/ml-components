@@ -1,18 +1,17 @@
-:root {
-	--ml-term-suffix: attr(data-suffix);
-	--ml-term-suffix-color: var(--ml-color-surface-contrast);
-	--ml-term-suffix-offset: -0.25em;
-	--ml-term-font-style: normal;
-}
-
 .root {
+	--ml-term-decoration-color: var(--ml-color-surface-contrast);
+	--ml-term-decoration-offset: -0.25em;
+	--ml-term-font-style: normal;
+
 	font-style: var(--ml-term-font-style);
 }
 
 .root::after {
 	position: relative;
 	cursor: pointer;
-	content: var(--ml-term-suffix);
-	opacity: var(--ml-term-suffix-opacity);
-	top: var(--ml-term-suffix-offset);
+	cursor: -webkit-pointer;
+	cursor: -moz-pointer;
+	content: attr(data-decoration);
+	opacity: var(--ml-term-decoration-opacity);
+	top: var(--ml-term-decoration-offset);
 }

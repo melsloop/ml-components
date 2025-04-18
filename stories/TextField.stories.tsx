@@ -11,7 +11,7 @@ import {
 const meta = {
 	title: 'Input/TextField',
 	component: TextField,
-	tags: ['autodocs'],
+	// tags: ['autodocs'],
 	args: {
 		size: 'md',
 		label: 'Label',
