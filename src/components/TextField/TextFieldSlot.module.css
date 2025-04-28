@@ -1,0 +1,12 @@
+.root {
+	--ml-text-field-slot-spacing: 0.5em;
+	display: flex;
+}
+
+.prefix {
+	margin-inline-start: var(--ml-text-field-slot-spacing);
+}
+
+.suffix {
+	margin-inline-end: var(--ml-text-field-slot-spacing);
+}

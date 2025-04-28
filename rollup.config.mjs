@@ -48,7 +48,7 @@ export default [
 				exclude: ['**/tests/**', '**/stories/**'], // Exclude tests and stories directories
 			}),
 			postcss(),
-			// terser(),
+			terser(),
 			replace({
 				'use client': '', // Remove the "use client" directive
 				preventAssignment: true,

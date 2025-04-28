@@ -12,6 +12,7 @@ import {
 } from './helpers/commonControls';
 import Button from '../src/components/Button';
 import Icon from '../src/components/Icon';
+import { CubeIcon } from '@radix-ui/react-icons';
 
 type Story = StoryObj<typeof meta>;
 
@@ -22,6 +23,7 @@ const meta = {
 	args: {
 		children: 'Click',
 		size: 'md',
+		radius: 'md',
 		variant: 'contained',
 		mode: 'primary',
 		fullWidth: false,
@@ -48,22 +50,32 @@ const meta = {
 export default meta;
 
 export const Default: Story = {
-	render: ({ children, ...args }) => <Button {...args}>{children}</Button>,
+	render: ({ variant, mode, size, shadow, radius, children }) => (
+		<Button
+			size={size}
+			shadow={shadow}
+			radius={radius}
+			variant={variant}
+			mode={mode}
+		>
+			{children}
+		</Button>
+	),
 };
 
 export const ButtonWithIcon: Story = {
-	render: ({ children, size, shadow, radius, ...args }) => {
+	render: ({ variant, mode, size, shadow, radius, children }) => {
 		return (
 			<Button
 				size={size}
 				shadow={shadow}
 				radius={radius}
-				{...args}
+				variant={variant}
+				mode={mode}
 			>
-				<Icon
-					icon="CubeIcon"
-					size={size}
-				/>
+				<Icon>
+					<CubeIcon />
+				</Icon>
 				{children}
 			</Button>
 		);

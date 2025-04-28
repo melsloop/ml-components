@@ -4,6 +4,7 @@ import { makeDecorator } from 'storybook/internal/preview-api';
 import { getTheme } from '../src/theme';
 import lightTheme from '../src/theme/light';
 import darkTheme from '../src/theme/dark';
+import { Theme, ThemePanel } from '@radix-ui/themes';
 
 const themeData = {
 	light: {
@@ -47,7 +48,18 @@ export const withTheme = makeDecorator({
 });
 
 const preview: Preview = {
-	decorators: [withTheme(), (Story) => Story()],
+	decorators: [
+  (Story: React.FC) => {
+    return (
+        <Story />
+      // <Theme>
+      //   <Story />
+      //   <ThemePanel defaultOpen={false} />
+      // </Theme>
+    );
+  },
+	withTheme(), (Story) => Story(),
+],
 	parameters: {
 		backgrounds: {
 			values: [

@@ -8,14 +8,32 @@ export const sizeControls: ArgTypes = {
 	},
 };
 
-export const fullWidthControls: ArgTypes = {
-	fullWidth: {
+export const labelControls: ArgTypes = {
+	label: {
+		control: 'string',
+	},
+};
+
+export const requiredControls: ArgTypes = {
+	required: {
 		control: 'boolean',
 	},
 };
 
 export const disabledControls: ArgTypes = {
 	disabled: {
+		control: 'boolean',
+	},
+};
+
+export const readOnlyControls: ArgTypes = {
+	readOnly: {
+		control: 'boolean',
+	},
+};
+
+export const fullWidthControls: ArgTypes = {
+	fullWidth: {
 		control: 'boolean',
 	},
 };
@@ -56,7 +74,16 @@ export const radiusControls: ArgTypes = {
 
 export const textVariantControls: ArgTypes = {
 	variant: {
-		options: ['title', 'subtitle1', 'subtitle2', 'subtitle3', 'subtitle4', 'subtitle5', 'body1', 'body2'],
+		options: [
+			'title',
+			'subtitle1',
+			'subtitle2',
+			'subtitle3',
+			'subtitle4',
+			'subtitle5',
+			'body1',
+			'body2',
+		],
 		control: { type: 'select' },
 	},
 };

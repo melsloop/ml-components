@@ -1,19 +1,31 @@
 import React from 'react';
 import Button from '../../src/components/Button';
+import Form from '../../src/components/Form';
+import { Container } from '../../src';
 
 export const withForm = (children: React.ReactElement) => {
 	return (
-		<form id="form">
+		<Form
+			noValidate={false}
+			onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+				if (!e.currentTarget.checkValidity()) {
+					return;
+				}
+				e.preventDefault();
+				e.stopPropagation();
+			}}
+		>
 			{children}
-			<div style={{ marginTop: '1em' }}>
-				<Button
-					size="xs"
-					variant="contained"
-					mode="primary"
-				>
-					Submit
-				</Button>
-			</div>
-		</form>
+			<Container spacing="lg">
+			<Button
+				variant="contained"
+				mode="primary"
+				size="xs"
+				radius="md"
+			>
+				Submit
+			</Button>
+			</Container>
+		</Form>
 	);
 };

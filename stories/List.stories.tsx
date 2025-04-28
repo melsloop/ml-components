@@ -8,7 +8,8 @@ const meta = {
 	component: List,
 	// tags: ['autodocs'],
 	args: {
-		ordered: false
+		listStyle: 'ordered',
+		listStyleType: 'disc',
 	},
 	argTypes: {},
 } satisfies Meta<typeof List>;
@@ -17,9 +18,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ ordered, itemDecoration }) => {
+	render: ({
+		listStyle,
+		listStyleType,
+		fullWidth,
+		spacing,
+		radius,
+		bordered,
+	}) => {
 		return (
-			<List ordered={ordered} itemDecoration={itemDecoration}>
+			<List
+				listStyle={listStyle}
+				listStyleType={listStyleType}
+				fullWidth={fullWidth}
+				spacing={spacing}
+				bordered={bordered}
+				radius={radius}
+			>
 				<ListItem>Item 1</ListItem>
 				<ListItem>Item 2</ListItem>
 			</List>

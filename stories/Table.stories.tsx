@@ -2,7 +2,12 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Table from '../src/components/Table/Table';
 import { Text } from '../src';
-import { fullWidthControls, radiusControls, shadowControls, sizeControls } from './helpers/commonControls';
+import {
+	fullWidthControls,
+	radiusControls,
+	shadowControls,
+	sizeControls,
+} from './helpers/commonControls';
 
 const meta = {
 	title: 'Text/Table',
@@ -12,7 +17,9 @@ const meta = {
 		textAlign: 'center',
 		verticalAlign: 'center',
 		fullWidth: false,
-		radius: 'sm'
+		radius: 'sm',
+		bordered: true,
+		hidegGridLines: false,
 	},
 	argTypes: {
 		verticalSpacing: {
@@ -26,14 +33,13 @@ const meta = {
 		...sizeControls,
 		...shadowControls,
 		...radiusControls,
-		...fullWidthControls
+		...fullWidthControls,
 	},
 } satisfies Meta<typeof Table>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
 
 export const Default: Story = {
 	render: ({
@@ -46,6 +52,7 @@ export const Default: Story = {
 		shadow,
 		size,
 		bordered,
+		hidegGridLines,
 	}) => (
 		<Table
 			textAlign={textAlign}
@@ -57,20 +64,38 @@ export const Default: Story = {
 			shadow={shadow}
 			size={size}
 			bordered={bordered}
+			hidegGridLines={hidegGridLines}
 		>
 			<tr>
-				<td><Text variant="h5">AAA</Text></td>
-				<td><Text variant="h5">X</Text></td>
-				<td><Text variant="h5">CCC</Text></td>
+				<td>
+					<Text variant="subtitle5">AAA</Text>
+				</td>
+				<td>
+					<Text variant="subtitle5">X</Text>
+				</td>
+				<td>
+					<Text variant="subtitle5">CCC</Text>
+				</td>
 			</tr>
-			{Array(20).fill('').map((_, index) => {
-				return <tr>
-				<td><Text variant="body2">Data Data Data Data Data Data Data Data Data Data {index}</Text></td>
-				<td><Text variant="body2">Index {index}</Text></td>
-				<td><Text variant="body2">Opcode {index}</Text></td>
-			</tr>
-			})}
+			{Array(20)
+				.fill('')
+				.map((_, index) => {
+					return (
+						<tr key={index}>
+							<td>
+								<Text variant="body2">
+									Data Data Data Data Data Data Data Data Data Data {index}
+								</Text>
+							</td>
+							<td>
+								<Text variant="body2">Index {index}</Text>
+							</td>
+							<td>
+								<Text variant="body2">Opcode {index}</Text>
+							</td>
+						</tr>
+					);
+				})}
 		</Table>
-	)
+	),
 };
-

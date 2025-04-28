@@ -8,13 +8,14 @@ const meta = {
 	component: Paragraph,
 	// tags: ['autodocs'],
 	args: {
-		children: 'fdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklffdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklffdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklffdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklf'
+		children:
+			'fdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklffdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklffdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklffdsjkfjdsaklfjd sakljfd lksjfklds jfklds jfkld sajklf dsjaklf',
 	},
 	argTypes: {
 		children: {
 			control: 'text',
 			description: 'Text',
-		}		
+		},
 	},
 } satisfies Meta<typeof Paragraph>;
 
@@ -23,9 +24,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ children }) => <Paragraph>
-			<Text variant="body2">
-				{children || ''}
-			</Text>
+	render: ({ children }) => (
+		<Paragraph>
+			<Text variant="body2">{children || ''}</Text>
 		</Paragraph>
-	};
+	),
+};

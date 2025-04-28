@@ -1,80 +1,81 @@
-import type { ListItemProps } from './ListItem/ListItem';
-
-import React, { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
-import Link from '../Link';
+import React, {
+	HTMLAttributes,
+	isValidElement,
+	ReactNode,
+	useCallback,
+} from 'react';
 import ListItem from './ListItem';
 import classNames from 'classnames';
 import styles from './List.module.css';
+import { RadiusSize, SpacingSize } from '../../theme/types';
 
 type ListProps = {
-	items?: ListItemProps[];
-	ordered?: boolean;
-	itemDecoration?: 'disc' | 'square' | 'circle';
+	listStyle?: 'ordered' | 'bulleted';
+	fullWidth?: boolean;
+	spacing?: SpacingSize;
+	radius?: RadiusSize;
+	bordered?: boolean;
+	listStyleType?: 'disc' | 'square' | 'circle' | 'decimal';
 	className?: string;
 	children?: ReactNode | ((props: { className: string }) => ReactNode);
 };
 
-const renderListItems = (items: ListItemProps[]) =>
-	items.map(({ label, target, url }) => {
-		return (
-			<ListItem
-				key={label}
-				className={styles.item}
-			>
-				{url ? (
-					<Link
-						href={url}
-						target={target}
-						className={styles.link}
-					>
-						{label}
-					</Link>
-				) : (
-					label
-				)}
-			</ListItem>
-		);
-	});
+type CustomChildProps = { className?: string; children: React.ReactElement[] };
 
 const List = ({
-	items = [],
-	ordered,
-	itemDecoration,
+	listStyle,
+	fullWidth,
+	spacing,
+	radius,
+	bordered,
+	listStyleType,
 	children,
 	className,
 }: ListProps & HTMLAttributes<HTMLDivElement>): JSX.Element => {
-	const Tag = ordered ? 'ol' : 'ul';
-	const hasItemsProp = Object.keys(items).length > 0;
+	const isOrdered = listStyle === 'ordered';
+	const Tag = isOrdered ? 'ol' : 'ul';
 
-	const renderChildren = () => {
+	const renderChildren = useCallback(() => {
 		if (typeof children === 'function') {
 			return children({ className: styles.item });
 		}
 
 		if (Array.isArray(children)) {
-			return React.Children.map(children, (child) => {
-				if (
-					React.isValidElement<{ className?: string; 'data-type'?: string }>(
-						child,
-					)
-				) {
-					return React.cloneElement(child, {
-						className: classNames(child.props.className, styles.item),
-						'data-type': child.props['data-type'],
-					});
+			return React.Children.map(children, (child, idx) => {
+				if (isValidElement<CustomChildProps>(child)) {
+					const itemClassName = classNames(child.props.className, styles.item);
+					return (
+						<ListItem className={itemClassName}>
+							{isOrdered ? (
+								<span className={styles.index}>{idx + 1}</span>
+							) : (
+								<li className={styles.bullet}></li>
+							)}
+							{child.props.children}
+						</ListItem>
+					);
 				}
 				return child;
 			});
 		}
 
 		return children;
-	};
+	}, [children]);
 
 	return (
 		<Tag
-			data-ordered={ordered}
-			data-item-decoration={itemDecoration}
-			className={classNames(styles.root, className)}
+			className={classNames(
+				styles.root,
+				styles[`list-style-type-${isOrdered ? 'decimal' : listStyleType}`],
+				styles[`spacing-${spacing}`],
+				styles[`radius-${radius}`],
+				className,
+				{
+					[styles.ordered]: isOrdered,
+					[styles.bordered]: bordered,
+					[styles.fullWidth]: fullWidth,
+				},
+			)}
 		>
 			{renderChildren()}
 		</Tag>

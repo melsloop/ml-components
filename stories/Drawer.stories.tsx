@@ -18,7 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ open, direction, ...args }) => {
+	render: ({ open, direction }) => {
 		const [opened, setOpened] = useState<boolean>(false);
 		return (
 			<>

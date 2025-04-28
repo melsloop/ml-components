@@ -21,12 +21,12 @@ const Separator = ({
 	decorative = true,
 	size = 'md',
 	className,
-	...props
+	...rest
 }: SeparatorProps): JSX.Element => (
 	<span
 		data-size={size}
 		className={classnames(styles.root, className)}
-		{...props}
+		{...rest}
 	>
 		<SeparatorPrimitive.Root
 			className={styles.separator}

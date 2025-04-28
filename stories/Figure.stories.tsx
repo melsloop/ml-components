@@ -16,6 +16,7 @@ const meta = {
 	args: {
 		fullWidth: false,
 		bordered: false,
+		spacing: 'md',
 		caption: 'Caption',
 		figureId: 'test',
 	},
@@ -32,15 +33,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: (args) => {
+	render: ({ spacing, fullWidth, size, radius, caption, bordered }) => {
 		return (
-			<Figure {...args}>
-				<Text
-					variant="body1"
-					size="md"
-				>
-					Figurative Content
-				</Text>
+			<Figure
+				spacing={spacing}
+				size={size}
+				fullWidth={fullWidth}
+				caption={caption}
+				bordered={bordered}
+				radius={radius}
+			>
+				<Text variant="body1">Figurative Content</Text>
 			</Figure>
 		);
 	},

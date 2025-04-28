@@ -18,7 +18,7 @@ const renderItems = (items: NavItemProps[], currentPath: string) =>
 				asChild
 			>
 				<ListItem
-					isSelected={
+					selected={
 						currentPath !== '/' && item?.data?.url?.includes(currentPath)
 					}
 					className={styles.menuListItem}

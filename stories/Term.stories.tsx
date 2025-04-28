@@ -16,5 +16,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ children, decoration, asChild }) => <Term decoration={decoration} asChild={asChild}>{children}</Term>,
+	render: ({ children, decoration, asChild }) => (
+		<Term
+			decoration={decoration}
+			asChild={asChild}
+		>
+			{children}
+		</Term>
+	),
 };

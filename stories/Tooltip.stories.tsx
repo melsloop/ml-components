@@ -17,12 +17,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ tooltipText, opened, children }) =>
+	render: ({ tooltipText, opened, children }) => (
 		<span>
-			This is a text with a tooltip trigger:  <Tooltip tooltipText={tooltipText} opened={opened}>
-				<Text variant="body1">
-					{children}
-				</Text>
-			</Tooltip>. Hover it for demo.
+			This is a text with a tooltip trigger:{' '}
+			<Tooltip
+				tooltipText={tooltipText}
+				opened={opened}
+			>
+				<Text variant="body1">{children}</Text>
+			</Tooltip>
+			. Hover it for demo.
 		</span>
+	),
 };

@@ -20,7 +20,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ index, padIndex, indexMaxLength, leadingChar, children }) =>
+	render: ({ index, padIndex, indexMaxLength, leadingChar, children }) => (
 		<Annotation
 			index={index}
 			padIndex={padIndex}
@@ -28,5 +28,6 @@ export const Default: Story = {
 			indexMaxLength={indexMaxLength}
 		>
 			{children}
-		</Annotation>,
+		</Annotation>
+	),
 };

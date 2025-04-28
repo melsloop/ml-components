@@ -1,0 +1,11 @@
+.root {
+	/* --ml-button-radius: 100px; */
+	--ml-button-border-width: 0;
+	--ml-button-background-color: red;
+}
+.root:hover {
+	--ml-button-background-color: red;
+}
+
+.selected {
+}

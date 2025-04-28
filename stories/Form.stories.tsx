@@ -30,7 +30,7 @@ const formFields: FormFieldProps[] = [
 ];
 
 const meta = {
-	title: 'Input/Form',
+	title: 'Form/Form',
 	component: Form,
 	parameters: {
 		layout: 'centered',

@@ -10,7 +10,7 @@ const meta = {
 	args: {
 		children: 'Lorem Ipsum',
 		variant: 'title',
-		textAlign: 'left'
+		textAlign: 'left',
 	},
 	argTypes: {
 		...textVariantControls,

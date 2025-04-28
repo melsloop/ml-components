@@ -1,8 +1,13 @@
-import type { RadiusSize, ShadowSize, SpacingSize } from '../../theme/types';
+import type {
+	BorderSize,
+	RadiusSize,
+	ShadowSize,
+	SpacingSize,
+} from '../../theme/types';
 
 import React, { PropsWithChildren } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './Container.module.css';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -36,9 +41,12 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	spacing?: SpacingSize;
 	shadow?: ShadowSize;
 	radius?: RadiusSize;
+	border?: BorderSize;
 	bordered?: boolean;
 	gap?: string;
 	minHeight?: string;
+	backgroundColor?: string;
+	borderColor?: string;
 	asChild?: boolean;
 	className?: string;
 }
@@ -52,45 +60,40 @@ const Container = ({
 	spacing,
 	shadow,
 	radius,
+	border,
 	gap,
 	bordered,
 	minHeight,
 	children,
+	backgroundColor,
+	borderColor,
 	asChild,
 	className,
-	...props
+	...rest
 }: PropsWithChildren<ContainerProps>) => {
 	const Comp = asChild ? Slot : 'div';
 
 	return (
 		<Comp
-			// data-sticky={sticky}
-			data-sticky-position={stickyPosition}
-			// data-shadow={shadow}
-			// data-radius={radius}
-			// data-gap={gap}
-			// data-flex-direction={flexDirection}
-			// data-justify-content={justifyContent}
-			// data-align-items={alignItems}
-			// data-spacing={spacing}
-			// data-bordered={bordered}
-			className={classnames(
+			className={classNames(
 				styles[`radius-${radius}`],
 				styles[`shadow-${shadow}`],
 				styles[`spacing-${spacing}`],
+				styles[`border-${border}`],
+				styles[`gap-${gap}`],
 				styles[`flex-direction-${flexDirection}`],
 				styles[`align-items-${alignItems}`],
 				styles[`justify-content-${justifyContent}`],
-				styles[`gap-${gap}`],
-				// [styles.stickyPosition],
-				styles.root, {
+				styles[`sticky-position-${stickyPosition}`],
+				styles.root,
+				{
 					[styles.bordered]: bordered,
 					[styles.sticky]: sticky,
 				},
-				className
+				className,
 			)}
-			style={{ minHeight }}
-			{...props}
+			style={{ minHeight, backgroundColor, borderColor }}
+			{...rest}
 		>
 			{children}
 		</Comp>

@@ -20,10 +20,15 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	render: (args) => {
-		return <Link {...args}>
-			<Text variant="body1" size="md">
-				Link
-			</Text>
-		</Link>;
+		return (
+			<Link {...args}>
+				<Text
+					variant="body1"
+					size="md"
+				>
+					Link
+				</Text>
+			</Link>
+		);
 	},
 };

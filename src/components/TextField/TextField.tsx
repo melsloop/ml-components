@@ -1,51 +1,70 @@
-import React from 'react';
-import CustomField, { type InputProps } from '../CustomField/CustomField';
+import React, { PropsWithChildren, useMemo } from 'react';
+import FormField from '../Form/FormField/FormField';
+import { TextField as TextFieldPrimitive } from '@radix-ui/themes';
 import classNames from 'classnames';
 import styles from './TextField.module.css';
+import type { InputProps } from '../Form/types';
+import TextFieldSlot from './TextFieldSlot';
+import { mapSlottedContent } from '../../componentUtils/mapSlottedContent';
+
+type TextFieldProps = InputProps & {
+	autocomplete?: string;
+	customInputClassname?: string;
+	onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
+	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	type?:
+		| 'date'
+		| 'datetime-local'
+		| 'email'
+		| 'hidden'
+		| 'month'
+		| 'number'
+		| 'password'
+		| 'search'
+		| 'tel'
+		| 'text'
+		| 'time'
+		| 'url'
+		| 'week';
+};
 
 const TextField = ({
-	size,
-	name,
-	required,
-	placeholder,
-	label,
-	icon,
-	invalid,
-	fullWidth,
-	errorMessage,
-	onChange,
+	type = 'text',
+	customInputClassname,
+	children,
+	className,
+	onInput,
 	onFocus,
 	onBlur,
-	className,
 	...props
-}: InputProps) => {
+}: PropsWithChildren<TextFieldProps>) => {
+	const slottedContent = useMemo(
+		() =>
+			mapSlottedContent(TextFieldSlot.displayName, children, {
+				className: classNames(styles.slottedContent),
+			}),
+		[TextFieldSlot, children],
+	);
+
 	return (
-		<CustomField
-			size={size}
-			label={label}
-			icon={icon}
-			fullWidth={fullWidth}
-			required={required}
-			invalid={invalid}
-			errorMessage={errorMessage}
-			onChange={onChange}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			className={classNames(styles.root, className)}
-			// errorMessage={errorMessage}
+		<FormField
 			{...props}
+			className={classNames(styles.root, className)}
 		>
-			<input
-				type="text"
-				name={name}
-				required={required}
-				placeholder={placeholder}
-				// {...props}
-				// autoComplete={autocomplete}
-				// pattern={pattern}
-			/>
-		</CustomField>
+			<TextFieldPrimitive.Root
+				type={type}
+				className={classNames(styles.input, customInputClassname)}
+				onInput={onInput}
+				onFocus={onFocus}
+				onBlur={onBlur}
+			>
+				{slottedContent}
+			</TextFieldPrimitive.Root>
+		</FormField>
 	);
 };
+
+TextField.displayName = 'TextField';
 
 export default TextField;

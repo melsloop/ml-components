@@ -1,29 +1,32 @@
 .root {
-	--ml-figure-border-size: 2px;
-	--ml-figure-border-color: #000;
+	--ml-figure-border-width: var(--ml-border-xs);
+	--ml-figure-border-color: var(--ml-color-surface-main);
 	--ml-figure-border-style: solid;
 	--ml-figure-border-radius: 0;
 	--ml-figure-font-family: var(--ml-font-font1-family);
-	--ml-figure-size-xs: var(--ml-size-xs, 0.65em);
-	--ml-figure-size-sm: var(--ml-size-sm, 0.85em);
-	--ml-figure-size-md: var(--ml-size-md, 1em);
-	--ml-figure-size-lg: var(--ml-size-lg, 1.15em);
-	--ml-figure-size-xl: var(--ml-size-xl, 1.25em);
-	--ml-figure-caption-font-family: var(--ml-figure-font-family);
-	--ml-figure-caption-font-size: var(--ml-figure-size);
-	--ml-figure-caption-text-color: inherit;
-	--ml-figure-caption-font-weight: inherit;
+	/* --ml-figure-caption-font-family: var(--ml-figure-font-family); */
+	/* --ml-figure-caption-font-size: var(--ml-figure-size); */
+	/* --ml-figure-caption-text-color: inherit; */
+	/* --ml-figure-caption-font-weight: inherit; */
 
-	display: inline-block;
+	/* display: inline-block;
 	justify-content: center;
 	box-sizing: border-box;
-	flex-direction: column;
-	font-family: var(--ml-figure-font-family);
+	flex-direction: column; */
+	/* font-family: var(--ml-figure-font-family); */
+
+	border-radius: var(--ml-figure-radius);
+	padding: var(--ml-figure-spacing);
+	font-size: var(--ml-figure-size);
+}
+
+.root img {
+	max-width: 100%;
 }
 
 .root .figure {
 	margin: 0;
-	padding: 0;
+	/* padding: 0; */
 	box-sizing: border-box;
 }
 
@@ -31,72 +34,79 @@
 	display: block;
 	font-size: 0.85em;
 	margin-top: 0.5em;
-	font-weight: var(--ml-figure-caption-font-weight);
-	color: var(--ml-figure-caption-text-color);
-}
-
-.root img {
-	max-width: 100%;
+	/* font-weight: var(--ml-figure-caption-font-weight); */
+	/* color: var(--ml-figure-caption-text-color); */
 }
 
 /* size */
-.root[data-size='xs'] {
-	font-size: var(--ml-figure-size-xs);
+.size-xs {
+	--ml-figure-size: var(--ml-size-xs);
 }
-.root[data-size='sm'] {
-	font-size: var(--ml-figure-size-sm);
+.size-sm {
+	--ml-figure-size: var(--ml-size-sm);
 }
-.root[data-size='md'] {
-	font-size: var(--ml-figure-size-md);
+.size-md {
+	--ml-figure-size: var(--ml-size-md);
 }
-.root[data-size='lg'] {
-	font-size: var(--ml-figure-size-lg);
+.size-lg {
+	--ml-figure-size: var(--ml-size-lg);
 }
-.root[data-size='xl'] {
-	font-size: var(--ml-figure-size-xl);
+.size-xl {
+	--ml-figure-size: var(--ml-size-xl);
+}
+.size-xxl {
+	--ml-figure-size: var(--ml-size-xxl);
 }
 
 /* shadow */
-.root[data-shadow='sm'] .figure {
-	box-shadow: var(--ml-shadow-sm);
+.shadow-sm {
+	--ml-figure-shadow: var(--ml-shadow-sm);
 }
-.root[data-shadow='md'] .figure {
-	box-shadow: var(--ml-shadow-md);
+.shadow-md {
+	--ml-figure-shadow: var(--ml-shadow-md);
 }
-.root[data-shadow='lg'] .figure {
-	box-shadow: var(--ml-shadow-lg);
+.shadow-lg {
+	--ml-figure-shadow: var(--ml-shadow-lg);
 }
 
 /* radius */
-.root[data-radius='sm'] .figure {
-	border-radius: var(--ml-radius-sm);
+.radius-sm {
+	--ml-figure-radius: var(--ml-radius-sm);
 }
-.root[data-radius='md'] .figure {
-	border-radius: var(--ml-radius-md);
+.radius-md {
+	--ml-figure-radius: var(--ml-radius-md);
 }
-.root[data-radius='lg'] .figure {
-	border-radius: var(--ml-radius-lg);
-}
-.root[data-radius='md'] .figure {
-	border-radius: var(--ml-radius-md);
-}
-.root[data-radius='lg'] .figure {
-	border-radius: var(--ml-radius-lg);
+.radius-lg {
+	--ml-figure-radius: var(--ml-radius-lg);
 }
 
-/* full-width */
-.root[data-full-width='true'] {
-	display: block;
-	width: var(--ml-figure-full-width);
+/* spacing */
+.spacing-xs {
+	--ml-figure-spacing: var(--ml-spacing-xs);
+}
+.spacing-sm {
+	--ml-figure-spacing: var(--ml-spacing-sm);
+}
+.spacing-md {
+	--ml-figure-spacing: var(--ml-spacing-md);
+}
+.spacing-lg {
+	--ml-figure-spacing: var(--ml-spacing-lg);
+}
+.spacing-xl {
+	--ml-figure-spacing: var(--ml-spacing-xl);
 }
 
 /* bordered */
-.root[data-bordered='true'] .figure {
-	padding: 0.25em;
-	border-radius: var(--ml-figure-border-radius);
-	border-width: var(--ml-figure-border-size);
-	border-style: var(--ml-figure-border-style);
-	border-color: var(--ml-figure-border-color);
+.bordered {
+	border: var(--ml-figure-border-width) var(--ml-figure-border-style)
+		var(--ml-figure-border-color);
+}
+
+/* full-width */
+.fullWidth {
+	display: block;
+	width: var(--ml-figure-full-width);
 }
 
 /* variant: codeblock - TODO: implement on client side as theme overrides */

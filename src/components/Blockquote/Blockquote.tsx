@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import Link from '../Link';
 import styles from './Blockquote.module.css';
 import classNames from 'classnames';
+import Text from '../Text';
 
 export type BlockquoteProps = {
 	cite?: string;
@@ -43,9 +44,9 @@ const Blockquote = ({
 
 	return (
 		<span className={classNames(styles.root, className)}>
-			<blockquote className={styles.blockquote}>
+			<blockquote className={styles.quote}>
 				<span className={styles.content}>{children}</span>
-				{citeNode}
+				<Text variant="body2">{citeNode}</Text>
 			</blockquote>
 		</span>
 	);

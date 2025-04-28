@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import ToggleGroup from "../src/components/ToggleGroup";
+import ToggleGroup from "../src/components/RadioGroup";
 
 describe("ToggleGroup", () => {
   test("renders the Toggle Group component", () => {

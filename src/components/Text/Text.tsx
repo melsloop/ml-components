@@ -55,7 +55,7 @@ const Text = ({
 	className,
 	...rest
 }: PropsWithChildren<TextProps>) => {
-	let Comp = asChild ? Slot : 'span';
+	const Comp = asChild ? Slot : 'span';
 
 	return (
 		<Comp
@@ -63,9 +63,10 @@ const Text = ({
 				styles.root,
 				styles[variant as string],
 				styles[`text-align-${textAlign}`],
-				className, {
-					[styles.fullWidth]: fullWidth
-				}
+				className,
+				{
+					[styles.fullWidth]: fullWidth,
+				},
 			)}
 			{...rest}
 		>

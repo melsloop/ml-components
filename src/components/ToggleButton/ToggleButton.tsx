@@ -9,7 +9,7 @@ import React, {
 	isValidElement,
 } from 'react';
 import * as ToggleRoot from '@radix-ui/react-toggle';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './ToggleButton.module.css';
 
 export interface ToggleButtonProps {
@@ -23,7 +23,7 @@ const ToggleButton = ({
 	children,
 	onClick,
 	className,
-	...props
+	...rest
 }: PropsWithChildren<ToggleButtonProps>): JSX.Element => {
 	const [toggled, setToggled] = useState<boolean>(!!isPressed);
 
@@ -37,6 +37,7 @@ const ToggleButton = ({
 						child as React.ReactElement<WithDataAttributes<ButtonProps>>,
 						{
 							'data-selected': toggled,
+							className: styles.button,
 						},
 					);
 				}
@@ -48,12 +49,17 @@ const ToggleButton = ({
 	return (
 		<ToggleRoot.Root
 			onPressedChange={onClick}
-			defaultPressed={isPressed}
-			className={classnames(styles.root, className)}
+			// defaultPressed={isPressed}
+			className={classNames(
+				styles.root,
+				{ [styles.selected]: toggled },
+				className,
+			)}
+			role="button"
 			asChild
-			{...props}
+			{...rest}
 		>
-			<span onClick={onToggle}>{item}</span>
+			<span>{item}</span>
 		</ToggleRoot.Root>
 	);
 };

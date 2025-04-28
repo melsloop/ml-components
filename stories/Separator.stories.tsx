@@ -32,26 +32,12 @@ export const Default: Story = {
 };
 
 export const WithText: Story = {
-	render: ({ size, ...args }) => {
+	render: ({ size }) => {
 		return (
 			<>
-				<Text
-					variant="body1"
-					size={size}
-				>
-					Hello
-				</Text>
-				<Separator
-					size={size}
-					{...args}
-				/>
-				<Text
-					variant="body1"
-					size={size}
-					italics
-				>
-					World
-				</Text>
+				<Text variant="body1">Hello</Text>
+				<Separator size={size} />
+				<Text variant="body1">World</Text>
 			</>
 		);
 	},

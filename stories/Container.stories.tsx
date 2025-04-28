@@ -10,9 +10,16 @@ const meta = {
 	// tags: ['autodocs'],
 	args: {
 		sticky: false,
-		shadow: 'none',
-		radius: 'none',
-		gap: 'none'
+		bordered: false,
+		shadow: undefined,
+		radius: undefined,
+		gap: undefined,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		spacing: 'none',
+		border: 'xs',
+		minHeight: '0px',
 	},
 	argTypes: {
 		sticky: {
@@ -23,14 +30,7 @@ const meta = {
 			control: 'select',
 		},
 		gap: {
-			options: [
-				'none',
-				'xs',
-				'sm',
-				'md',
-				'lg',
-				'xl'
-			],
+			options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'],
 			control: 'select',
 		},
 		justifyContent: {
@@ -41,7 +41,7 @@ const meta = {
 				'flex-start',
 				'flex-end',
 				'left',
-				'right'
+				'right',
 			],
 			control: 'select',
 		},
@@ -61,12 +61,18 @@ const meta = {
 				'first-baseline',
 				'last-baseline',
 				'safe-center',
-				'unsafe-center'
+				'unsafe-center',
 			],
 			control: 'select',
 		},
 		bordered: {
 			control: 'boolean',
+		},
+		backgroundColor: {
+			control: 'color',
+		},
+		borderColor: {
+			control: 'color',
 		},
 		...shadowControls,
 		...radiusControls,
@@ -87,9 +93,12 @@ export const Default: Story = {
 		spacing,
 		shadow,
 		radius,
+		border,
 		gap,
 		bordered,
 		minHeight,
+		backgroundColor,
+		borderColor,
 	}) => {
 		return (
 			<Container
@@ -97,6 +106,7 @@ export const Default: Story = {
 				spacing={spacing}
 				shadow={shadow}
 				gap={gap}
+				border={border}
 				bordered={bordered}
 				sticky={sticky}
 				stickyPosition={stickyPosition}
@@ -104,6 +114,8 @@ export const Default: Story = {
 				justifyContent={justifyContent}
 				alignItems={alignItems}
 				minHeight={minHeight}
+				backgroundColor={backgroundColor}
+				borderColor={borderColor}
 			>
 				<Button
 					variant="contained"

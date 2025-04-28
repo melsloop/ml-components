@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import Text, { headingVariants, type HeadingVariant, type TextAlign } from '../Text/Text';
+import Text, { headingVariants, type TextAlign } from '../Text/Text';
 import styles from './Heading.module.css';
 import classNames from 'classnames';
 
@@ -27,9 +27,7 @@ export const Heading = ({
 				fullWidth
 				asChild
 			>
-				<span>
-				{children}
-				</span>
+				<span>{children}</span>
 			</Text>
 		</Tag>
 	);

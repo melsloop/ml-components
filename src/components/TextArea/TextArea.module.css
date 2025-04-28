@@ -1,0 +1,25 @@
+.root {
+}
+
+.inputWrapper {
+	font-size: var(--ml-text-field-size);
+	height: 2.5em;
+	box-shadow: inset 0 0 0 var(--text-field-border-width) var(--gray-a7);
+}
+
+/* size */
+.size-xs {
+	--ml-text-field-size: var(--ml-size-xs);
+}
+.size-sm {
+	--ml-text-field-size: var(--ml-size-sm);
+}
+.size-md {
+	--ml-text-field-size: var(--ml-size-md);
+}
+.size-lg {
+	--ml-text-field-size: var(--ml-size-lg);
+}
+.size-xl {
+	--ml-text-field-size: var(--ml-size-xl);
+}

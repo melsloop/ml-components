@@ -18,6 +18,7 @@ export type TableProps = {
 	shadow?: ShadowSize;
 	fullWidth?: boolean;
 	bordered?: boolean;
+	hidegGridLines?: boolean;
 	className?: string;
 };
 
@@ -32,6 +33,7 @@ export const Table = ({
 	textAlign,
 	verticalAlign,
 	horizontalSpacing,
+	hidegGridLines,
 	className,
 }: PropsWithChildren<TableProps>) => (
 	<span
@@ -48,6 +50,7 @@ export const Table = ({
 			{
 				[styles.fullWidth]: fullWidth,
 				[styles.bordered]: bordered,
+				[styles.hidegGridLines]: hidegGridLines,
 			},
 		)}
 		// data-vertical-align={verticalAlign}

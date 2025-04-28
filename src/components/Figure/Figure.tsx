@@ -1,6 +1,6 @@
 import type {
 	RadiusSize,
-	ShadowSize,
+	SpacingSize,
 	ThemeComponentSize,
 } from '../../theme/types';
 
@@ -13,8 +13,8 @@ type FigureProps = {
 	caption?: string;
 	figureId?: string;
 	size?: ThemeComponentSize;
-	shadow?: ShadowSize;
 	radius?: RadiusSize;
+	spacing?: SpacingSize;
 	bordered?: boolean;
 	fullWidth?: boolean;
 	className?: string;
@@ -26,20 +26,25 @@ const Figure = ({
 	bordered,
 	fullWidth,
 	size,
-	shadow,
+	spacing,
 	radius,
 	children,
 	className,
-	...props
+	...rest
 }: PropsWithChildren<FigureProps>) => (
 	<span
-		className={classNames(styles.root, className)}
-		data-bordered={bordered}
-		data-radius={radius}
-		data-shadow={shadow}
-		data-full-width={fullWidth}
-		data-size={size}
-		{...props}
+		className={classNames(
+			styles.root,
+			styles[`size-${size}`],
+			styles[`radius-${radius}`],
+			styles[`spacing-${spacing}`],
+			{
+				[styles.fullWidth]: fullWidth,
+				[styles.bordered]: bordered,
+			},
+			className,
+		)}
+		{...rest}
 	>
 		{/* {elementId && <a id={elementId}></a>} */}
 		{figureId && <a id={figureId}></a>}

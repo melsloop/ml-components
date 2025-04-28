@@ -1,3 +1,9 @@
+// import '@radix-ui/themes/styles.css';
+// import '@radix-ui/themes/components.css';
+// import '@radix-ui/themes/layout.css';
+// import '@radix-ui/themes/utilities.css';
+// import './radix.css';
+
 import type {
 	ThemeComponentSize,
 	ThemeShadow,
@@ -39,6 +45,9 @@ const color = {
 		dark: '#bd5e91',
 		highlight: '#70538a',
 		contrast: '#4e4a7a',
+	},
+	error: {
+		main: '#c00',
 	},
 };
 
@@ -92,6 +101,7 @@ const radius: ThemeRadius = {
 	sm: '4px',
 	md: '6px',
 	lg: '8px',
+	full: '3em',
 };
 
 const border: ThemeBorder = {
@@ -104,7 +114,7 @@ const border: ThemeBorder = {
 
 const size: ThemeComponentSize = {
 	none: '',
-	xs: '0.75em',
+	xs: '0.7em',
 	sm: '.85em',
 	md: '1em',
 	lg: '1.15em',

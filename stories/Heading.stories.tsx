@@ -25,20 +25,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ level, children, textAlign }) =>
+	render: ({ level, children, textAlign }) => (
 		<Heading
 			level={level}
 			textAlign={textAlign}
-			>
+		>
 			{children || `Heading ${level}`}
-		</Heading>,
+		</Heading>
+	),
 };
 
 export const Headings: Story = {
 	render: ({ textAlign, children }) => {
 		return (
 			<>
-				{levels.map((level: number) =>
+				{levels.map((level: number) => (
 					<Heading
 						level={level}
 						textAlign={textAlign}
@@ -46,7 +47,7 @@ export const Headings: Story = {
 					>
 						{children || `Heading ${level}`}
 					</Heading>
-				)}
+				))}
 			</>
 		);
 	},

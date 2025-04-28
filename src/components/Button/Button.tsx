@@ -1,18 +1,17 @@
-import type {
-	ComponentSize,
-	RadiusSize,
-	ShadowSize,
-	ThemeComponentSize,
-} from '../../theme/types';
+import type { ComponentSize, RadiusSize, ShadowSize } from '../../theme/types';
 
 import React, {
+	cloneElement,
 	forwardRef,
+	isValidElement,
+	useMemo,
 	type PropsWithChildren,
 	type SyntheticEvent,
 } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import styles from './Button.module.css';
 import classNames from 'classnames';
+import { WithDataAttributes } from '../types';
 
 export type ButtonProps = {
 	variant?: 'contained' | 'outline';
@@ -23,7 +22,7 @@ export type ButtonProps = {
 	fullWidth?: boolean;
 	title?: string;
 	disabled?: boolean;
-	type?: 'button' | 'submit' | 'reset';
+	type?: 'button' | 'submit' | 'reset' | 'radio';
 	asChild?: boolean;
 	onClick?: (e: SyntheticEvent<HTMLButtonElement>) => void;
 	className?: string;
@@ -52,39 +51,54 @@ const Button = forwardRef<
 			children,
 			className,
 			title,
+			type,
 			onClick,
-			...props
+			...rest
 		},
 		ref,
 	): JSX.Element => {
 		const Comp = asChild ? Slot : 'button';
+		const customChildren = useMemo(
+			() =>
+				React.Children.map(children, (child) => {
+					if (isValidElement(child)) {
+						return cloneElement(
+							child as React.ReactElement<WithDataAttributes<ButtonProps>>,
+							{
+								className: styles.textColor,
+							},
+						);
+					}
+					return child;
+				}),
+			[children],
+		);
+
 		return (
 			<Comp
-				// data-variant={variant}
-				// data-mode={mode}
 				disabled={disabled}
 				title={title}
+				type={type}
 				ref={ref}
 				className={classNames(
 					styles.root,
+					styles.textColor,
 					styles[`size-${size}`],
 					styles[`radius-${radius}`],
 					styles[`shadow-${shadow}`],
-					// styles[`spacing-${spacing}`],
 					{
 						[styles.fullWidth]: fullWidth,
 						[styles.contained]: variant === 'contained',
 						[styles.outline]: variant === 'outline',
 						[styles.primary]: mode === 'primary',
 						[styles.secondary]: mode === 'secondary',
-						// [styles.bordered]: bordered,
 					},
 					className,
 				)}
 				onClick={(e: SyntheticEvent<HTMLButtonElement>) => onClick?.(e)}
-				{...props}
+				{...rest}
 			>
-				{children}
+				{customChildren}
 			</Comp>
 		);
 	},

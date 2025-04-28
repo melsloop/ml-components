@@ -1,0 +1,13 @@
+.root {
+	--ml-label-spacing: var(--ml-spacing-xs);
+	--ml-label-required-indicator-spacing: var(--ml-spacing-xs);
+	--ml-label-required-indicator-content: '*';
+
+	padding-bottom: var(--ml-label-spacing);
+	display: block;
+}
+
+.requiredIndicator::before {
+	margin-inline-start: var(--ml-label-required-indicator-spacing);
+	content: var(--ml-label-required-indicator-content);
+}

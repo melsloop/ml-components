@@ -1,6 +1,6 @@
 export type ComponentSize = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export type SpacingSize = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export type RadiusSize = 'none' | 'sm' | 'md' | 'lg';
+export type RadiusSize = 'none' | 'sm' | 'md' | 'lg' | 'full';
 export type ShadowSize = 'none' | 'sm' | 'md' | 'lg';
 export type BorderSize = 'none' | 'xs' | 'sm' | 'md' | 'lg';
 

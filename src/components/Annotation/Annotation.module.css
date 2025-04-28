@@ -1,5 +1,5 @@
 .root {
-	--ml-annotation-font-family: var(--ml-font-font1-family);
+	--ml-annotation-font-family: var(--ml-font-family);
 	--ml-annotation-font-size: 0.65em;
 	--ml-annotation-font-weight: normal;
 	--ml-annotation-offset-y: -0.5em;

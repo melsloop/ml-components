@@ -1,15 +1,15 @@
 .root {
 	--ml-codesnippet-background-color: var(--ml-color-surface-light);
 	--ml-codesnippet-text-color: var(--ml-color-surface-contrast);
-	--ml-codesnippet-padding: var(--ml-spacing-xs);
 	--ml-codesnippet-radius: var(--ml-radius-md);
 	--ml-codesnippet-font-family: monospace;
+	--ml-codesnippet-spacing-inline: 0.5em;
 
 	display: block;
 	box-sizing: border-box;
 	background-color: var(--ml-codesnippet-background-color);
 	border-radius: var(--ml-codesnippet-radius);
-	padding: var(--ml-codesnippet-padding);
+	padding: var(--ml-codesnippet-spacing);
 	border-color: var(--ml-codesnippet-border-color);
 }
 
@@ -19,7 +19,7 @@
 }
 
 .inline .pre {
-	padding: var(--ml-codesnippet-padding);
+	padding: var(--ml-codesnippet-spacing-inline);
 	padding-top: 0;
 	padding-bottom: 0;
 }
@@ -34,4 +34,21 @@
 	color: var(--ml-codesnippet-text-color);
 	font-weight: var(--ml-codesnippet-font-weight);
 	font-family: var(--ml-codesnippet-font-family);
+}
+
+/* spacing */
+.spacing-xs {
+	--ml-codesnippet-spacing: var(--ml-spacing-xs);
+}
+.spacing-sm {
+	--ml-codesnippet-spacing: var(--ml-spacing-sm);
+}
+.spacing-md {
+	--ml-codesnippet-spacing: var(--ml-spacing-md);
+}
+.spacing-lg {
+	--ml-codesnippet-spacing: var(--ml-spacing-lg);
+}
+.spacing-xl {
+	--ml-codesnippet-spacing: var(--ml-spacing-xl);
 }

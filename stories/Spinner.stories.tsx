@@ -9,9 +9,12 @@ const meta = {
 	args: {
 		animation: 'rotation',
 		animationTimingFn: 'linear',
-		delay: 1000,
+		delay: 0,
 	},
 	argTypes: {
+		delay: {
+			control: 'number',
+		},
 		animation: {
 			options: ['none', 'rotation'],
 			control: 'select',

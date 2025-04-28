@@ -1,29 +1,42 @@
-import React from 'react';
-import * as Icons from '@radix-ui/react-icons';
-import classnames from 'classnames';
+import React, { cloneElement, isValidElement } from 'react';
+import classNames from 'classnames';
 import styles from './Icon.module.css';
 
 export interface IconProps {
-	icon?: string;
-	size?: string;
+	size?: number;
 	color?: string;
 	className?: string;
 }
 
-const Icon = ({ icon, size, color, className, ...props }: IconProps) => {
-	if (!icon) return null;
+type IconComponentProps = IconProps & {
+	children?: React.ReactNode;
+};
 
-	const SelectedIcon = Icons[icon as keyof typeof Icons];
-
-	if (!SelectedIcon) return null;
+const Icon = ({
+	size,
+	color,
+	children,
+	className,
+	...rest
+}: IconComponentProps) => {
+	const childrenWithProps = React.Children.map(children, (child) => {
+		if (isValidElement<{ className?: string }>(child)) {
+			return cloneElement(child, {
+				color: color,
+				width: size,
+				height: size,
+				className: styles.icon,
+			} as React.SVGProps<SVGSVGElement>);
+		}
+		return child;
+	});
 
 	return (
 		<span
-			data-size={size}
-			className={classnames(styles.root, className)}
-			{...props}
+			className={classNames(styles.root, className)}
+			{...rest}
 		>
-			<SelectedIcon color={color} />
+			{childrenWithProps}
 		</span>
 	);
 };

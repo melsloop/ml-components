@@ -18,6 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({ value, template }) =>
-		<DateFormat value={value || ''} template={template} />
+	render: ({ value, template }) => (
+		<DateFormat template={template}>{value}</DateFormat>
+	),
 };

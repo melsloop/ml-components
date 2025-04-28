@@ -1,18 +1,13 @@
 .root {
-	--ml-table-size: var(--size);
-	--ml-table-shadow: var(--shadow);
-	--ml-table-radius: var(--radius);
-	--ml-table-spacing-horizontal: var(--spacing-horizontal);
-	--ml-table-spacing-vertical: var(--spacing-vertical);
 	--ml-table-border-size: var(--ml-border-xs);
 	--ml-table-border-color: var(--ml-color-surface-main);
 	--ml-table-border-style: solid;
+	--ml-table-grid-color: var(--ml-table-border-color);
 	--ml-table-cell-width: 8em;
 	--ml-table-cell-text-align: right;
 	--ml-table-cell-vertical-align: center;
 
-	/* display: inline-flex; */
-	font-size: var(--size);
+	font-size: var(--ml-table-size);
 }
 
 .root.fullWidth {
@@ -24,15 +19,10 @@
 	width: 100%;
 }
 
-/* .fullWidth .table {
-	background-color: pink;
-	text-align: center;
-} */
-
 .wrapper {
 	display: inline-block;
 	margin: 0 auto;
-	box-shadow: var(--shadow);
+	box-shadow: var(--ml-table-shadow);
 	border-radius: var(--ml-table-radius);
 }
 
@@ -70,17 +60,17 @@
 .table td {
 	border-bottom-width: var(--ml-table-border-size);
 	border-bottom-style: var(--ml-table-border-style);
-	border-bottom-color: var(--ml-table-border-color);
+	border-bottom-color: var(--ml-table-grid-color);
 }
 
 .table th:not(:last-child),
 .table td:not(:last-child) {
 	border-bottom-width: var(--ml-table-border-size);
 	border-bottom-style: var(--ml-table-border-style);
-	border-bottom-color: var(--ml-table-border-color);
+	border-bottom-color: var(--ml-table-grid-color);
 	border-right-width: var(--ml-table-border-size);
 	border-right-style: var(--ml-table-border-style);
-	border-right-color: var(--ml-table-border-color);
+	border-right-color: var(--ml-table-grid-color);
 }
 
 /* text alignment */
@@ -111,77 +101,77 @@
 
 /* size */
 .size-xs {
-	--size: var(--ml-size-xs);
+	--ml-table-size: var(--ml-size-xs);
 }
 .size-sm {
-	--size: var(--ml-size-sm);
+	--ml-table-size: var(--ml-size-sm);
 }
 .size-md {
-	--size: var(--ml-size-md);
+	--ml-table-size: var(--ml-size-md);
 }
 .size-lg {
-	--size: var(--ml-size-lg);
+	--ml-table-size: var(--ml-size-lg);
 }
 .size-xl {
-	--size: var(--ml-size-xl);
+	--ml-table-size: var(--ml-size-xl);
 }
 .size-xxl {
-	--size: var(--ml-size-xxl);
+	--ml-table-size: var(--ml-size-xxl);
 }
 
 /* shadow */
 .shadow-sm {
-	--shadow: var(--ml-shadow-sm);
+	--ml-table-shadow: var(--ml-shadow-sm);
 }
 .shadow-md {
-	--shadow: var(--ml-shadow-md);
+	--ml-table-shadow: var(--ml-shadow-md);
 }
 .shadow-lg {
-	--shadow: var(--ml-shadow-lg);
+	--ml-table-shadow: var(--ml-shadow-lg);
 }
 
 /* radius */
 .radius-sm {
-	--radius: var(--ml-radius-sm);
+	--ml-table-radius: var(--ml-radius-sm);
 }
 .radius-md {
-	--radius: var(--ml-radius-md);
+	--ml-table-radius: var(--ml-radius-md);
 }
 .radius-lg {
-	--radius: var(--ml-radius-lg);
+	--ml-table-radius: var(--ml-radius-lg);
 }
 
 /* spacing */
 .spacing-horizontal-xs {
-	--spacing-horizontal: var(--ml-spacing-xs);
+	--ml-table-spacing-horizontal: var(--ml-spacing-xs);
 }
 .spacing-horizontal-sm {
-	--spacing-horizontal: var(--ml-spacing-sm);
+	--ml-table-spacing-horizontal: var(--ml-spacing-sm);
 }
 .spacing-horizontal-md {
-	--spacing-horizontal: var(--ml-spacing-md);
+	--ml-table-spacing-horizontal: var(--ml-spacing-md);
 }
 .spacing-horizontal-lg {
-	--spacing-horizontal: var(--ml-spacing-lg);
+	--ml-table-spacing-horizontal: var(--ml-spacing-lg);
 }
 .spacing-horizontal-xl {
-	--spacing-horizontal: var(--ml-spacing-xl);
+	--ml-table-spacing-horizontal: var(--ml-spacing-xl);
 }
 
 .spacing-vertical-xs {
-	--spacing-vertical: var(--ml-spacing-xs);
+	--ml-table-spacing-vertical: var(--ml-spacing-xs);
 }
 .spacing-vertical-sm {
-	--spacing-vertical: var(--ml-spacing-sm);
+	--ml-table-spacing-vertical: var(--ml-spacing-sm);
 }
 .spacing-vertical-md {
-	--spacing-vertical: var(--ml-spacing-md);
+	--ml-table-spacing-vertical: var(--ml-spacing-md);
 }
 .spacing-vertical-lg {
-	--spacing-vertical: var(--ml-spacing-lg);
+	--ml-table-spacing-vertical: var(--ml-spacing-lg);
 }
 .spacing-vertical-xl {
-	--spacing-vertical: var(--ml-spacing-xl);
+	--ml-table-spacing-vertical: var(--ml-spacing-xl);
 }
 
 .bordered .wrapper {
@@ -201,4 +191,8 @@
 	border-left-width: var(--ml-table-border-size);
 	border-left-style: var(--ml-table-border-style);
 	border-left-color: var(--ml-table-border-color);
+}
+
+.hidegGridLines {
+	--ml-table-grid-color: transparent;
 }

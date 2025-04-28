@@ -1,24 +1,58 @@
-export type FormFieldProps = {
-	name: string;
-	type: 'text' | 'number' | 'tel' | 'email' | 'textarea';
-	initialValue: unknown;
-	required?: boolean;
-	label?: string;
-	placeholder?: string;
-	icon?: string;
-	validation?: yup.Schema;
-	input?: React.ReactNode;
-	component?: 'input' | 'textarea' | 'select';
+export const initialValidityState: ValidityState = {
+	valid: true,
+	valueMissing: false,
+	typeMismatch: false,
+	patternMismatch: false,
+	tooLong: false,
+	tooShort: false,
+	rangeUnderflow: false,
+	rangeOverflow: false,
+	stepMismatch: false,
+	badInput: false,
+	customError: false,
 };
 
-export type FormProps = {
-	name: string;
-	path: string;
-	fields: FormFieldProps[];
-	recaptchaSiteKey?: string;
-	onSuccess?: () => void;
-	onError?: (e: unknown) => void;
-	submitButtonLabel?: string;
-	submitButtonIcon?: string;
-	submitButtonLabelActive?: string;
+import { RefObject } from 'react';
+import { ComponentSize, RadiusSize } from '../../theme/types';
+
+export type ComponentProps = {
+	size?: ComponentSize;
+	radius?: RadiusSize;
+	bordered?: boolean;
+	fullWidth?: boolean;
 };
+
+export type InputValidation = {
+	validity?: ValidityState | undefined;
+};
+
+export type InputValidationMessages = {
+	messageValueMissing?: string;
+	messageTypeMismatch?: string;
+	messageTooShort?: string;
+	messageTooLong?: string;
+	messageBadInput?: string;
+	messageRangeOverflow?: string;
+	messageRangeUnderflow?: string;
+	messageRangeCustomError?: string;
+};
+
+export type InputBaseProps = {
+	name?: string;
+	label?: string;
+	placeholder?: string;
+	required?: boolean;
+	readOnly?: boolean;
+	disabled?: boolean;
+	minLength?: number;
+	maxLength?: number;
+	autoComplete?: string;
+	className?: string;
+	// inputRef?: RefObject<HTMLInputElement> | undefined;
+	customInputRef?: RefObject<HTMLInputElement> | undefined;
+};
+
+export type InputProps = ComponentProps &
+	InputBaseProps &
+	InputValidation &
+	InputValidationMessages;

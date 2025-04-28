@@ -1,6 +1,3 @@
 .root {
-	--ml-font-family: var(--ml-font-font1-family);
-
 	direction: ltr;
-	font-family: var(--ml-font-family);
 }

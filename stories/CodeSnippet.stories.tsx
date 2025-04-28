@@ -2,7 +2,6 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import CodeSnippet from '../src/components/CodeSnippet';
 import Text from '../src/components/Text';
-import { Container } from '../src';
 
 const meta = {
 	title: 'Text/CodeSnippet',
@@ -10,6 +9,7 @@ const meta = {
 	// tags: ['autodocs'],
 	args: {
 		inline: false,
+		spacing: 'md',
 		children: 'snippet content',
 	},
 	argTypes: {
@@ -23,12 +23,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: (args) => {
+	render: ({ spacing }) => {
 		return (
-			<CodeSnippet {...args}>
+			<CodeSnippet spacing={spacing}>
 				{`export const Block: Story = {
-	render: ({ children, ...args }) => {
-		return <CodeSnippet {...args}>{children}</CodeSnippet>;
+	render: ({ children }) => {
+		return <CodeSnippet>
+			{children}
+		</CodeSnippet>;
 	}
 }`}
 			</CodeSnippet>
@@ -37,23 +39,16 @@ export const Default: Story = {
 };
 
 export const Inline: Story = {
-	render: (args) => {
-		return (
-			<Container>
-					<Text
-						size="md"
-						variant="body1"
-					>
-						This is a{' '}
-						<CodeSnippet
-							{...args}
-							inline
-						>
-							{'<CodeSnippet inline/>'}
-						</CodeSnippet>{' '}
-						inside a running text.
-					</Text>
-				</Container>
-		);
-	},
+	render: ({ spacing }) => (
+		<Text variant="body1">
+			This is a{' '}
+			<CodeSnippet
+				inline
+				spacing={spacing}
+			>
+				{'<CodeSnippet inline/>'}
+			</CodeSnippet>{' '}
+			inside a running text.
+		</Text>
+	),
 };

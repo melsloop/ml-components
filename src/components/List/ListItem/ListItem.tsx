@@ -3,33 +3,16 @@ import classNames from 'classnames';
 import styles from './ListItem.module.css';
 
 type ListItemProps = {
-	label?: string;
-	url?: string;
-	isSelected?: boolean;
-	target?: '_blank';
 	className?: string;
 };
 
 const ListItem = forwardRef<HTMLLIElement, PropsWithChildren<ListItemProps>>(
-	(
-		{
-			children,
-			className,
-			isSelected,
-			...props
-		}: PropsWithChildren<ListItemProps>,
-		ref,
-	) => (
+	({ children, className }: PropsWithChildren<ListItemProps>, ref) => (
 		<li
 			ref={ref}
-			data-selected={isSelected}
 			className={classNames(styles.root, className)}
-			{...props}
 		>
-			<span className={styles.container}>
-				{children}
-				{/* {isSelected && <span className={styles.marker} />} */}
-			</span>
+			{children}
 		</li>
 	),
 );
@@ -37,4 +20,5 @@ const ListItem = forwardRef<HTMLLIElement, PropsWithChildren<ListItemProps>>(
 ListItem.displayName = 'ListItem';
 
 export default ListItem;
+
 export type { ListItemProps };

@@ -1,23 +1,24 @@
-import React from 'react';
-import { format as formatDate, isValid } from 'date-fns';
+import React, { PropsWithChildren } from 'react';
+import { format } from 'date-fns';
 import classNames from 'classnames';
 import styles from './DateFormat.module.css';
 
 export type DateFormatProps = {
 	value: string | Date;
 	template?: string;
+	children: string;
 	className?: string;
 };
 
-const DEFAULT_DATE_TEMPLATE = 'MM/dd/yy';
+export const DEFAULT_DATE_TEMPLATE = 'MM/dd/yy';
 
 const DateFormat = ({
-	value,
 	template,
+	children,
 	className,
-}: DateFormatProps): JSX.Element => (
+}: PropsWithChildren<DateFormatProps>): JSX.Element => (
 	<time className={classNames(styles.root, className)}>
-		{formatDate(value, template || DEFAULT_DATE_TEMPLATE)}
+		{format(children, template || DEFAULT_DATE_TEMPLATE)}
 	</time>
 );
 
