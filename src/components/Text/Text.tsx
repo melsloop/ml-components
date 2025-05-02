@@ -1,28 +1,74 @@
 import React, { PropsWithChildren } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import c from 'classnames';
-import styles from './Text.module.scss';
+import classNames from 'classnames';
+import styles from './Text.module.css';
 
-// type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-// type SubtitleVariant = 'subtitle1' | 'subtitle2' | 'subtitle3' | 'subtitle4';
-// type TextVariant = 'body1' | 'body2';
+export type TextAlign = 'left' | 'center' | 'right';
 
-export interface TextProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+export type HeadingVariant =
+	| 'title'
+	| 'subtitle1'
+	| 'subtitle2'
+	| 'subtitle3'
+	| 'subtitle4'
+	| 'subtitle5';
+
+export type TextVariant =
+	| 'title'
+	| 'subtitle1'
+	| 'subtitle2'
+	| 'subtitle3'
+	| 'subtitle4'
+	| 'subtitle5'
+	| 'body1'
+	| 'body2';
+
+export const headingVariants: HeadingVariant[] = [
+	'title',
+	'subtitle1',
+	'subtitle2',
+	'subtitle3',
+	'subtitle4',
+	'subtitle5',
+];
+
+export const textVariants: TextVariant[] = ['body1', 'body2'];
+
+export interface TextProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLSpanElement>,
+		HTMLSpanElement
+	> {
 	asChild?: boolean;
-	variant?: string; //TextVariant | HeadingVariant | SubtitleVariant;
-	italics?: boolean;
-	weight?: number;
-	locale?: string;
+	variant?: TextVariant | HeadingVariant;
+	textAlign?: TextAlign;
+	fullWidth?: boolean;
 	className?: string;
 }
 
-const Text = ({ asChild, variant, children, className }: PropsWithChildren<TextProps>) => {
+const Text = ({
+	asChild,
+	variant,
+	textAlign,
+	fullWidth,
+	children,
+	className,
+	...rest
+}: PropsWithChildren<TextProps>) => {
 	const Comp = asChild ? Slot : 'span';
 
 	return (
 		<Comp
-			data-variant={variant}
-			className={c(styles.root, className)}
+			className={classNames(
+				styles.root,
+				styles[variant as string],
+				styles[`text-align-${textAlign}`],
+				className,
+				{
+					[styles.fullWidth]: fullWidth,
+				},
+			)}
+			{...rest}
 		>
 			{children}
 		</Comp>
@@ -30,4 +76,3 @@ const Text = ({ asChild, variant, children, className }: PropsWithChildren<TextP
 };
 
 export default Text;
-// export type { TextProps, TextVariant, HeadingVariant, SubtitleVariant };

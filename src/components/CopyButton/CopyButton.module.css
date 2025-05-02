@@ -1,0 +1,50 @@
+.root {
+	--ml-copy-button-cursor: pointer;
+	--ml-copy-button-icon-size: 1em;
+
+	--ml-button-padding-horizontal: 0;
+	--ml-button-text-color: var(--ml-copy-button-icon-color);
+
+	--ml-icon-size: var(--ml-copy-button-icon-size);
+
+	cursor: var(--ml-copy-button-cursor);
+	width: var(--ml-copy-button-icon-size);
+	height: var(--ml-copy-button-icon-size);
+
+	padding: 0;
+}
+
+.highlight {
+	--ml-copy-button-cursor: default;
+	display: flex;
+}
+
+.iconWrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.icon {
+	position: absolute;
+	transition: opacity 125ms ease-in-out;
+	color: var(--ml-copy-button-icon-color);
+}
+
+.copyIcon {
+	opacity: 1;
+}
+
+.checkIcon {
+	opacity: 0;
+	--ml-copy-button-icon-color: var(--ml-color-success-main);
+}
+
+.highlight .copyIcon {
+	opacity: 0;
+}
+
+.highlight .checkIcon {
+	opacity: 1;
+	display: flex;
+}

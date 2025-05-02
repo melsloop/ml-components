@@ -1,0 +1,13 @@
+.root {
+	--ml-strip-background-color: #808080;
+	--ml-strip-height: 6px;
+
+	background: var(--ml-strip-background-color);
+	height: var(--ml-strip-height);
+	background: linear-gradient(
+		90deg,
+		var(--ml-color-secondary-light) 0%,
+		var(--ml-color-secondary-main) 50%,
+		var(--ml-color-secondary-dark) 100%
+	);
+}

@@ -1,0 +1,12 @@
+.root {
+	display: inline-flex;
+}
+
+.selected {
+	border: 2px solid red;
+}
+
+,
+.button[data-selected='true'] {
+	background-color: red;
+}

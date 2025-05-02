@@ -1,0 +1,198 @@
+.root {
+	--ml-table-border-size: var(--ml-border-xs);
+	--ml-table-border-color: var(--ml-color-surface-main);
+	--ml-table-border-style: solid;
+	--ml-table-grid-color: var(--ml-table-border-color);
+	--ml-table-cell-width: 8em;
+	--ml-table-cell-text-align: right;
+	--ml-table-cell-vertical-align: center;
+
+	font-size: var(--ml-table-size);
+}
+
+.root.fullWidth {
+	width: 100%;
+	display: block;
+}
+.root.fullWidth .wrapper,
+.root.fullWidth .table {
+	width: 100%;
+}
+
+.wrapper {
+	display: inline-block;
+	margin: 0 auto;
+	box-shadow: var(--ml-table-shadow);
+	border-radius: var(--ml-table-radius);
+}
+
+/* reset */
+.table {
+	border-spacing: 0;
+}
+
+.table tr:last-child tr,
+.table tr:last-child td {
+	border-bottom: none;
+}
+
+/* cell style */
+.table td,
+.table th {
+	padding-top: var(--ml-table-spacing-vertical);
+	padding-bottom: var(--ml-table-spacing-vertical);
+	padding-left: var(--ml-table-spacing-horizontal);
+	padding-right: var(--ml-table-spacing-horizontal);
+}
+
+.table th {
+	text-align: var(--ml-table-head-text-align);
+	min-width: var(--ml-table-cell-width);
+	width: auto;
+}
+.table td {
+	text-align: var(--ml-table-cell-text-align);
+	vertical-align: var(--ml-table-cell-vertical-align);
+	width: var(--ml-table-cell-width);
+}
+
+.table th,
+.table td {
+	border-bottom-width: var(--ml-table-border-size);
+	border-bottom-style: var(--ml-table-border-style);
+	border-bottom-color: var(--ml-table-grid-color);
+}
+
+.table th:not(:last-child),
+.table td:not(:last-child) {
+	border-bottom-width: var(--ml-table-border-size);
+	border-bottom-style: var(--ml-table-border-style);
+	border-bottom-color: var(--ml-table-grid-color);
+	border-right-width: var(--ml-table-border-size);
+	border-right-style: var(--ml-table-border-style);
+	border-right-color: var(--ml-table-grid-color);
+}
+
+/* text alignment */
+.text-align-left {
+	--ml-table-cell-text-align: left;
+}
+.text-align-right {
+	--ml-table-cell-text-align: right;
+}
+.text-align-center {
+	--ml-table-cell-text-align: center;
+}
+
+/* vertical align */
+.vertical-align-top {
+	--ml-table-cell-vertical-align: top;
+}
+.vertical-align-center {
+	--ml-table-cell-vertical-align: middle;
+}
+.vertical-align-bottom {
+	--ml-table-cell-vertical-align: bottom;
+}
+
+.root td[data-empty] {
+	/* width: 200px; */
+}
+
+/* size */
+.size-xs {
+	--ml-table-size: var(--ml-size-xs);
+}
+.size-sm {
+	--ml-table-size: var(--ml-size-sm);
+}
+.size-md {
+	--ml-table-size: var(--ml-size-md);
+}
+.size-lg {
+	--ml-table-size: var(--ml-size-lg);
+}
+.size-xl {
+	--ml-table-size: var(--ml-size-xl);
+}
+.size-xxl {
+	--ml-table-size: var(--ml-size-xxl);
+}
+
+/* shadow */
+.shadow-sm {
+	--ml-table-shadow: var(--ml-shadow-sm);
+}
+.shadow-md {
+	--ml-table-shadow: var(--ml-shadow-md);
+}
+.shadow-lg {
+	--ml-table-shadow: var(--ml-shadow-lg);
+}
+
+/* radius */
+.radius-sm {
+	--ml-table-radius: var(--ml-radius-sm);
+}
+.radius-md {
+	--ml-table-radius: var(--ml-radius-md);
+}
+.radius-lg {
+	--ml-table-radius: var(--ml-radius-lg);
+}
+
+/* spacing */
+.spacing-horizontal-xs {
+	--ml-table-spacing-horizontal: var(--ml-spacing-xs);
+}
+.spacing-horizontal-sm {
+	--ml-table-spacing-horizontal: var(--ml-spacing-sm);
+}
+.spacing-horizontal-md {
+	--ml-table-spacing-horizontal: var(--ml-spacing-md);
+}
+.spacing-horizontal-lg {
+	--ml-table-spacing-horizontal: var(--ml-spacing-lg);
+}
+.spacing-horizontal-xl {
+	--ml-table-spacing-horizontal: var(--ml-spacing-xl);
+}
+
+.spacing-vertical-xs {
+	--ml-table-spacing-vertical: var(--ml-spacing-xs);
+}
+.spacing-vertical-sm {
+	--ml-table-spacing-vertical: var(--ml-spacing-sm);
+}
+.spacing-vertical-md {
+	--ml-table-spacing-vertical: var(--ml-spacing-md);
+}
+.spacing-vertical-lg {
+	--ml-table-spacing-vertical: var(--ml-spacing-lg);
+}
+.spacing-vertical-xl {
+	--ml-table-spacing-vertical: var(--ml-spacing-xl);
+}
+
+.bordered .wrapper {
+	/* top */
+	border-top-width: var(--ml-table-border-size);
+	border-top-style: var(--ml-table-border-style);
+	border-top-color: var(--ml-table-border-color);
+	/* bottom */
+	border-bottom-width: var(--ml-table-border-size);
+	border-bottom-style: var(--ml-table-border-style);
+	border-bottom-color: var(--ml-table-border-color);
+	/* right */
+	border-right-width: var(--ml-table-border-size);
+	border-right-style: var(--ml-table-border-style);
+	border-right-color: var(--ml-table-border-color);
+	/* left */
+	border-left-width: var(--ml-table-border-size);
+	border-left-style: var(--ml-table-border-style);
+	border-left-color: var(--ml-table-border-color);
+}
+
+.hidegGridLines {
+	--ml-table-grid-color: transparent;
+}

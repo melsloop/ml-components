@@ -1,44 +1,116 @@
-import React, { PropsWithChildren, SyntheticEvent } from 'react';
-import { Slot } from '@radix-ui/react-slot';
-import c from 'classnames';
-import styles from './Button.module.scss';
+import type { ComponentSize, RadiusSize, ShadowSize } from '../../theme/types';
 
-export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
+import React, {
+	cloneElement,
+	forwardRef,
+	isValidElement,
+	useMemo,
+	type PropsWithChildren,
+	type SyntheticEvent,
+} from 'react';
+import { Slot } from 'radix-ui';
+import styles from './Button.module.css';
+import classNames from 'classnames';
+import { WithDataAttributes } from '../types';
+
+export type ButtonProps = {
+	variant?: 'contained' | 'outline' | 'ghost';
+	mode?: 'primary' | 'secondary';
+	size?: ComponentSize;
+	shadow?: ShadowSize;
+	radius?: RadiusSize;
+	fullWidth?: boolean;
 	title?: string;
-	asChild?: boolean;
 	disabled?: boolean;
-  label?: string;
-	onClick?: (e: SyntheticEvent | string | number | boolean) => void;
-	type?: 'submit';
-  ref?: React.RefObject<HTMLButtonElement>;
+	type?: 'button' | 'submit' | 'reset' | 'radio';
+	asChild?: boolean;
+	onClick?: (e: SyntheticEvent<HTMLButtonElement | MouseEvent>) => void;
 	className?: string;
-}
-
-const Button = ({
-	asChild,
-	disabled,
-	children,
-  label,
-	className,
-	title,
-	onClick,
-  ref,
-	...props
-}: PropsWithChildren<ButtonProps>) => {
-	const Comp = asChild && typeof children !== 'string' ? Slot : 'button';
-
-	return (
-		<Comp
-      ref={ref}
-			className={c(styles.root, className)}
-			onClick={(e: SyntheticEvent) => onClick?.(e)}
-			disabled={disabled}
-			title={title}
-			{...props}
-		>
-			{children || label}
-		</Comp>
-	);
 };
+
+const Button = forwardRef<
+	HTMLButtonElement,
+	PropsWithChildren<
+		ButtonProps &
+			React.DetailedHTMLProps<
+				React.ButtonHTMLAttributes<HTMLButtonElement>,
+				HTMLButtonElement
+			>
+	>
+>(
+	(
+		{
+			asChild,
+			size,
+			shadow,
+			radius,
+			fullWidth,
+			variant,
+			mode,
+			disabled,
+			children,
+			className,
+			title,
+			type,
+			onClick,
+			...rest
+		},
+		ref,
+	): JSX.Element => {
+		const Comp = asChild ? Slot.Root : 'button';
+
+		const customChildren = useMemo(
+			() =>
+				React.Children.map(children, (child) => {
+					if (isValidElement(child)) {
+						return cloneElement(
+							child as React.ReactElement<WithDataAttributes<ButtonProps>>,
+							{
+								...child.props,
+								role: 'button',
+								className: classNames(child.props.className, styles.textColor),
+							},
+						);
+					}
+					return child;
+				}),
+			[children],
+		);
+
+		return (
+			<Comp
+				disabled={disabled}
+				title={title}
+				type={type}
+				ref={ref}
+				role="button"
+				className={classNames(
+					styles.root,
+					styles.textColor,
+					styles[`size-${size}`],
+					styles[`radius-${radius}`],
+					styles[`shadow-${shadow}`],
+					{
+						[styles.fullWidth]: fullWidth,
+						[styles.contained]: variant === 'contained',
+						[styles.outline]: variant === 'outline',
+						[styles.ghost]: variant === 'ghost',
+						[styles.primary]: mode === 'primary',
+						[styles.secondary]: mode === 'secondary',
+					},
+					className,
+				)}
+				onClick={(e: SyntheticEvent<HTMLButtonElement | MouseEvent>) =>
+					onClick?.(e)
+				}
+				{...rest}
+			>
+				<>{customChildren}</>
+			</Comp>
+		);
+	},
+);
+
+Button.displayName = 'Button';
 
 export default Button;

@@ -1,0 +1,86 @@
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+.root {
+	--ml-loading-indicator-size: 24px;
+	--ml-loading-indicator-height: 20em;
+	--ml-loading-indicator-label-margin: 1em;
+	--ml-loading-indicator-animation-duration: 2s;
+	--ml-loading-indicator-animation-easing: linear;
+
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	opacity: 1;
+	transition: 200ms all ease-in;
+}
+
+.root[data-visible='false'] {
+	opacity: 0;
+}
+
+.spinner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: none;
+	color: var(--ml-color-primary-contrast);
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	animation-duration: 2000ms;
+	animation-iteration-count: infinite;
+}
+
+.root[data-animation='rotation'] .spinner {
+	animation-name: rotation;
+}
+
+.root[data-animation-timing-function='linear'] .spinner {
+	animation-timing-function: linear;
+}
+
+.root[data-animation-timing-function='ease-in'] .spinner {
+	animation-timing-function: ease-in;
+}
+
+.root[data-animation-timing-function='ease-out'] .spinner {
+	animation-timing-function: ease-in;
+}
+
+.root[data-animation-timing-function='ease-in-out'] .spinner {
+	animation-timing-function: ease-in-out;
+}
+
+.spinner svg {
+	color: var(--ml-color-primary-contrast);
+}
+
+/* .spinner {
+	animation: rotation;
+	animation-duration: var(--ml-loading-indicator-duration);
+	animation-timing-function: var(--ml-loading-indicator-easing);
+	height: var(--ml-loading-indicator-size);
+	width: var(--ml-loading-indicator-size);
+	border-width: var(--ml-loading-indicator-border-size);
+	border-style: var(--ml-loading-indicator-border-style);
+	border-color: var(--ml-loading-indicator-border-color);
+	background-color: var(--ml-loading-indicator-background-color);
+	content: 'x';
+	border-radius: 50%;
+	animation-iteration-count: infinite;
+} */
+
+.label {
+	/* --margin-top: var(--label-margin); */
+	display: block;
+	margin-top: var(--ml-loading-indicator-margin-top);
+	margin-bottom: var(--ml-loading-indicator-margin-bottom);
+}

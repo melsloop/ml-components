@@ -1,0 +1,6 @@
+.root {
+	--ml-paragraph-spacing: 1em;
+
+	margin-bottom: var(--ml-paragraph-spacing);
+	display: block;
+}

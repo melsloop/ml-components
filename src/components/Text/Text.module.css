@@ -1,0 +1,65 @@
+.root {
+	--ml-text-size: var(--size);
+	--ml-text-align: var(--text-align);
+	--ml-text-spacing: 0;
+	--ml-text-style: none;
+	--ml-text-text-color: var(--ml-color-surface-contrast);
+	--ml-text-line-height: var(--ml-font-font1-line-height, 1.5em);
+	--ml-text-font-family: var(--ml-font-font1-family);
+
+	font-family: var(--ml-text-font-family);
+	color: var(--ml-text-text-color);
+	line-height: var(--ml-text-line-height);
+	letter-spacing: var(--ml-text-spacing);
+	text-align: var(--ml-text-align);
+	font-style: var(--ml-text-style);
+	font-size: var(--ml-text-size);
+}
+
+/* full-width */
+.fullWidth {
+	display: block;
+}
+
+/* text-align */
+.text-align-left {
+	--text-align: left;
+}
+.text-align-right {
+	--text-align: right;
+}
+.text-align-center {
+	--text-align: center;
+}
+
+/* variants */
+.text {
+	/* display: block; */
+}
+
+.title {
+	--size: 2.5em;
+}
+.subtitle1 {
+	--size: 2em;
+}
+.subtitle2 {
+	--size: 1.75em;
+}
+.subtitle3 {
+	--size: 1.5em;
+}
+.subtitle4 {
+	--size: 1.25em;
+}
+.subtitle5 {
+	--size: 1em;
+}
+
+/* running text variants */
+.body1 {
+	--size: 1em;
+}
+.body2 {
+	--size: 0.85em;
+}

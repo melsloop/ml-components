@@ -1,0 +1,21 @@
+.root {
+	--ml-label-spacing: var(--ml-spacing-xs);
+	--ml-label-required-indicator-spacing: var(--ml-spacing-xs);
+	--ml-label-required-indicator-gap: var(--ml-spacing-lg);
+	--ml-label-required-indicator-content: '*';
+	--ml-label-size: 14px;
+
+	display: flex;
+	padding-bottom: var(--ml-label-spacing);
+}
+
+.label {
+	display: block;
+	cursor: var(--ml-label-cursor);
+	font-size: var(--ml-label-size);
+}
+
+.requiredIndicator::before {
+	margin-inline-start: var(--ml-label-required-indicator-spacing);
+	content: var(--ml-label-required-indicator-content);
+}

@@ -1,0 +1,118 @@
+.root {
+	--ml-figure-border-width: var(--ml-border-xs);
+	--ml-figure-border-color: var(--ml-color-surface-main);
+	--ml-figure-border-style: solid;
+	--ml-figure-border-radius: 0;
+	--ml-figure-font-family: var(--ml-font-font1-family);
+	/* --ml-figure-caption-font-family: var(--ml-figure-font-family); */
+	/* --ml-figure-caption-font-size: var(--ml-figure-size); */
+	/* --ml-figure-caption-text-color: inherit; */
+	/* --ml-figure-caption-font-weight: inherit; */
+
+	/* display: inline-block;
+	justify-content: center;
+	box-sizing: border-box;
+	flex-direction: column; */
+	/* font-family: var(--ml-figure-font-family); */
+
+	border-radius: var(--ml-figure-radius);
+	padding: var(--ml-figure-spacing);
+	font-size: var(--ml-figure-size);
+}
+
+.root img {
+	max-width: 100%;
+}
+
+.root .figure {
+	margin: 0;
+	/* padding: 0; */
+	box-sizing: border-box;
+}
+
+.root .caption {
+	display: block;
+	font-size: 0.85em;
+	margin-top: 0.5em;
+	/* font-weight: var(--ml-figure-caption-font-weight); */
+	/* color: var(--ml-figure-caption-text-color); */
+}
+
+/* size */
+.size-xs {
+	--ml-figure-size: var(--ml-size-xs);
+}
+.size-sm {
+	--ml-figure-size: var(--ml-size-sm);
+}
+.size-md {
+	--ml-figure-size: var(--ml-size-md);
+}
+.size-lg {
+	--ml-figure-size: var(--ml-size-lg);
+}
+.size-xl {
+	--ml-figure-size: var(--ml-size-xl);
+}
+.size-xxl {
+	--ml-figure-size: var(--ml-size-xxl);
+}
+
+/* shadow */
+.shadow-sm {
+	--ml-figure-shadow: var(--ml-shadow-sm);
+}
+.shadow-md {
+	--ml-figure-shadow: var(--ml-shadow-md);
+}
+.shadow-lg {
+	--ml-figure-shadow: var(--ml-shadow-lg);
+}
+
+/* radius */
+.radius-sm {
+	--ml-figure-radius: var(--ml-radius-sm);
+}
+.radius-md {
+	--ml-figure-radius: var(--ml-radius-md);
+}
+.radius-lg {
+	--ml-figure-radius: var(--ml-radius-lg);
+}
+
+/* spacing */
+.spacing-xs {
+	--ml-figure-spacing: var(--ml-spacing-xs);
+}
+.spacing-sm {
+	--ml-figure-spacing: var(--ml-spacing-sm);
+}
+.spacing-md {
+	--ml-figure-spacing: var(--ml-spacing-md);
+}
+.spacing-lg {
+	--ml-figure-spacing: var(--ml-spacing-lg);
+}
+.spacing-xl {
+	--ml-figure-spacing: var(--ml-spacing-xl);
+}
+
+/* bordered */
+.bordered {
+	border: var(--ml-figure-border-width) var(--ml-figure-border-style)
+		var(--ml-figure-border-color);
+}
+
+/* full-width */
+.fullWidth {
+	display: block;
+	width: var(--ml-figure-full-width);
+}
+
+/* variant: codeblock - TODO: implement on client side as theme overrides */
+/* .root[data-variant='codeblock'] {
+	border: none;
+	margin: 0;
+	padding-right: 0;
+	padding-left: 0;
+} */

@@ -1,0 +1,11 @@
+.root {
+}
+
+.revealButton {
+	cursor: pointer;
+	display: flex;
+}
+
+.icon {
+	--ml-icon-size: 1em;
+}

@@ -1,0 +1,7 @@
+.root {
+	--ml-heading-margin: 2em;
+
+	font-size: unset;
+	font-weight: unset;
+	margin: 0 0 var(--ml-heading-margin);
+}

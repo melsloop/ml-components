@@ -1,0 +1,42 @@
+.root {
+	--ml-blockquote-border-style: solid;
+	--ml-blockquote-border-width: var(--ml-border-lg);
+	--ml-blockquote-border-color: var(--ml-color-surface-dark);
+	--ml-blockquote-radius: 0;
+	--ml-blockquote-spacing: var(--ml-spacing-md);
+	--ml-blockquote-cite-style: var(--ml-link-text-style, normal);
+	--ml-blockquote-cite-spacing: 1em;
+	--ml-blockquote-cite-decoration: '–';
+	--ml-blockquote-cite-decoration-margin: var(--ml-spacing-sm);
+
+	display: block;
+}
+
+.quote {
+	margin: 0;
+}
+
+.content {
+	display: block;
+	border-inline-start-style: var(--ml-blockquote-border-style);
+	border-inline-start-width: var(--ml-blockquote-border-width);
+	border-inline-start-color: var(--ml-blockquote-border-color);
+	border-inline-start-radius: var(--ml-blockquote-radius);
+	padding: 0 var(--ml-blockquote-spacing);
+}
+
+.content * {
+	display: block;
+	margin: 0;
+}
+
+.cite {
+	display: block;
+	margin-top: var(--ml-blockquote-cite-spacing);
+	font-style: var(--ml-blockquote-cite-style);
+}
+
+.citeContent::before {
+	content: var(--ml-blockquote-cite-decoration);
+	margin-inline-end: var(--ml-blockquote-cite-decoration-margin);
+}

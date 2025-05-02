@@ -1,0 +1,26 @@
+[data-ml-theme='dark'] {
+	--ml-theme-color-surface-main: var(--ml-global-color-level2-main);
+	--ml-theme-color-surface-light: var(--ml-global-color-level1-main);
+	--ml-theme-color-surface-dark: var(--ml-global-color-level4-main);
+	--ml-theme-color-surface-mid: var(--ml-global-color-level3-main);
+	--ml-theme-color-surface-body: var(--ml-global-color-level6-main);
+	--ml-theme-color-surface-alt: var(--ml-global-color-level7-main);
+	--ml-theme-color-surface-mask: var(--ml-global-color-level5-main);
+	--ml-theme-color-surface-contrast: var(--ml-global-color-level8-main);
+	--ml-theme-color-primary-main: var(--ml-global-color-accent1-main);
+	--ml-theme-color-primary-light: var(--ml-global-color-accent2-light);
+	--ml-theme-color-primary-dark: var(--ml-global-color-accent3-dark);
+	--ml-theme-color-primary-contrast: var(--ml-global-color-accent3-contrast);
+	--ml-theme-color-secondary-main: var(--ml-global-color-primary2-main);
+	--ml-theme-color-secondary-light: var(--ml-global-color-primary3-light);
+	--ml-theme-color-secondary-dark: var(--ml-global-color-primary1-dark);
+	--ml-theme-color-secondary-contrast: var(--ml-global-color-primary1-contrast);
+	--ml-theme-color-error-main: var(--ml-global-color-error1-main);
+	--ml-theme-color-error-light: var(--ml-global-color-error1-light);
+	--ml-theme-color-error-dark: var(--ml-global-color-error1-dark);
+	--ml-theme-color-error-contrast: var(--ml-global-color-error1-contrast);
+	--ml-theme-color-success-main: var(--ml-global-color-success-main);
+	--ml-theme-color-success-light: var(--ml-global-color-success-light);
+	--ml-theme-color-success-dark: var(--ml-global-color-success-dark);
+	--ml-theme-color-success-contrast: var(--ml-global-color-success-contrast);
+}

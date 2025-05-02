@@ -1,0 +1,10 @@
+.root {
+	display: inline-flex;
+	align-items: center;
+}
+
+.input {
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}

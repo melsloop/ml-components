@@ -1,0 +1,20 @@
+import React, { PropsWithChildren } from 'react';
+import styles from './PopoverDialog.module.css';
+import classnames from 'classnames';
+
+export interface PopoverDialogProps
+	extends React.DetailedHTMLProps<
+		React.HTMLAttributes<HTMLDivElement>,
+		HTMLDivElement
+	> {
+	className?: string;
+}
+
+const PopoverDialog = ({
+	className,
+	children,
+}: PropsWithChildren<PopoverDialogProps>) => {
+	return <div className={classnames(styles.root, className)}>{children}</div>;
+};
+
+export default PopoverDialog;

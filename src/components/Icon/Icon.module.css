@@ -1,0 +1,8 @@
+.root {
+	display: inline-flex;
+}
+
+.icon {
+	width: var(--ml-icon-size);
+	color: var(--ml-icon-color);
+}

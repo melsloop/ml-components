@@ -1,0 +1,7 @@
+.root {
+	font-size: var(--ml-text-field-size);
+}
+
+.inputElement {
+	min-height: 6em;
+}

@@ -1,0 +1,16 @@
+.root {
+	--ml-text-field-input-spacing: var(--ml-spacing-xs);
+	font-family: var(--ml-font-font1-family);
+}
+
+.input [data-slot='prefix'] {
+	order: -1;
+}
+
+.input {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--ml-text-field-input-spacing);
+	width: 100%;
+}

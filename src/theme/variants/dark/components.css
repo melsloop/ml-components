@@ -1,0 +1,4 @@
+[data-ml-theme='dark'] {
+	--ml-button-background-color: var(--ml-theme-color-primary-main);
+	--ml-button-radius: 6px;
+}
