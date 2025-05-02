@@ -1,68 +1,29 @@
-import React, { PropsWithChildren } from 'react';
-import FormField, {
-	type InputBaseProps,
-	type InputMessages,
-	type TextInputProps,
-} from '../Form/FormField/FormField';
+import React, { PropsWithChildren, forwardRef } from 'react';
+import FormField from '../Form/FormField/FormField';
 import { TextArea as TextAreaPrimitive } from '@radix-ui/themes';
 import classNames from 'classnames';
 import styles from './TextArea.module.css';
-import type { ComponentSize } from '../../theme/types';
+import { InputProps } from '../Form/types';
 
-type TextAreaProps = InputBaseProps &
-	InputMessages &
-	TextInputProps & {
-		size?: ComponentSize;
-		type?:
-			| 'date'
-			| 'datetime-local'
-			| 'email'
-			| 'hidden'
-			| 'month'
-			| 'number'
-			| 'password'
-			| 'search'
-			| 'tel'
-			| 'text'
-			| 'time'
-			| 'url'
-			| 'week';
-	};
+type TextAreaProps = InputProps;
 
-const TextArea = ({
-	name = '',
-	type = 'text',
-	label,
-	placeholder,
-	required,
-	disabled,
-	readOnly,
-	messageValueMissing,
-	messageTypeMismatch,
-	size,
-	children,
-	className,
-}: PropsWithChildren<TextAreaProps>) => {
+const TextArea = forwardRef<
+	HTMLTextAreaElement,
+	PropsWithChildren<TextAreaProps>
+>(({ className, ...props }, ref) => {
 	return (
 		<FormField
-			name={name}
-			label={label}
-			messageValueMissing={messageValueMissing}
-			messageTypeMismatch={messageTypeMismatch}
-			required={required}
-			size={size}
-			className={classNames(styles.root, styles[`size-${size}`], className)}
+			{...props}
+			className={classNames(styles.root, className)}
 		>
 			<TextAreaPrimitive
-				placeholder={placeholder}
-				disabled={disabled}
-				readOnly={readOnly}
-				required={required}
-				className={styles.inputWrapper}
+				resize={'both'}
+				ref={ref}
+				className={styles.inputElement}
 			></TextAreaPrimitive>
 		</FormField>
 	);
-};
+});
 
 TextArea.displayName = 'TextArea';
 

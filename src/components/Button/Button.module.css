@@ -4,7 +4,7 @@
 	--ml-button-font-family: var(--ml-font-font1-family, Tahoma);
 	--ml-button-font-weight: var(--ml-font-font1-weight-regular, 400);
 	--ml-button-gap: var(--ml-spacing-sm);
-	--ml-button-padding-horizontal: var(--ml-spacing-md, 1em);
+	--ml-button-padding-horizontal: var(--ml-spacing-sm);
 	--ml-button-border-width: var(--ml-border-sm, 2px);
 	--ml-button-border-color: var(--ml-button-background-color);
 	--ml-button-border-style: solid;
@@ -13,11 +13,10 @@
 	--ml-button-outline-style: solid;
 
 	--ml-button-min-width: 0;
-	--ml-button-min-height: 2.5em;
 
-	cursor: pointer;
+	/* cursor: pointer;
 	cursor: -webkit-pointer;
-	cursor: -moz-pointer;
+	cursor: -moz-pointer; */
 
 	display: inline-flex;
 	align-items: center;
@@ -96,10 +95,17 @@
 
 /* variants */
 .contained {
+	--ml-button-min-height: 2.5em;
 	background-color: var(--ml-button-background-color);
 }
 .outline {
+	--ml-button-min-height: 2.5em;
 	background-color: transparent;
+}
+.ghost {
+	--ml-button-text-color: var(--ml-color-primary-contrast);
+	--ml-button-border-color: transparent;
+	background-color: auto;
 }
 
 /* modes */

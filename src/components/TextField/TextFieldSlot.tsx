@@ -7,6 +7,7 @@ const TextFieldSlot = ({
 	slot,
 	children,
 	className,
+	...rest
 }: PropsWithChildren<{ slot?: string; className?: string }>) => (
 	<TextFieldPrimitive.Slot
 		data-slot={slot}
@@ -18,6 +19,7 @@ const TextFieldSlot = ({
 			},
 			className,
 		)}
+		{...rest}
 	>
 		{children}
 	</TextFieldPrimitive.Slot>

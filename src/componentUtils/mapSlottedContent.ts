@@ -3,7 +3,7 @@ import React, { Children, cloneElement, isValidElement } from 'react';
 export const mapSlottedContent = (
 	slotName: string,
 	children: React.ReactNode,
-	props: Record<string, string>,
+	props: Record<string, unknown>,
 ) => {
 	return Children.map(children, (child) => {
 		if (
@@ -13,8 +13,8 @@ export const mapSlottedContent = (
 			child.type.displayName === slotName
 		) {
 			return cloneElement(child, {
-				...child.props,
 				...props,
+				...child.props,
 			});
 		}
 		return child;

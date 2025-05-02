@@ -49,6 +49,9 @@ const color = {
 	error: {
 		main: '#c00',
 	},
+	success: {
+		main: '#0a0',
+	},
 };
 
 const font = {

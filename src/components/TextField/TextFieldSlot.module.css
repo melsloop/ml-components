@@ -4,9 +4,9 @@
 }
 
 .prefix {
-	margin-inline-start: var(--ml-text-field-slot-spacing);
+	/* margin-inline-end: var(--ml-text-field-slot-spacing); */
 }
 
 .suffix {
-	margin-inline-end: var(--ml-text-field-slot-spacing);
+	/* margin-inline-end: var(--ml-text-field-slot-spacing); */
 }

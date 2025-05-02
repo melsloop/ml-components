@@ -5,8 +5,17 @@ import classNames from 'classnames';
 import styles from './PasswordField.module.css';
 import type { InputProps } from '../Form/types';
 
-const PasswordField = ({ autocomplete, className, ...props }: InputProps) => {
-	const [reveal, setReveal] = useState(false);
+type PasswordFieldProps = {
+	initialVisibility?: boolean;
+} & InputProps;
+
+const PasswordField = ({
+	autoComplete,
+	initialVisibility = false,
+	className,
+	...props
+}: PasswordFieldProps) => {
+	const [reveal, setReveal] = useState(initialVisibility);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const setSelectionRange = useCallback(() => {
@@ -27,7 +36,7 @@ const PasswordField = ({ autocomplete, className, ...props }: InputProps) => {
 		<TextField
 			{...props}
 			type={reveal ? 'text' : 'password'}
-			autoComplete={autocomplete}
+			autoComplete={autoComplete}
 			customInputRef={inputRef}
 			className={classNames(styles.root, className)}
 		>

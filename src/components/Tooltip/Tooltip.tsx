@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useMemo } from 'react';
-import classNames from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import classNames from 'classnames';
 import styles from './Tooltip.module.css';
 
 export interface TooltipProps
@@ -10,6 +10,7 @@ export interface TooltipProps
 	> {
 	tooltipText?: string;
 	sideOffset?: number;
+	side?: 'top' | 'right' | 'bottom' | 'left';
 	opened?: boolean;
 	disableHoverableContent?: boolean;
 	onOpenChange?: (open: boolean) => void;
@@ -19,6 +20,7 @@ export interface TooltipProps
 
 const Tooltip = ({
 	tooltipText,
+	side,
 	sideOffset,
 	delayDuration = 0,
 	opened,
@@ -32,6 +34,7 @@ const Tooltip = ({
 			<TooltipPrimitive.Portal>
 				<TooltipPrimitive.Content
 					className={styles.content}
+					side={side}
 					sideOffset={sideOffset}
 				>
 					{tooltipText}
@@ -39,20 +42,20 @@ const Tooltip = ({
 				</TooltipPrimitive.Content>
 			</TooltipPrimitive.Portal>
 		),
-		[tooltipText, sideOffset],
+		[tooltipText, sideOffset, side, opened],
 	);
 
 	return (
 		<span className={classNames(styles.root, className)}>
 			<TooltipPrimitive.Provider>
 				<TooltipPrimitive.Root
-					defaultOpen={opened}
+					open={opened}
 					onOpenChange={onOpenChange}
 					delayDuration={delayDuration}
 					disableHoverableContent={disableHoverableContent}
 				>
 					<TooltipPrimitive.Trigger asChild>
-						<span>{children}</span>
+						<span className={styles.children}>{children}</span>
 					</TooltipPrimitive.Trigger>
 					{tooltipText ? tooltipPortal : ''}
 				</TooltipPrimitive.Root>

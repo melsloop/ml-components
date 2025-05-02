@@ -1,18 +1,14 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 import FormField from '../Form/FormField/FormField';
 import { TextField as TextFieldPrimitive } from '@radix-ui/themes';
+import TextFieldSlot from './TextFieldSlot';
+import { mapSlottedContent } from '../../componentUtils/mapSlottedContent';
 import classNames from 'classnames';
 import styles from './TextField.module.css';
 import type { InputProps } from '../Form/types';
-import TextFieldSlot from './TextFieldSlot';
-import { mapSlottedContent } from '../../componentUtils/mapSlottedContent';
 
 type TextFieldProps = InputProps & {
-	autocomplete?: string;
-	customInputClassname?: string;
-	onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
-	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	value?: string | number;
 	type?:
 		| 'date'
 		| 'datetime-local'
@@ -27,12 +23,15 @@ type TextFieldProps = InputProps & {
 		| 'time'
 		| 'url'
 		| 'week';
+	customInputClassname?: string;
 };
 
 const TextField = ({
 	type = 'text',
 	customInputClassname,
 	children,
+	readOnly,
+	value,
 	className,
 	onInput,
 	onFocus,
@@ -54,6 +53,7 @@ const TextField = ({
 		>
 			<TextFieldPrimitive.Root
 				type={type}
+				value={readOnly ? value || '' : undefined}
 				className={classNames(styles.input, customInputClassname)}
 				onInput={onInput}
 				onFocus={onFocus}

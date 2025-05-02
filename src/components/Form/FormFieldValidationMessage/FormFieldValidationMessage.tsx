@@ -2,22 +2,22 @@ import React from 'react';
 import FormMessage from '../FormMessage';
 import classNames from 'classnames';
 import styles from './FormFieldValidationMessage.module.css';
-import { InputMessages } from '../types';
+import type { InputValidationMessages } from '../types';
 
-type FormFieldValidationMessageProps = InputMessages & {
+type FormFieldValidationMessageProps = {
 	validity?: ValidityState;
 	className?: string;
-};
+} & InputValidationMessages;
 
 const FormFieldValidationMessage = ({
-	messageValueMissing,
+	messageValueMissing = 'Required',
 	messageTypeMismatch,
 	messageTooShort,
 	messageTooLong,
 	messageBadInput,
 	messageRangeOverflow,
 	messageRangeUnderflow,
-	messageRangeCustomError,
+	messageCustomError,
 	validity,
 	className,
 }: FormFieldValidationMessageProps) => {
@@ -42,7 +42,7 @@ const FormFieldValidationMessage = ({
 	} else if (validity.rangeUnderflow) {
 		message = messageRangeUnderflow;
 	} else if (validity.customError) {
-		message = messageRangeCustomError;
+		message = messageCustomError;
 	}
 
 	return (

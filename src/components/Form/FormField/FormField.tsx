@@ -22,17 +22,8 @@ type FormFieldProps = InputProps & {
 const FormField = ({
 	name = '',
 	label,
-	messageValueMissing,
-	messageTypeMismatch,
-	messageTooShort,
-	messageTooLong,
-	messageBadInput,
-	messageRangeOverflow,
-	messageRangeUnderflow,
-	messageRangeCustomError,
 	size,
 	radius,
-	bordered,
 	required,
 	disabled,
 	readOnly,
@@ -44,6 +35,14 @@ const FormField = ({
 	children,
 	customInputRef,
 	className,
+	messageValueMissing,
+	messageTypeMismatch,
+	messageTooShort,
+	messageTooLong,
+	messageBadInput,
+	messageRangeOverflow,
+	messageRangeUnderflow,
+	messageCustomError,
 }: PropsWithChildren<FormFieldProps>) => {
 	const [validity, setValidity] = useState<ValidityState>(initialValidityState);
 	const [focused, setFocused] = useState(false);
@@ -104,11 +103,12 @@ const FormField = ({
 			name={name}
 			className={classNames(
 				styles.root,
+				'ml-FormFieldRoot',
 				styles[`size-${size}`],
 				styles[`radius-${radius}`],
 				{
 					[styles.fullWidth]: fullWidth,
-					[styles.bordered]: bordered,
+					[styles.disabled]: disabled,
 				},
 				className,
 			)}
@@ -119,12 +119,12 @@ const FormField = ({
 			data-hovered={hover || undefined}
 		>
 			<FormLabel
-				className={styles.label}
+				className={classNames(styles.label)}
 				isRequired={required}
 			>
 				{label}
 			</FormLabel>
-			<div className={styles.input}>
+			<div className={classNames(styles.inputWrapper, 'ml-InputWrapper')}>
 				<Form.ValidityState>{renderWithValidation}</Form.ValidityState>
 			</div>
 			<FormFieldValidationMessage
@@ -136,7 +136,7 @@ const FormField = ({
 				messageBadInput={messageBadInput}
 				messageRangeOverflow={messageRangeOverflow}
 				messageRangeUnderflow={messageRangeUnderflow}
-				messageRangeCustomError={messageRangeCustomError}
+				messageCustomError={messageCustomError}
 				className={styles.message}
 			/>
 		</Form.Field>

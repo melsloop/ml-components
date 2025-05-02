@@ -18,7 +18,7 @@ import { ComponentSize, RadiusSize } from '../../theme/types';
 export type ComponentProps = {
 	size?: ComponentSize;
 	radius?: RadiusSize;
-	bordered?: boolean;
+	// bordered?: boolean;
 	fullWidth?: boolean;
 };
 
@@ -34,7 +34,7 @@ export type InputValidationMessages = {
 	messageBadInput?: string;
 	messageRangeOverflow?: string;
 	messageRangeUnderflow?: string;
-	messageRangeCustomError?: string;
+	messageCustomError?: string;
 };
 
 export type InputBaseProps = {
@@ -48,8 +48,10 @@ export type InputBaseProps = {
 	maxLength?: number;
 	autoComplete?: string;
 	className?: string;
-	// inputRef?: RefObject<HTMLInputElement> | undefined;
 	customInputRef?: RefObject<HTMLInputElement> | undefined;
+	onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
+	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export type InputProps = ComponentProps &

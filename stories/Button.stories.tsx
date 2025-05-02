@@ -50,33 +50,19 @@ const meta = {
 export default meta;
 
 export const Default: Story = {
-	render: ({ variant, mode, size, shadow, radius, children }) => (
-		<Button
-			size={size}
-			shadow={shadow}
-			radius={radius}
-			variant={variant}
-			mode={mode}
-		>
-			{children}
-		</Button>
-	),
+	render: ({ children, ...args }) => <Button {...args}>{children}</Button>,
 };
 
 export const ButtonWithIcon: Story = {
-	render: ({ variant, mode, size, shadow, radius, children }) => {
+	render: ({ children, ...args }) => {
 		return (
-			<Button
-				size={size}
-				shadow={shadow}
-				radius={radius}
-				variant={variant}
-				mode={mode}
-			>
-				<Icon>
-					<CubeIcon />
-				</Icon>
-				{children}
+			<Button {...args}>
+				<span>
+					<Icon size={15}>
+						<CubeIcon />
+					</Icon>
+					{children}
+				</span>
 			</Button>
 		);
 	},

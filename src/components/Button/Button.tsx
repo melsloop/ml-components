@@ -8,13 +8,13 @@ import React, {
 	type PropsWithChildren,
 	type SyntheticEvent,
 } from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from 'radix-ui';
 import styles from './Button.module.css';
 import classNames from 'classnames';
 import { WithDataAttributes } from '../types';
 
 export type ButtonProps = {
-	variant?: 'contained' | 'outline';
+	variant?: 'contained' | 'outline' | 'ghost';
 	mode?: 'primary' | 'secondary';
 	size?: ComponentSize;
 	shadow?: ShadowSize;
@@ -24,7 +24,7 @@ export type ButtonProps = {
 	disabled?: boolean;
 	type?: 'button' | 'submit' | 'reset' | 'radio';
 	asChild?: boolean;
-	onClick?: (e: SyntheticEvent<HTMLButtonElement>) => void;
+	onClick?: (e: SyntheticEvent<HTMLButtonElement | MouseEvent>) => void;
 	className?: string;
 };
 
@@ -57,7 +57,8 @@ const Button = forwardRef<
 		},
 		ref,
 	): JSX.Element => {
-		const Comp = asChild ? Slot : 'button';
+		const Comp = asChild ? Slot.Root : 'button';
+
 		const customChildren = useMemo(
 			() =>
 				React.Children.map(children, (child) => {
@@ -65,7 +66,9 @@ const Button = forwardRef<
 						return cloneElement(
 							child as React.ReactElement<WithDataAttributes<ButtonProps>>,
 							{
-								className: styles.textColor,
+								...child.props,
+								role: 'button',
+								className: classNames(child.props.className, styles.textColor),
 							},
 						);
 					}
@@ -80,6 +83,7 @@ const Button = forwardRef<
 				title={title}
 				type={type}
 				ref={ref}
+				role="button"
 				className={classNames(
 					styles.root,
 					styles.textColor,
@@ -90,15 +94,18 @@ const Button = forwardRef<
 						[styles.fullWidth]: fullWidth,
 						[styles.contained]: variant === 'contained',
 						[styles.outline]: variant === 'outline',
+						[styles.ghost]: variant === 'ghost',
 						[styles.primary]: mode === 'primary',
 						[styles.secondary]: mode === 'secondary',
 					},
 					className,
 				)}
-				onClick={(e: SyntheticEvent<HTMLButtonElement>) => onClick?.(e)}
+				onClick={(e: SyntheticEvent<HTMLButtonElement | MouseEvent>) =>
+					onClick?.(e)
+				}
 				{...rest}
 			>
-				{customChildren}
+				<>{customChildren}</>
 			</Comp>
 		);
 	},

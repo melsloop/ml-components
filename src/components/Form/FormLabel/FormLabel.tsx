@@ -13,12 +13,14 @@ const FormLabel = ({
 	children,
 	className,
 }: PropsWithChildren<FormLabelProps>) => (
-	<span className={classNames(styles.root, className)}>
-		<FormPrimitive.Label>
-			{children}
-			{isRequired && <span className={styles.requiredIndicator}></span>}
-		</FormPrimitive.Label>
-	</span>
+	<FormPrimitive.Label asChild>
+		<label className={classNames(styles.root, 'ml-FormLabel', className)}>
+			<span className={styles.label}>
+				{children}
+				{isRequired && <span className={styles.requiredIndicator}></span>}
+			</span>
+		</label>
+	</FormPrimitive.Label>
 );
 
 FormLabel.displayName = 'FormLabel';

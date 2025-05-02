@@ -48,6 +48,7 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	backgroundColor?: string;
 	borderColor?: string;
 	asChild?: boolean;
+	xs?: Record<string, string>;
 	className?: string;
 }
 
@@ -69,6 +70,7 @@ const Container = ({
 	borderColor,
 	asChild,
 	className,
+	xs,
 	...rest
 }: PropsWithChildren<ContainerProps>) => {
 	const Comp = asChild ? Slot : 'div';
@@ -92,7 +94,7 @@ const Container = ({
 				},
 				className,
 			)}
-			style={{ minHeight, backgroundColor, borderColor }}
+			style={{ minHeight, backgroundColor, borderColor, ...xs }}
 			{...rest}
 		>
 			{children}

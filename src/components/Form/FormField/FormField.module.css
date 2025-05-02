@@ -5,15 +5,20 @@
 	--ml-form-field-border-color: var(--ml-color-surface-dark);
 	--ml-form-field-border-width: var(--ml-border-xs);
 	--ml-form-field-width: 15em;
+	--ml-form-field-cursor: default;
 
 	display: var(--ml-form-field-display);
-  flex-direction: column;
+	flex-direction: column;
 	font-size: var(--ml-form-field-size);
-	max-width: var(--ml-form-field-width);
+	font-size: var(--ml-form-field-size);
+	cursor: var(--ml-form-field-cursor);
+
+	--ml-label-cursor: var(--ml-form-field-cursor);
+	min-width: 15em;
 }
 
 .root[data-invalid='true'] {
-	/* --ml-form-field-border-color: var(--ml-color-error-main); */
+	--ml-form-field-border-color: var(--ml-color-error-main);
 }
 
 .root[data-focused='true'] {
@@ -25,35 +30,49 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;}
+	user-select: none;
+}
 
 .label {
 	font-size: var(--ml-size-sm);
 }
 
-.input {
-	background-color: var(--ml-form-field-background-color);
-  box-shadow: inset 0 0 0 var(--ml-form-field-border-width)
+.inputWrapper {
+	display: flex;
+	padding: 0.5em 0.75em;
+	overflow: hidden;
+	box-shadow: inset 0 0 0 var(--ml-form-field-border-width)
 		var(--ml-form-field-border-color);
 	outline: var(--ml-form-field-outline-width) solid
 		var(--ml-form-field-border-color);
 	border-radius: var(--ml-form-field-radius);
+	background-color: var(--ml-form-field-background-color);
+}
+
+.disabled {
+	--ml-form-field-cursor: not-allowed;
 }
 
 .inputElement {
-	all: unset;
-	padding: 0 1em;
 	box-sizing: border-box;
-	height: 3em;
-	width: 100%;
-	transition: caret-color 500ms linear;
+	display: inline-flex;
+	padding: 0;
+	background-color: transparent;
+	line-height: 2em;
+	border: none;
+	outline: none;
+	font-size: 1em;
+	flex-grow: 1;
+
+	cursor: var(--ml-form-field-cursor);
 }
 
 .message {
 	display: block;
 	margin-top: 0.35em;
 	color: var(--ml-color-error-main);
-	font-size: var(--ml-size-xs);
+	/* font-size: var(--ml-size-xs); */
+	font-size: 11px;
 }
 
 .fullWidth {
@@ -77,6 +96,7 @@
 .size-xl {
 	--ml-form-field-size: var(--ml-size-xl);
 }
+
 /* radius */
 .radius-sm {
 	--ml-form-field-radius: var(--ml-radius-sm);

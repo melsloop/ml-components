@@ -2,6 +2,29 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { withForm } from './helpers/formUtils';
 import PasswordField from '../src/components/PasswordField';
+import {
+	autoCompleteControls,
+	borderedControls,
+	customValidationMessageControls,
+	disabledControls,
+	fullWidthControls,
+	labelControls,
+	maxLengthControls,
+	messageTooLongControls,
+	messageTooShortControls,
+	messageTypeMismatchControls,
+	messageValueMissingControls,
+	minLengthControls,
+	placeholderControls,
+	radiusControls,
+	readOnlyControls,
+	requiredControls,
+	sizeControls,
+} from './helpers/commonControls';
+
+type PasswordFieldStoryArgs = React.ComponentProps<typeof PasswordField> & {
+	customValidationMessage?: boolean;
+};
 
 const meta = {
 	title: 'Input/PasswordField',
@@ -12,58 +35,38 @@ const meta = {
 		required: false,
 		disabled: false,
 		readOnly: false,
-		bordered: true,
-		messageValueMissing: 'Value missing',
-		messageTypeMismatch: 'Type mismatch',
-		messageTooShort: 'Too short',
-		messageTooLong: 'Too long',
 		size: 'md',
+		radius: 'sm',
 		fullWidth: false,
 		minLength: 0,
+		autoComplete: undefined,
+		customValidationMessage: false,
 	},
-	argTypes: {},
-} satisfies Meta<typeof PasswordField>;
+	argTypes: {
+		...fullWidthControls,
+		...sizeControls,
+		...radiusControls,
+		...borderedControls,
+		...labelControls,
+		...placeholderControls,
+		...readOnlyControls,
+		...disabledControls,
+		...requiredControls,
+		...minLengthControls,
+		...maxLengthControls,
+		...autoCompleteControls,
+		...customValidationMessageControls,
+		...messageValueMissingControls,
+		...messageTypeMismatchControls,
+		...messageTooShortControls,
+		...messageTooLongControls,
+	},
+} satisfies Meta<PasswordFieldStoryArgs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: ({
-		label,
-		type,
-		placeholder,
-		required,
-		disabled,
-		readOnly,
-		minLength,
-		maxLength,
-		size,
-		radius,
-		fullWidth,
-		bordered,
-		messageValueMissing,
-		messageTypeMismatch,
-		messageTooShort,
-		messageTooLong,
-	}) =>
-		withForm(
-			<PasswordField
-				type={type}
-				label={label}
-				placeholder={placeholder}
-				required={required}
-				disabled={disabled}
-				readOnly={readOnly}
-				minLength={minLength}
-				maxLength={maxLength}
-				size={size}
-				radius={radius}
-				fullWidth={fullWidth}
-				bordered={bordered}
-				messageValueMissing={messageValueMissing}
-				messageTypeMismatch={messageTypeMismatch}
-				messageTooShort={messageTooShort}
-				messageTooLong={messageTooLong}
-			/>,
-		),
+	render: ({ ...props }: PasswordFieldStoryArgs) =>
+		withForm(<PasswordField {...props} />),
 };

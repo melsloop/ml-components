@@ -32,6 +32,10 @@
 	fill: var(--ml-tooltip-background-color);
 }
 
+.children {
+	display: flex;
+}
+
 @keyframes slideUpAndFade {
 	from {
 		opacity: 0;

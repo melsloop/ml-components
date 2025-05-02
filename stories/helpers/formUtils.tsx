@@ -16,15 +16,19 @@ export const withForm = (children: React.ReactElement) => {
 			}}
 		>
 			{children}
-			<Container spacing="lg">
-			<Button
-				variant="contained"
-				mode="primary"
-				size="xs"
-				radius="md"
+			<Container
+				xs={{
+					'--ml-container-vertical-spacing': 'var(--ml-spacing-sm)',
+				}}
 			>
-				Submit
-			</Button>
+				<Button
+					variant="contained"
+					mode="primary"
+					size="xs"
+					radius="md"
+				>
+					Submit
+				</Button>
 			</Container>
 		</Form>
 	);
